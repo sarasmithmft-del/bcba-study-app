@@ -1,0 +1,33 @@
+{
+  "name": "bcba-interactive-study-workbook",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --webpack --hostname 0.0.0.0 --port 3333",
+    "dev:turbo": "next dev --turbopack --hostname 0.0.0.0 --port 3333",
+    "clean": "node -e \"try{require('fs').rmSync('.next',{recursive:true,force:true});require('fs').rmSync('out',{recursive:true,force:true});console.log('Removed .next and out');}catch(e){console.log(e.message)}\"",
+    "build": "next build",
+    "build:webpack": "next build --webpack",
+    "lint": "eslint",
+    "open-site": "cmd /c start http://127.0.0.1:3333/"
+  },
+  "dependencies": {
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
+    "next": "16.2.6",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "dotenv": "^17.4.2",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.6",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

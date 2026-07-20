@@ -1,0 +1,325 @@
+import type { BDSQuestion } from "@/lib/content-types";
+
+/** Cooper/Heron/Heward Ch. 7 — Analyzing Behavior Change: Basic Assumptions and Strategies. */
+
+function bx(
+  id: string,
+  stem: string,
+  correctLetter: "A" | "B" | "C" | "D",
+  bundle: Record<"A" | "B" | "C" | "D", { text: string; rationale: string }>,
+): BDSQuestion {
+  const letters = ["A", "B", "C", "D"] as const;
+  return {
+    id,
+    stem,
+    options: letters.map((L) => ({
+      key: L,
+      text: bundle[L].text,
+      correct: L === correctLetter,
+      rationale: bundle[L].rationale,
+    })),
+  };
+}
+
+export const CHAPTER_07_ANALYSIS_QUIZ_BANK: BDSQuestion[] = [
+  bx("mod10-q1", "Cooper Chapter 7 treats visual inspection as:", "B", {
+    A: { text: "Optional decoration after statistics.", rationale: "Inspection is central to single-subject analysis." },
+    B: { text: "The primary method for analyzing single-subject behavioral graphs.", rationale: "Chapter 7 builds inspection discipline." },
+    C: { text: "Replacement for all measurement.", rationale: "Measurement precedes inspection." },
+    D: { text: "Identical to group design t-tests.", rationale: "Single-subject logic differs from group statistics." },
+  }),
+  bx("mod10-q2", "A basic assumption in analyzing behavior change is that behavior:", "A", {
+    A: { text: "Changes gradually rather than always in sudden permanent steps.", rationale: "Gradual change expectation guides inspection." },
+    B: { text: "Never varies within a phase.", rationale: "Variability is expected." },
+    C: { text: "Changes only when punishment is applied.", rationale: "Many processes change behavior." },
+    D: { text: "Cannot be graphed.", rationale: "Graphs are standard analytic tools." },
+  }),
+  bx("mod10-q3", "Level in visual inspection refers to:", "C", {
+    A: { text: "Latency from cue to response.", rationale: "Level is central tendency within a phase." },
+    B: { text: "IOA percentage.", rationale: "IOA is separate from level." },
+    C: { text: "The overall height or central tendency of data within a phase.", rationale: "Level describes where data cluster." },
+    D: { text: "Graph paper quality.", rationale: "Not a behavioral dimension." },
+  }),
+  bx("mod10-q4", "Trend in visual inspection refers to:", "D", {
+    A: { text: "Caregiver preference.", rationale: "Trend is data direction over time." },
+    B: { text: "Punishment intensity.", rationale: "Unrelated." },
+    C: { text: "MO abolishment.", rationale: "Unrelated." },
+    D: { text: "Directional movement of data across sessions within a phase.", rationale: "Trend describes slope/direction." },
+  }),
+  bx("mod10-q5", "Variability in visual inspection refers to:", "B", {
+    A: { text: "Whether graph uses color.", rationale: "Variability is scatter of points." },
+    B: { text: "How much data points scatter around the phase path.", rationale: "High variability cautions strong claims." },
+    C: { text: "Number of observers only.", rationale: "Scatter is within-phase property." },
+    D: { text: "Token cost.", rationale: "Unrelated." },
+  }),
+  bx("mod10-q6", "Heavy overlap between baseline and intervention phases suggests:", "A", {
+    A: { text: "Tentative interpretation until clearer separation or supplements appear.", rationale: "Overlap slows confident differentiation." },
+    B: { text: "Automatic proof of treatment success.", rationale: "Overlap implies ambiguity." },
+    C: { text: "Need to delete baseline.", rationale: "Baseline remains essential." },
+    D: { text: "IOA is unnecessary.", rationale: "IOA still matters." },
+  }),
+  bx("mod10-q7", "Celeration on a standard ratio chart describes:", "C", {
+    A: { text: "Caregiver driving speed.", rationale: "Celeration is rate of change on ratio charts." },
+    B: { text: "IOA trial agreement.", rationale: "Separate metric." },
+    C: { text: "Multiplicative rate of behavior change over time.", rationale: "Precision Teaching tradition in Cooper." },
+    D: { text: "Extinction only.", rationale: "Celeration applies broadly to rate change." },
+  }),
+  bx("mod10-q8", "Practical significance asks:", "D", {
+    A: { text: "Whether the graph uses correct font.", rationale: "Practical significance is stakeholder meaningfulness." },
+    B: { text: "Whether IOA equals 100%.", rationale: "IOA is reliability—not practical significance alone." },
+    C: { text: "Whether FA was run.", rationale: "FA is separate assessment." },
+    D: { text: "Whether change matters in real-life terms to consumers.", rationale: "Social/practical importance beyond graph tidiness." },
+  }),
+  bx("mod10-q9", "Before attributing change to intervention, analysts should consider:", "B", {
+    A: { text: "Only the last data point.", rationale: "Inspection is holistic." },
+    B: { text: "Baseline trend/drift, overlap, variability, and measurement integrity.", rationale: "Chapter 7 synthesis checklist." },
+    C: { text: "Only caregiver optimism.", rationale: "Data-grounded analysis required." },
+    D: { text: "Deleting unfavorable sessions.", rationale: "Selective reporting violates ethics." },
+  }),
+  bx("mod10-q10", "Low IOA during the phase being interpreted:", "C", {
+    A: { text: "Strengthens causal claims.", rationale: "Low IOA weakens trust in data." },
+    B: { text: "Is irrelevant to interpretation.", rationale: "IOA gates interpretation." },
+    C: { text: "Should slow strong conclusions until measurement quality improves.", rationale: "Chapter 5–7 integration." },
+    D: { text: "Proves automatic reinforcement.", rationale: "Unrelated." },
+  }),
+  bx("mod10-q11", "Improving trend with high variability MOST warrants:", "A", {
+    A: { text: "Cautious language until stability or supplementary metrics clarify.", rationale: "Conflicting cues require caution." },
+    B: { text: "Immediate mastery declaration.", rationale: "Variability cautions claims." },
+    C: { text: "Baseline deletion.", rationale: "Misrepresents data." },
+    D: { text: "Stopping measurement.", rationale: "Continue measuring." },
+  }),
+  bx("mod10-q12", "Visual inspection limitations include:", "D", {
+    A: { text: "None—inspection is always definitive.", rationale: "Inspection has known limitations." },
+    B: { text: "Graphs cannot show behavior.", rationale: "Graphs display behavior over time." },
+    C: { text: "IOA eliminates all error.", rationale: "IOA reduces but does not eliminate issues." },
+    D: { text: "Subjective error when training and conventions are weak.", rationale: "Training and conventions mitigate subjectivity." },
+  }),
+  bx("mod10-q13", "Comparing phases requires reading:", "B", {
+    A: { text: "Only intervention phase.", rationale: "Comparison requires baseline/context." },
+    B: { text: "Level, trend, and variability in both phases together.", rationale: "Holistic cross-phase read." },
+    C: { text: "Only axis colors.", rationale: "Irrelevant." },
+    D: { text: "Only questionnaire data.", rationale: "Graph inspection is primary here." },
+  }),
+  bx("mod10-q14", "Baseline trending upward before treatment begins:", "C", {
+    A: { text: "Should be ignored.", rationale: "Drift confounds attribution." },
+    B: { text: "Proves treatment failed.", rationale: "Drift requires caution—not automatic failure." },
+    C: { text: "Must be noted before crediting intervention for later change.", rationale: "Classic inspection confound." },
+    D: { text: "Requires deleting baseline points.", rationale: "Deletion misrepresents." },
+  }),
+  bx("mod10-q15", "Slope on a line graph complements level and variability by showing:", "A", {
+    A: { text: "Rate or direction of change across sessions.", rationale: "Slope adds rate-of-change information." },
+    B: { text: "IOA only.", rationale: "Separate." },
+    C: { text: "Punishment type.", rationale: "Unrelated." },
+    D: { text: "Caregiver age.", rationale: "Irrelevant." },
+  }),
+  bx("mod10-q16", "Exam stem: Graphs show separation but caregivers report no meaningful improvement. BEST response:", "D", {
+    A: { text: "Ignore caregivers—graph is sufficient.", rationale: "Practical significance requires stakeholder alignment." },
+    B: { text: "Delete caregiver data.", rationale: "Ethical failure." },
+    C: { text: "Claim mastery anyway.", rationale: "Divergence requires honest reporting." },
+    D: { text: "Report analytic change with practical significance caveat.", rationale: "Pair graphs with social validity." },
+  }),
+  bx("mod10-q17", "Fidelity lapses during intervention phase:", "B", {
+    A: { text: "Strengthen attribution to planned IV.", rationale: "Low fidelity weakens attribution." },
+    B: { text: "Weaken causal claims about the planned intervention.", rationale: "IV may not have been implemented." },
+    C: { text: "Eliminate need for graphs.", rationale: "Graphs still display outcomes." },
+    D: { text: "Replace IOA.", rationale: "Both matter." },
+  }),
+  bx("mod10-q18", "Chapter 7 builds on Chapter 6 by:", "C", {
+    A: { text: "Eliminating graphs.", rationale: "Ch 6 construction enables Ch 7 analysis." },
+    B: { text: "Replacing IOA.", rationale: "IOA remains from Ch 5." },
+    C: { text: "Analyzing patterns in well-constructed displays.", rationale: "Construction then analysis sequence." },
+    D: { text: "Introducing FA only.", rationale: "FA is later content." },
+  }),
+  bx("mod10-q19", "Stable low-variability baseline followed by clear level shift with minimal overlap supports:", "A", {
+    A: { text: "Stronger differentiation than heavy overlap cases.", rationale: "Stability and separation aid inspection." },
+    B: { text: "No interpretation possible.", rationale: "Patterns can support tentative conclusions." },
+    C: { text: "Automatic FA proof.", rationale: "Design logic separate from inspection read." },
+    D: { text: "Deleting intervention data.", rationale: "Keep all phases." },
+  }),
+  bx("mod10-q20", "Disciplined inspection sequence includes:", "D", {
+    A: { text: "Pick answer matching clinician hope.", rationale: "Inspection is evidence-based." },
+    B: { text: "Ignore variability.", rationale: "Variability is core dimension." },
+    C: { text: "Skip baseline.", rationale: "Baseline required." },
+    D: { text: "Name level, trend, variability; assess overlap; note integrity limits.", rationale: "Chapter 7 workflow." },
+  }),
+  bx("mod10-q21", "Latency as supplemental metric can help when:", "B", {
+    A: { text: "Graphs show perfect overlap on frequency only.", rationale: "Supplement when primary dimension ambiguous." },
+    B: { text: "Frequency overlap is heavy but initiation speed differs by phase.", rationale: "Supplementary dimension clarifies." },
+    C: { text: "IOA is 100%.", rationale: "IOA alone does not require latency." },
+    D: { text: "Baseline deleted.", rationale: "Invalid practice." },
+  }),
+  bx("mod10-q22", "Internal validity in single-subject analysis concerns:", "C", {
+    A: { text: "Graph font only.", rationale: "Internal validity is about causal inference within study." },
+    B: { text: "Caregiver mood only.", rationale: "Broader design and measurement issues." },
+    C: { text: "Whether observed change is due to the intervention versus confounds.", rationale: "Basic analytic assumption in Ch 7." },
+    D: { text: "Token color.", rationale: "Irrelevant." },
+  }),
+  bx("mod10-q23", "External validity concerns:", "A", {
+    A: { text: "Generalization of findings to other settings, people, or times.", rationale: "Generalization is separate analytic question." },
+    B: { text: "IOA calculation only.", rationale: "Broader than IOA." },
+    C: { text: "Axis labeling only.", rationale: "Construction issue primarily Ch 6." },
+    D: { text: "Punishment selection.", rationale: "Unrelated." },
+  }),
+  bx("mod10-q24", "When dimensions conflict (e.g., better level, worse trend), analysts should:", "D", {
+    A: { text: "Report only favorable dimension.", rationale: "Cherry-picking violates integrity." },
+    B: { text: "Stop all services.", rationale: "Remediate interpretation—not abandon care." },
+    C: { text: "Hide graph from team.", rationale: "Transparency required." },
+    D: { text: "Use cautious language and seek converging evidence.", rationale: "Conflicting cues require tentativeness." },
+  }),
+  bx("mod10-q25", "Selective session reporting before inspection:", "B", {
+    A: { text: "Improves validity.", rationale: "Cherry-picking destroys validity." },
+    B: { text: "Invalidates trustworthy visual analysis.", rationale: "Domain C/E violation." },
+    C: { text: "Required by Cooper.", rationale: "Cooper requires honest plotting." },
+    D: { text: "Replaces IOA.", rationale: "Unrelated." },
+  }),
+  bx("mod10-q26", "Omitted resurgence phase on ABAB graph:", "C", {
+    A: { text: "Harmless presentation choice.", rationale: "Omission misrepresents design evidence." },
+    B: { text: "Improves inspection.", rationale: "Hides critical reversal evidence." },
+    C: { text: "Weakens honest analysis of experimental control.", rationale: "Full phase display required." },
+    D: { text: "Proves negative reinforcement.", rationale: "Unrelated." },
+  }),
+  bx("mod10-q27", "Training in visual inspection helps reduce:", "A", {
+    A: { text: "Inconsistent judgments among analysts.", rationale: "Training improves reliability of inspection." },
+    B: { text: "Need for operational definitions.", rationale: "Definitions still required." },
+    C: { text: "All measurement.", rationale: "Measurement still required." },
+    D: { text: "Ethics obligations.", rationale: "Ethics remain." },
+  }),
+  bx("mod10-q28", "A flat baseline with immediate drop at intervention with no overlap suggests:", "B", {
+    A: { text: "Nothing—overlap required always.", rationale: "Clear separation supports differentiation." },
+    B: { text: "Clearer differentiation than heavy overlap—still note integrity checks.", rationale: "Separation aids but does not auto-prove causality." },
+    C: { text: "Delete baseline.", rationale: "Keep baseline visible." },
+    D: { text: "FA completed.", rationale: "Inspection read ≠ FA." },
+  }),
+  bx("mod10-q29", "Chapter 7 exam traps often pair:", "D", {
+    A: { text: "Shaping with chaining only.", rationale: "Ch 7 focuses on graph analysis." },
+    B: { text: "MO with respondent extinction only.", rationale: "Different domains." },
+    C: { text: "Token economy with ethics only.", rationale: "Too narrow." },
+    D: { text: "Overlapping envelopes with triumphant mastery language.", rationale: "Classic overlap vs overclaim trap." },
+  }),
+  bx("mod10-q30", "Documenting reviewer disagreement on graph read:", "C", {
+    A: { text: "Should be hidden.", rationale: "Document ambiguity transparently." },
+    B: { text: "Proves IOA failure only.", rationale: "Inspection disagreement can occur with good IOA." },
+    C: { text: "Supports honest reporting when interpretation is debatable.", rationale: "Reconciliation memos align Domain E." },
+    D: { text: "Eliminates need for data.", rationale: "Data remain primary." },
+  }),
+  bx("mod10-q31", "Accelerating downward trend in problem behavior during intervention with stable low variability suggests:", "A", {
+    A: { text: "Coherent directional improvement on that dimension.", rationale: "Trend + low variability cohere." },
+    B: { text: "Random noise only.", rationale: "Directional structure present." },
+    C: { text: "Proof punishment required.", rationale: "Does not specify procedure." },
+    D: { text: "MO abolished.", rationale: "Unrelated inference." },
+  }),
+  bx("mod10-q32", "Comparing level without noting trend when baseline drifts:", "B", {
+    A: { text: "Best practice.", rationale: "Must integrate all dimensions." },
+    B: { text: "Incomplete analysis risking false attribution.", rationale: "Drift confound." },
+    C: { text: "Required for FA.", rationale: "Unrelated." },
+    D: { text: "IOA substitute.", rationale: "No." },
+  }),
+  bx("mod10-q33", "Social validity aligns with Chapter 7 when analysts:", "D", {
+    A: { text: "Hide graphs from families.", rationale: "Transparency required." },
+    B: { text: "Use jargon without explanation.", rationale: "Accessible communication needed." },
+    C: { text: "Report only statistical tidiness.", rationale: "Stakeholder meaning matters." },
+    D: { text: "Ask whether outcomes matter to those affected.", rationale: "Practical significance link." },
+  }),
+  bx("mod10-q34", "Split-middle line in inspection is:", "C", {
+    A: { text: "Inferential statistics.", rationale: "Heuristic aid—not statistical test." },
+    B: { text: "Replacement for data points.", rationale: "Data remain primary." },
+    C: { text: "Structured aid estimating trend within a phase.", rationale: "Scaffolds—not replaces—judgment." },
+    D: { text: "IOA formula.", rationale: "Separate." },
+  }),
+  bx("mod10-q35", "High variability in intervention phase after stable baseline:", "B", {
+    A: { text: "Proves treatment harmful always.", rationale: "Requires contextual interpretation." },
+    B: { text: "Cautions strong claims until pattern clarifies.", rationale: "Variability slows confidence." },
+    C: { text: "Eliminates graph.", rationale: "Keep displaying data." },
+    D: { text: "Automatic extinction.", rationale: "Unrelated." },
+  }),
+  bx("mod10-q36", "Integrity caption on graph should note:", "A", {
+    A: { text: "IOA, fidelity, sampling method limits affecting interpretation.", rationale: "Transparent limits support Domain C/E." },
+    B: { text: "Only marketing slogans.", rationale: "Integrity requires method notes." },
+    C: { text: "Hidden session deletions.", rationale: "Cannot hide deletions." },
+    D: { text: "Caregiver zodiac.", rationale: "Irrelevant." },
+  }),
+  bx("mod10-q37", "Behavior change across settings may differ; Chapter 7 reminds analysts:", "D", {
+    A: { text: "Graphs never generalize.", rationale: "Generalization is examined—not denied categorically." },
+    B: { text: "Ignore setting variables.", rationale: "Context matters." },
+    C: { text: "One graph proves universal law.", rationale: "Overgeneralization error." },
+    D: { text: "Consider generalization separately from within-study inspection.", rationale: "Internal vs external questions differ." },
+  }),
+  bx("mod10-q38", "Nearly identical phase envelopes—MOST disciplined stance:", "B", {
+    A: { text: "Declare mastery from intuition.", rationale: "Data-grounded tentativeness required." },
+    B: { text: "Tentative classification pending supplementary evidence.", rationale: "Overlap classic answer." },
+    C: { text: "Delete baseline.", rationale: "Destroys comparison." },
+    D: { text: "Claim extinction proved.", rationale: "Unsupported." },
+  }),
+  bx("mod10-q39", "Supplementary metrics when overlap is heavy may include:", "C", {
+    A: { text: "Deleting all data.", rationale: "Invalid." },
+    B: { text: "Hiding phases.", rationale: "Invalid." },
+    C: { text: "Latency, dispersion notes, or additional dimensions.", rationale: "Supplements clarify ambiguous overlap." },
+    D: { text: "Fabricating sessions.", rationale: "Ethics violation." },
+  }),
+  bx("mod10-q40", "Chapter 7 assumes analysts inspect:", "A", {
+    A: { text: "Well-constructed graphs from Chapters 4–6 pipeline.", rationale: "Quality in, quality analysis out." },
+    B: { text: "Anecdotes only.", rationale: "Graphs central." },
+    C: { text: "Only post-intervention dots.", rationale: "Holistic phase read." },
+    D: { text: "Unlabeled axes preferred.", rationale: "Ch 6 requires labels." },
+  }),
+  bx("mod10-q41", "Trend in baseline opposite to intervention effect:", "D", {
+    A: { text: "Irrelevant.", rationale: "Confounds attribution." },
+    B: { text: "Proves treatment worked.", rationale: "Must reconcile opposing trends." },
+    C: { text: "Requires no comment.", rationale: "Must be narrated." },
+    D: { text: "Requires explicit discussion before causal claims.", rationale: "Drift/confound handling." },
+  }),
+  bx("mod10-q42", "Marketing '90% reduction' while graph shows overlap and high variability:", "C", {
+    A: { text: "Acceptable rounding.", rationale: "Overclaim versus data." },
+    B: { text: "Domain A issue only.", rationale: "Domain C/E measurement and reporting." },
+    C: { text: "Misleading reporting contradicting inspection read.", rationale: "Honest language required." },
+    D: { text: "IOA substitute.", rationale: "No." },
+  }),
+  bx("mod10-q43", "Visual inspection training emphasizes:", "B", {
+    A: { text: "Memorizing one graph example.", rationale: "Systematic dimension read." },
+    B: { text: "Consistent application of level, trend, variability rules.", rationale: "Reproducible inspection." },
+    C: { text: "Avoiding baseline.", rationale: "Baseline essential." },
+    D: { text: "Ignoring fidelity.", rationale: "Fidelity noted in interpretation." },
+  }),
+  bx("mod10-q44", "Celeration change across phases on ratio chart indicates:", "A", {
+    A: { text: "Change in multiplicative rate between conditions.", rationale: "Ratio chart celeration comparison." },
+    B: { text: "IOA level only.", rationale: "Separate." },
+    C: { text: "Punishment type.", rationale: "Unrelated." },
+    D: { text: "Caregiver satisfaction.", rationale: "Separate construct." },
+  }),
+  bx("mod10-q45", "Before dissemination to funders, analysts should:", "D", {
+    A: { text: "Remove resurgence phases.", rationale: "Omission misleads." },
+    B: { text: "Rescale axes secretly.", rationale: "Distortion." },
+    C: { text: "Omit IOA dips.", rationale: "Withholding limits." },
+    D: { text: "Ensure graph integrity, IOA/fidelity notes, and honest interpretation language.", rationale: "Full transparency." },
+  }),
+  bx("mod10-q46", "Level shift with accelerating trend same direction and low variability:", "C", {
+    A: { text: "Ambiguous always.", rationale: "Coherent pattern may support stronger tentativeness." },
+    B: { text: "Proves FA.", rationale: "Design evidence separate." },
+    C: { text: "Supports clearer differentiated story pending integrity checks.", rationale: "Coherent dimensions." },
+    D: { text: "Requires baseline deletion.", rationale: "No." },
+  }),
+  bx("mod10-q47", "Chapter 7 links to experimental design chapters by:", "B", {
+    A: { text: "Replacing all designs with graphs.", rationale: "Designs structure inference." },
+    B: { text: "Providing inspection tools to evaluate design outcomes.", rationale: "Analysis follows design + construction." },
+    C: { text: "Eliminating reversal designs.", rationale: "Designs remain." },
+    D: { text: "Avoiding phase comparisons.", rationale: "Phase comparison central." },
+  }),
+  bx("mod10-q48", "When IOA and fidelity are strong and overlap minimal, analysts still should:", "A", {
+    A: { text: "Consider practical significance and generalization limits.", rationale: "Inspection complete but not sole criterion." },
+    B: { text: "Stop all measurement forever.", rationale: "Maintenance monitoring may continue." },
+    C: { text: "Hide data from stakeholders.", rationale: "Transparency." },
+    D: { text: "Skip ethics review.", rationale: "Ethics always apply." },
+  }),
+  bx("mod10-q49", "BCBA exam graph stem—FIRST analytic step after confirming graph construction:", "D", {
+    A: { text: "Select punishment procedure.", rationale: "Analysis precedes procedure change." },
+    B: { text: "Run FA immediately.", rationale: "Not first inspection step." },
+    C: { text: "Delete outliers silently.", rationale: "Invalid." },
+    D: { text: "Read level, trend, variability within and across phases.", rationale: "Core Ch 7 sequence." },
+  }),
+  bx("mod10-q50", "Closing Chapter 7 principle:", "B", {
+    A: { text: "One flattering metric proves everything.", rationale: "Synthesis required." },
+    B: { text: "Integrate dimensions, note limits, match language to evidence.", rationale: "Chapter 7 core message." },
+    C: { text: "Graphs replace measurement.", rationale: "Measurement foundation remains." },
+    D: { text: "Overlap means automatic success.", rationale: "Overlap cautions claims." },
+  }),
+];

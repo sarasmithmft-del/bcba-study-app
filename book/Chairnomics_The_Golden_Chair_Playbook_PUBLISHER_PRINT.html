@@ -1,0 +1,90 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chairnomics: The Golden Chair Playbook - Publisher Print Edition</title>
+  <style>
+    :root { --ink:#171a1f; --muted:#5f6368; --line:#d8dde5; --accent:#123f6f; --paper:#ffffff; }
+    * { box-sizing: border-box; }
+    body {
+      margin:0;
+      color:var(--ink);
+      background:var(--paper);
+      font-family:Georgia, "Times New Roman", serif;
+      line-height:1.55;
+      font-size:12pt;
+      display:grid;
+      place-items:center;
+      min-height:100vh;
+      padding:24px;
+    }
+    .card {
+      width:min(760px, 100%);
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:#fff;
+      padding:28px 24px;
+      box-shadow:0 3px 20px rgba(0,0,0,0.04);
+    }
+    h1 {
+      margin:0 0 10px;
+      font-size:2.1rem;
+      line-height:1.15;
+    }
+    p { margin:0.55em 0; color:#2e3640; }
+    .muted { color:var(--muted); }
+    .actions {
+      margin-top:16px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .actions a, .actions button {
+      border:1px solid #c7cdd5;
+      background:#fff;
+      color:#1f2328;
+      text-decoration:none;
+      border-radius:7px;
+      padding:8px 12px;
+      font-size:10pt;
+      cursor:pointer;
+    }
+    .actions a:hover, .actions button:hover {
+      background:#f2f4f8;
+    }
+    .ok { color:#0e6838; font-weight:700; }
+    .warn { color:#8a4a00; font-weight:700; }
+    @media print {
+      body { padding:0; display:block; }
+      .card { border:none; border-radius:0; box-shadow:none; padding:0; }
+      .actions { display:none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Chairnomics: The Golden Chair Playbook<br/>Publisher Print Edition</h1>
+    <p class="muted">This page now routes to the fully rendered compiled playbook HTML.</p>
+    <p id="state" class="warn">Checking for compiled output...</p>
+    <div class="actions">
+      <a href="./The_Sacred_Chair_FULL_MANUSCRIPT_PRINT.html">Open Full Playbook Print HTML</a>
+      <a href="./compile_full_manuscript_html.bat">Rebuild HTML</a>
+      <button onclick="window.print()">Print This Page</button>
+    </div>
+    <p class="muted">If auto-open does not happen in your browser, click <em>Open Full Playbook Print HTML</em>.</p>
+  </main>
+
+  <script>
+    (function () {
+      const target = "./The_Sacred_Chair_FULL_MANUSCRIPT_PRINT.html";
+      const state = document.getElementById("state");
+      state.textContent = "Opening compiled output...";
+      state.className = "ok";
+      setTimeout(function () {
+        window.location.replace(target);
+      }, 700);
+    })();
+  </script>
+</body>
+</html>

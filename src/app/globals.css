@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+:root {
+  --aba-bg: #121212;
+  --aba-panel: #161616;
+  --aba-depth: #141414;
+  --aba-fg: #e0e0e0;
+  --aba-divider: rgba(224, 224, 224, 0.16);
+  --aba-muted: #9ea0a8;
+  --aba-correct: #2e7d32;
+  --aba-incorrect: #c62828;
+  --aba-incorrect-soft: #ec9a94;
+}
+
+@theme inline {
+  --color-background: var(--aba-bg);
+  --color-foreground: var(--aba-fg);
+  --color-aba-bg: var(--aba-bg);
+  --color-aba-panel: var(--aba-panel);
+  --color-aba-depth: var(--aba-depth);
+  --color-aba-fg: var(--aba-fg);
+  --color-aba-muted: var(--aba-muted);
+  --color-aba-divider: var(--aba-divider);
+  /* System stacks only — avoids runtime fetches to fonts.googleapis.com (common "Failed to fetch" in locked-down networks). */
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+@layer utilities {
+  @keyframes codex-pane {
+    from {
+      opacity: 0;
+      transform: translateX(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .codex-pane {
+    animation: codex-pane 360ms ease-out;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .codex-pane {
+      animation: none !important;
+    }
+  }
+}
+
+body {
+  min-height: 100vh;
+  background: var(--aba-bg);
+  color: var(--aba-fg);
+  font-family: var(--font-sans);
+  letter-spacing: -0.01em;
+}
+
+* {
+  scrollbar-color: var(--aba-divider) transparent;
+}

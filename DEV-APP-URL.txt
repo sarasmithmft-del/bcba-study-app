@@ -1,0 +1,23 @@
+Paste this ONLY after `npm run dev` works (terminal shows Ready):
+
+http://127.0.0.1:3333/
+
+Mock exam:
+http://127.0.0.1:3333/mock-exam
+
+IMPORTANT
+- Prefer 127.0.0.1 over "localhost" (some proxies break localhost).
+
+If Edge mentions PROXY / FIREWALL:
+- That message appears for EVERY failed page — it rarely means firewall.
+- It usually means NOTHING is LISTENING: run `npm run dev` AND keep that window OPEN,
+  OR use RUN-MOCK-EXAM.bat to start it first.
+
+Bypass proxy for local (if your school/job uses one):
+Windows Settings → Network & Internet → Proxy → use exclusions / bypass list:
+  localhost  127.0.0.1  <loopback>
+
+Then open the 127.0.0.1 links above again.
+
+Alternative (often more stable): double-click LAUNCH-PRODUCTION.bat
+or run  npm run build:start  then visit the same URLs.

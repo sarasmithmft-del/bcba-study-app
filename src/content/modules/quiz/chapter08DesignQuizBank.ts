@@ -1,0 +1,325 @@
+import type { BDSQuestion } from "@/lib/content-types";
+
+/** Cooper/Heron/Heward Ch. 8 — Reversal and Multielement Designs. */
+
+function bx(
+  id: string,
+  stem: string,
+  correctLetter: "A" | "B" | "C" | "D",
+  bundle: Record<"A" | "B" | "C" | "D", { text: string; rationale: string }>,
+): BDSQuestion {
+  const letters = ["A", "B", "C", "D"] as const;
+  return {
+    id,
+    stem,
+    options: letters.map((L) => ({
+      key: L,
+      text: bundle[L].text,
+      correct: L === correctLetter,
+      rationale: bundle[L].rationale,
+    })),
+  };
+}
+
+export const CHAPTER_08_DESIGN_QUIZ_BANK: BDSQuestion[] = [
+  bx("mod12-q1", "Cooper Chapter 8 reversal designs demonstrate control by:", "B", {
+    A: { text: "Comparing group means only.", rationale: "Single-subject reversal logic differs from groups." },
+    B: { text: "Introducing and withdrawing intervention while observing behavior return toward baseline (resurgence).", rationale: "Contingency toggles anchor reversal designs." },
+    C: { text: "Eliminating measurement.", rationale: "Measurement remains essential." },
+    D: { text: "Using questionnaires alone.", rationale: "Direct measurement required." },
+  }),
+  bx("mod12-q2", "Resurgence in a reversal design refers to:", "A", {
+    A: { text: "Behavior returning toward baseline levels when intervention is withdrawn.", rationale: "Resurgence supports contingency control inference." },
+    B: { text: "Permanent extinction.", rationale: "Resurgence is temporary return toward baseline." },
+    C: { text: "IOA increase.", rationale: "Separate construct." },
+    D: { text: "MO abolishment only.", rationale: "Resurgence follows withdrawal of intervention contingency." },
+  }),
+  bx("mod12-q3", "Recovery phase in ABAB design:", "C", {
+    A: { text: "Eliminates need for baseline.", rationale: "Recovery reintroduces intervention after withdrawal." },
+    B: { text: "Proves respondent extinction.", rationale: "Recovery documents regain after resurgence." },
+    C: { text: "Reintroduces intervention to verify performance improves again.", rationale: "Recovery replicates effect." },
+    D: { text: "Hides resurgence from report.", rationale: "Ethical reporting includes all phases." },
+  }),
+  bx("mod12-q4", "Ethical limit on full withdrawal when AAC is essential:", "D", {
+    A: { text: "Proceed with covert removal.", rationale: "Violates consent and safety." },
+    B: { text: "Abandon all analysis.", rationale: "Alternative designs exist." },
+    C: { text: "Delete baseline data.", rationale: "Misrepresents evidence." },
+    D: { text: "Use multiple-baseline, multielement, or reversal-lite alternatives.", rationale: "Cooper offers ethical substitutes." },
+  }),
+  bx("mod12-q5", "Multielement (alternating treatments) design compares:", "B", {
+    A: { text: "Only baseline to baseline.", rationale: "Multielement alternates two+ active conditions." },
+    B: { text: "Two or more treatments alternating across sessions or days.", rationale: "Rapid comparison without full withdrawal." },
+    C: { text: "Group statistics only.", rationale: "Single-subject multielement design." },
+    D: { text: "Indirect assessment only.", rationale: "Requires direct measurement." },
+  }),
+  bx("mod12-q6", "Counterbalancing in multielement designs controls for:", "A", {
+    A: { text: "Sequence or order effects.", rationale: "Fair rotation distributes mundane confounds." },
+    B: { text: "IOA only.", rationale: "Order effects are design confound." },
+    C: { text: "Respondent conditioning exclusively.", rationale: "Operant design issue." },
+    D: { text: "Graph font.", rationale: "Irrelevant." },
+  }),
+  bx("mod12-q7", "Multielement interference (carryover) occurs when:", "C", {
+    A: { text: "IOA is 100%.", rationale: "Carryover is effect of one condition on another." },
+    B: { text: "Baseline is stable.", rationale: "Carryover complicates condition separation." },
+    C: { text: "Effects of one condition persist into the next condition's sessions.", rationale: "Bleed-through threatens differentiation." },
+    D: { text: "Graph is unlabeled.", rationale: "Construction issue." },
+  }),
+  bx("mod12-q8", "Stable baseline before reversal MOST important because:", "D", {
+    A: { text: "Baseline optional in ABAB.", rationale: "Stable baseline anchors comparison." },
+    B: { text: "Eliminates resurgence.", rationale: "Resurgence may still occur." },
+    C: { text: "Replaces IOA.", rationale: "IOA separate." },
+    D: { text: "Provides credible comparison for intervention and withdrawal phases.", rationale: "Baseline stability supports inference." },
+  }),
+  bx("mod12-q9", "ABA versus ABAB:", "B", {
+    A: { text: "Identical designs.", rationale: "ABAB includes second baseline and reintervention." },
+    B: { text: "ABAB adds withdrawal and recovery replications beyond ABA.", rationale: "Extra replications strengthen control." },
+    C: { text: "ABA is group design.", rationale: "Both single-subject." },
+    D: { text: "ABAB eliminates ethics review.", rationale: "Ethics always apply." },
+  }),
+  bx("mod12-q10", "When withdrawal is unethical, Chapter 8 recommends:", "A", {
+    A: { text: "Multiple-baseline or multielement designs preserving differentiation.", rationale: "Ethical alternatives maintain analytic intent." },
+    B: { text: "Fabricating resurgence data.", rationale: "Fraud." },
+    C: { text: "Stopping measurement.", rationale: "Accountability continues." },
+    D: { text: "Claiming reversal completed covertly.", rationale: "Violates ethics." },
+  }),
+  bx("mod12-q11", "Phase change lines in reversal design must align with:", "C", {
+    A: { text: "Marketing schedule.", rationale: "Phase lines mark actual procedural changes." },
+    B: { text: "Caregiver birthdays.", rationale: "Irrelevant." },
+    C: { text: "Documented contingency changes and fidelity notes.", rationale: "Fidelity makes phases auditable." },
+    D: { text: "IOA formulas.", rationale: "Related but not what phase lines mark." },
+  }),
+  bx("mod12-q12", "Alternating treatments without counterbalancing risks:", "D", {
+    A: { text: "Perfect differentiation always.", rationale: "Order confounds threaten validity." },
+    B: { text: "IOA elimination.", rationale: "IOA still needed." },
+    C: { text: "Automatic FA.", rationale: "Unrelated." },
+    D: { text: "Confounding treatment effects with session order or weekday effects.", rationale: "Sequence confounds mimic treatment superiority." },
+  }),
+  bx("mod12-q13", "No resurgence after withdrawal may suggest:", "B", {
+    A: { text: "Perfect reversal proof.", rationale: "Absence of resurgence may indicate carryover, weak IV, or measurement issue." },
+    B: { text: "Intervention may not control behavior, carryover, or withdrawal was incomplete.", rationale: "Interpret cautiously with fidelity check." },
+    C: { text: "Delete withdrawal phase.", rationale: "Report all phases." },
+    D: { text: "MO only explanation always.", rationale: "Multiple hypotheses require data." },
+  }),
+  bx("mod12-q14", "Multielement design overlay graphs display:", "A", {
+    A: { text: "Different conditions on same time axis for comparison.", rationale: "Concurrent overlay aids visual comparison." },
+    B: { text: "Only questionnaires.", rationale: "Behavioral data required." },
+    C: { text: "Group means exclusively.", rationale: "Single-subject overlays." },
+    D: { text: "IOA only.", rationale: "Behavior paths primary." },
+  }),
+  bx("mod12-q15", "Reversal design ethical review should consider:", "D", {
+    A: { text: "Only billing.", rationale: "Risk, consent, essential supports matter." },
+    B: { text: "Graph color only.", rationale: "Welfare and consent central." },
+    C: { text: "Whether resurgence looks good.", rationale: "Ethics precedes optics." },
+    D: { text: "Harm from removing effective treatment and availability of alternatives.", rationale: "Least restrictive design selection." },
+  }),
+  bx("mod12-q16", "Washout interval between multielement conditions helps reduce:", "C", {
+    A: { text: "Baseline stability.", rationale: "Washout reduces carryover." },
+    B: { text: "Need for labels.", rationale: "Labels still required." },
+    C: { text: "Carryover between conditions.", rationale: "Time between conditions can reduce interference." },
+    D: { text: "All measurement.", rationale: "Measurement continues." },
+  }),
+  bx("mod12-q17", "Exam: AAC cannot be removed—MOST compliant design:", "B", {
+    A: { text: "Covert nightly withdrawal.", rationale: "Violates consent." },
+    B: { text: "Multielement or multiple-baseline comparison.", rationale: "Ethical differentiation without removing AAC." },
+    C: { text: "No data collection.", rationale: "Accountability required." },
+    D: { text: "Declare mastery without graphs.", rationale: "Evidence required." },
+  }),
+  bx("mod12-q18", "Reversal demonstrates functional relation when:", "A", {
+    A: { text: "Behavior shifts predictably with introduction and withdrawal of intervention.", rationale: "Reliable phase-linked change supports control." },
+    B: { text: "One session improves.", rationale: "Single point insufficient." },
+    C: { text: "Caregiver is satisfied.", rationale: "Social validity supplements—not replaces—design logic." },
+    D: { text: "IOA is low.", rationale: "Low IOA weakens claims." },
+  }),
+  bx("mod12-q19", "Differentiated outcomes in multielement design suggest:", "D", {
+    A: { text: "Automatic group statistics.", rationale: "Visual inspection of separated paths." },
+    B: { text: "IOA irrelevant.", rationale: "IOA still required." },
+    C: { text: "Punishment proved.", rationale: "Design compares conditions—not process type alone." },
+    D: { text: "One condition produced better performance when interference is ruled out or noted.", rationale: "Tentative superiority language with carryover check." },
+  }),
+  bx("mod12-q20", "Carryover confound in reversal MOST challenges:", "B", {
+    A: { text: "Labeling axes.", rationale: "Carryover affects resurgence attribution." },
+    B: { text: "Attributing resurgence solely to withdrawal.", rationale: "History effects may persist." },
+    C: { text: "Using line graphs.", rationale: "Graph type fine." },
+    D: { text: "IOA calculation.", rationale: "Separate though related." },
+  }),
+  bx("mod12-q21", "Chapter 8 belongs in Cooper sequence after:", "C", {
+    A: { text: "Chapter 11 reinforcement only.", rationale: "Follows measurement and analysis chapters." },
+    B: { text: "Ethics chapter only.", rationale: "Design follows Ch 7 analysis." },
+    C: { text: "Chapters on measurement (4–5), graphs (6), and analysis (7).", rationale: "Designs use graph inspection skills." },
+    D: { text: "FBA chapter.", rationale: "FBA is later." },
+  }),
+  bx("mod12-q22", "Brief token removal documenting rate increase MOST illustrates:", "A", {
+    A: { text: "Withdrawal element testing reinforcement dependence.", rationale: "Mini-reversal logic." },
+    B: { text: "Multiple baseline stagger.", rationale: "Different design family." },
+    C: { text: "Changing criterion only.", rationale: "Criterion designs differ." },
+    D: { text: "Respondent extinction.", rationale: "Operant withdrawal context." },
+  }),
+  bx("mod12-q23", "Multielement design when full reversal unethical:", "D", {
+    A: { text: "Never usable.", rationale: "Common ethical alternative." },
+    B: { text: "Requires punishment.", rationale: "Compares humane packages." },
+    C: { text: "Eliminates IOA.", rationale: "IOA still required." },
+    D: { text: "Compares treatments via rapid alternation without removing essential supports.", rationale: "Ethical comparative design." },
+  }),
+  bx("mod12-q24", "Recovery phase performance should:", "C", {
+    A: { text: "Stay at baseline forever.", rationale: "Recovery shows regain with intervention." },
+    B: { text: "Be hidden.", rationale: "Report all phases." },
+    C: { text: "Return toward intervention-level performance when IV restored.", rationale: "Replication of effect." },
+    D: { text: "Prove FA.", rationale: "FA is separate methodology." },
+  }),
+  bx("mod12-q25", "Predictable weekday-only assignment of Condition A:", "B", {
+    A: { text: "Ideal counterbalancing.", rationale: "Confounds condition with day." },
+    B: { text: "Sequence confound threatening multielement validity.", rationale: "Randomize or counterbalance." },
+    C: { text: "IOA method.", rationale: "Design confound." },
+    D: { text: "Baseline requirement.", rationale: "Unrelated." },
+  }),
+  bx("mod12-q26", "Covert schedule change during reversal violates:", "D", {
+    A: { text: "Only font rules.", rationale: "Consent, fidelity, Domain E." },
+    B: { text: "Shaping only.", rationale: "Broad ethics and measurement." },
+    C: { text: "Token economy only.", rationale: "Applies to all reversal contexts." },
+    D: { text: "Informed participation and accurate contingency reporting.", rationale: "Covert manipulation forbidden." },
+  }),
+  bx("mod12-q27", "Reversal-lite probe means:", "A", {
+    A: { text: "Abbreviated withdrawal testing contingency when full ABAB unethical.", rationale: "Scaled ethical test." },
+    B: { text: "No measurement.", rationale: "Measurement required." },
+    C: { text: "Permanent removal of all supports.", rationale: "Lite implies limited probe." },
+    D: { text: "Group t-test.", rationale: "Single-subject logic." },
+  }),
+  bx("mod12-q28", "Generalized enhancement in multielement design:", "C", {
+    A: { text: "One condition improves performance under all conditions.", rationale: "Generalized enhancement confounds differentiation." },
+    B: { text: "IOA formula.", rationale: "Interference type." },
+    C: { text: "Improvement spreads across conditions—may obscure which IV caused change.", rationale: "Interpret with caution." },
+    D: { text: "Extinction burst only.", rationale: "Different phenomenon." },
+  }),
+  bx("mod12-q29", "Before reversal, analysts should document:", "B", {
+    A: { text: "Only intervention phase.", rationale: "Stable baseline and fidelity required." },
+    B: { text: "Stable baseline and clear intervention effect.", rationale: "Prerequisites for meaningful withdrawal." },
+    C: { text: "Caregiver zodiac.", rationale: "Irrelevant." },
+    D: { text: "Punishment menu.", rationale: "Not prerequisite generically." },
+  }),
+  bx("mod12-q30", "Multielement vs reversal—key difference:", "D", {
+    A: { text: "Multielement never uses graphs.", rationale: "Both use graphs." },
+    B: { text: "Reversal never withdraws intervention.", rationale: "Withdrawal defines reversal." },
+    C: { text: "Identical designs.", rationale: "Different logic." },
+    D: { text: "Multielement alternates conditions; reversal withdraws intervention to baseline.", rationale: "Core discrimination." },
+  }),
+  bx("mod12-q31", "Reporting reversal without resurgence phase shown:", "A", {
+    A: { text: "Incomplete reporting weakening design demonstration.", rationale: "All phases should appear." },
+    B: { text: "Best practice.", rationale: "Hides evidence." },
+    C: { text: "Required by Cooper.", rationale: "Cooper requires honesty." },
+    D: { text: "IOA substitute.", rationale: "No." },
+  }),
+  bx("mod12-q32", "High-risk behavior reversal planning requires:", "C", {
+    A: { text: "No supervision.", rationale: "Heightened safeguards needed." },
+    B: { text: "Covert withdrawal.", rationale: "Ethical violations." },
+    C: { text: "Risk review, consent, and possibly alternative design.", rationale: "Safety first." },
+    D: { text: "Deleting data.", rationale: "Invalid." },
+  }),
+  bx("mod12-q33", "Discriminable treatment packages in multielement mean:", "B", {
+    A: { text: "Identical procedures labeled differently.", rationale: "Conditions must differ operationally." },
+    B: { text: "Each condition implemented distinctly enough to compare.", rationale: "Fidelity distinguishes IVs." },
+    C: { text: "No fidelity notes.", rationale: "Fidelity essential." },
+    D: { text: "Questionnaires only.", rationale: "Direct implementation required." },
+  }),
+  bx("mod12-q34", "Resurgence supports inference when paired with:", "D", {
+    A: { text: "Hidden phases.", rationale: "Transparent phases required." },
+    B: { text: "Low IOA ignored.", rationale: "IOA gates inference." },
+    C: { text: "Anecdotes only.", rationale: "Graphed data required." },
+    D: { text: "Recovery showing behavior improves again when intervention returns.", rationale: "ABAB replication logic." },
+  }),
+  bx("mod12-q35", "Chapter 8 exam trap:", "A", {
+    A: { text: "Confusing multielement alternation with multiple baseline stagger.", rationale: "Different design families." },
+    B: { text: "Labeling axes.", rationale: "Ch 6 skill." },
+    C: { text: "IOA total count.", rationale: "Ch 5 skill." },
+    D: { text: "MO definition.", rationale: "Ch 16." },
+  }),
+  bx("mod12-q36", "Alternating treatments on overlay graph with clear separation:", "C", {
+    A: { text: "Proves causality without any caveats always.", rationale: "Carryover and fidelity still checked." },
+    B: { text: "Useless design.", rationale: "Useful comparison method." },
+    C: { text: "Supports tentative preference for better-performing condition.", rationale: "Inspection plus integrity checks." },
+    D: { text: "Replaces measurement.", rationale: "Measurement underlies graph." },
+  }),
+  bx("mod12-q37", "Withdrawal of effective DRA to test dependence:", "B", {
+    A: { text: "Never ethical.", rationale: "May be ethical with consent and safeguards." },
+    B: { text: "Reversal logic when ethically authorized and brief.", rationale: "Tests contingency control." },
+    C: { text: "Multielement only always.", rationale: "Reversal may be appropriate." },
+    D: { text: "FA condition.", rationale: "Different methodology." },
+  }),
+  bx("mod12-q38", "Fidelity notes across reversal phases document:", "A", {
+    A: { text: "Which contingency was active when graph changed.", rationale: "Links IV to behavior path." },
+    B: { text: "Caregiver mood only.", rationale: "Procedural fidelity focus." },
+    C: { text: "IOA only post hoc.", rationale: "Fidelity is IV implementation." },
+    D: { text: "Punishment intensity only.", rationale: "Any procedure type." },
+  }),
+  bx("mod12-q39", "Multiple baseline is alternative when:", "D", {
+    A: { text: "Withdrawal always preferred.", rationale: "Ethics may forbid withdrawal." },
+    B: { text: "Never in Cooper.", rationale: "Cooper Ch 9—preview as alternative." },
+    C: { text: "IOA unnecessary.", rationale: "IOA still needed." },
+    D: { text: "Withdrawal unethical—stagger intervention across tiers.", rationale: "Ethical substitute cited in Ch 8." },
+  }),
+  bx("mod12-q40", "Tentative multielement conclusion when paths overlap:", "B", {
+    A: { text: "Declare winning condition.", rationale: "Overlap requires caution." },
+    B: { text: "Note interference/overlap; avoid decisive superiority claims.", rationale: "Chapter 7 overlap logic applies." },
+    C: { text: "Delete graph.", rationale: "Report honestly." },
+    D: { text: "Stop ethics review.", rationale: "Ethics ongoing." },
+  }),
+  bx("mod12-q41", "ABAB second B phase is:", "C", {
+    A: { text: "Second baseline.", rationale: "Second B is reintervention/recovery." },
+    B: { text: "FA alone.", rationale: "Reintervention phase." },
+    C: { text: "Reintroduction of intervention after withdrawal.", rationale: "Recovery phase." },
+    D: { text: "IOA session.", rationale: "Design phase." },
+  }),
+  bx("mod12-q42", "Randomized condition order in multielement:", "A", {
+    A: { text: "Reduces order confounds.", rationale: "Counterbalancing strategy." },
+    B: { text: "Eliminates need for graphs.", rationale: "Graphs still used." },
+    C: { text: "Proves punishment.", rationale: "Unrelated." },
+    D: { text: "Violates ethics always.", rationale: "Standard practice." },
+  }),
+  bx("mod12-q43", "Reversal without stable initial baseline:", "D", {
+    A: { text: "Ideal.", rationale: "Unstable baseline weakens comparison." },
+    B: { text: "Required.", rationale: "Stability preferred." },
+    C: { text: "Proves MO.", rationale: "Design weakness." },
+    D: { text: "Weakens ability to interpret intervention and resurgence.", rationale: "Baseline anchor compromised." },
+  }),
+  bx("mod12-q44", "Staggered intervention across three participants versus alternating two treatments same day—designs are:", "B", {
+    A: { text: "Identical multielement designs.", rationale: "Multiple baseline stagger differs from ATD." },
+    B: { text: "Different families—multiple baseline (Ch 9) versus multielement alternation (Ch 8).", rationale: "Common exam discrimination." },
+    C: { text: "Both group designs only.", rationale: "Single-subject designs." },
+    D: { text: "IOA types.", rationale: "Design families differ." },
+  }),
+  bx("mod12-q45", "Domain F reversal items test:", "C", {
+    A: { text: "MO only.", rationale: "Design and contingency logic." },
+    B: { text: "Verbal operants only.", rationale: "Design domain." },
+    C: { text: "Whether phase changes support experimental control narrative.", rationale: "Domain F analytic design." },
+    D: { text: "Billing codes only.", rationale: "Clinical design focus." },
+  }),
+  bx("mod12-q46", "Harm from removing communication device during reversal:", "D", {
+    A: { text: "Acceptable for quick graph.", rationale: "Safeguard violation." },
+    B: { text: "IOA issue only.", rationale: "Ethical harm." },
+    C: { text: "Required for all reversals.", rationale: "Alternatives exist." },
+    D: { text: "Triggers redesign to multielement or multiple baseline.", rationale: "Ethical design pivot." },
+  }),
+  bx("mod12-q47", "Replication within reversal design means:", "A", {
+    A: { text: "Effect appears across introduction, withdrawal, and reintroduction phases.", rationale: "Within-subject replication." },
+    B: { text: "Many participants in one group.", rationale: "Single-subject replication differs." },
+    C: { text: "One data point.", rationale: "Multiple phases required." },
+    D: { text: "No baseline.", rationale: "Baseline required." },
+  }),
+  bx("mod12-q48", "Multielement fast comparison advantage:", "B", {
+    A: { text: "Eliminates all confounds.", rationale: "Carryover may remain." },
+    B: { text: "Rapid comparison without lengthy withdrawal when ethical.", rationale: "Practical advantage." },
+    C: { text: "No IOA needed.", rationale: "IOA still required." },
+    D: { text: "Replaces consent.", rationale: "Consent required." },
+  }),
+  bx("mod12-q49", "BCBA stem: behavior rises when DRA removed briefly—MOST illustrates:", "D", {
+    A: { text: "Multiple baseline.", rationale: "Withdrawal element present." },
+    B: { text: "Changing criterion.", rationale: "Different design." },
+    C: { text: "Extinction only.", rationale: "Removal tests reinforcement dependence." },
+    D: { text: "Reversal/withdrawal demonstrating contingency control.", rationale: "Classic Ch 8 logic." },
+  }),
+  bx("mod12-q50", "Closing Chapter 8 principle:", "C", {
+    A: { text: "Always use full ABAB regardless of risk.", rationale: "Ethics constrain design." },
+    B: { text: "Design replaces measurement.", rationale: "Measurement foundation remains." },
+    C: { text: "Demonstrate control with reversal or multielement while respecting ethical limits and fidelity.", rationale: "Chapter 8 integration message." },
+    D: { text: "Hide resurgence if inconvenient.", rationale: "Honest reporting required." },
+  }),
+];

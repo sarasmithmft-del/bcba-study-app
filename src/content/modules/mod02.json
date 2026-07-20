@@ -1,0 +1,705 @@
+{
+  "id": "mod02",
+  "chapterNumber": 11,
+  "title": "Positive Reinforcement",
+  "codex": {
+    "heading": "READING — Chapter 11 (Positive Reinforcement)",
+    "segments": [
+      {
+        "type": "text",
+        "text": "Chapter 11 in Cooper, Heron, and Heward explains how consequence relations shape operant behavior over time. Instead of treating behavior change as willpower or trait expression, the chapter anchors interpretation in contingency history: what happened after responding, under what antecedent conditions, and how those relations changed future response probability."
+      },
+      { "type": "footnote", "ref": "4_1" },
+      { "type": "text", "text": "\n\n" },
+      {
+        "type": "text",
+        "text": "The core analytic unit is the three-term contingency (SD-R-SR/SP): discriminative stimulus context, response class, and consequence relation. Analysts use this unit to organize case data and to avoid overgeneral labels that collapse distinct behavior streams into one vague category."
+      },
+      { "type": "footnote", "ref": "4_2" },
+      { "type": "text", "text": "\n\n" },
+      {
+        "type": "text",
+        "text": "Reinforcement is defined functionally by its effect: behavior increases in future frequency under similar conditions. Positive reinforcement adds a stimulus contingent on responding, while negative reinforcement removes, reduces, or postpones an aversive condition contingent on responding; both processes increase or maintain responding."
+      },
+      { "type": "footnote", "ref": "4_3" },
+      { "type": "text", "text": "\n\n" },
+      {
+        "type": "text",
+        "text": "Within negative reinforcement, Cooper emphasizes escape versus avoidance distinctions. Escape ends or reduces an aversive event already in effect; avoidance prevents or delays an aversive event before it begins. Distinguishing these contingencies improves treatment planning and prevents classification errors in assessment notes."
+      },
+      { "type": "footnote", "ref": "4_4" },
+      { "type": "text", "text": "\n\n" },
+      {
+        "type": "text",
+        "text": "Punishment is also defined by future-response effects, not by how severe or emotional a consequence appears in the moment. Positive punishment presents a stimulus that decreases future responding; negative punishment removes access to a reinforcer and decreases future responding. Cooper warns against confusing punishment with reinforcement or with short-term suppression that does not replicate."
+      },
+      { "type": "footnote", "ref": "4_5" },
+      { "type": "text", "text": "\n\n" },
+      {
+        "type": "text",
+        "text": "Consequences can be socially mediated or automatic. In socially mediated contingencies, another person delivers or withholds relevant consequences. In automatic contingencies, the response itself directly contacts sensory or biological consequences without another person arranging delivery."
+      },
+      { "type": "footnote", "ref": "4_6" },
+      { "type": "text", "text": "\n\n" },
+      {
+        "type": "text",
+        "text": "The chapter also introduces unconditioned and conditioned consequence functions. Some consequences are biologically prepared (for example, food, pain), while others acquire function through learning history. Generalized conditioned reinforcers maintain behavior across multiple motivational states because they have been paired with many backup reinforcers."
+      },
+      { "type": "footnote", "ref": "4_7" },
+      { "type": "text", "text": "\n\n" },
+      {
+        "type": "text",
+        "text": "Discriminative control is inseparable from consequence analysis: the same response may contact reinforcement in one context and not in another. Accurate interpretation requires identifying antecedent conditions that signal consequence availability and tracking how those signals interact with consequence history."
+      },
+      { "type": "footnote", "ref": "4_8" },
+      { "type": "text", "text": "\n\n" },
+      {
+        "type": "text",
+        "text": "A recurring Chapter 11 skill is separating topography from function. Similar-looking responses can contact different contingencies, and different topographies can belong to one response class if they produce the same functional outcome. This distinction protects both assessment validity and intervention precision."
+      },
+      { "type": "footnote", "ref": "4_9" },
+      { "type": "text", "text": "\n\n" },
+      {
+        "type": "text",
+        "text": "Taken together, Chapter 11 provides the core consequence-analysis vocabulary for reinforcement procedures and sets up later chapters on negative reinforcement, schedules, and punishment. Clinically, the chapter reinforces one rule: do not assign contingency labels from intuition alone—verify effects with data across time and context. A practical study routine is to translate each vignette into a three-term contingency and then test whether your contingency label predicts future response change."
+      },
+      { "type": "footnote", "ref": "4_10" }
+    ],
+    "footnotes": {
+      "4_1": {
+        "label": "[1]",
+        "lines": [
+          "CHH Chapter 11 (Positive Reinforcement), commonly pp. 284–320 depending on edition formatting.",
+          "Chapter focus: consequence-based selection of behavior and contingency interpretation in applied settings.",
+          "Not quoted from CHH."
+        ]
+      },
+      "4_2": {
+        "label": "[2]",
+        "lines": [
+          "CHH Chapter 11, contingency-analysis section (three-term relation).",
+          "SD-R-SR/SP framing organizes antecedent context, response class, and consequence effects for applied decision making.",
+          "Not quoted from CHH."
+        ]
+      },
+      "4_3": {
+        "label": "[3]",
+        "lines": [
+          "CHH Chapter 11, reinforcement definitions and examples.",
+          "Positive reinforcement: contingent stimulus presentation increases future responding.",
+          "Negative reinforcement: contingent aversive reduction/removal/postponement increases future responding.",
+          "Not quoted from CHH."
+        ]
+      },
+      "4_4": {
+        "label": "[4]",
+        "lines": [
+          "CHH Chapter 11, escape-versus-avoidance distinction within negative reinforcement.",
+          "Escape ends or reduces ongoing aversive stimulation; avoidance prevents or delays onset of aversive stimulation.",
+          "Not quoted from CHH."
+        ]
+      },
+      "4_5": {
+        "label": "[5]",
+        "lines": [
+          "CHH Chapter 11, punishment definitions and response-decrease criteria.",
+          "Positive punishment presents a stimulus contingent on responding; negative punishment removes access to a reinforcer contingent on responding.",
+          "Not quoted from CHH."
+        ]
+      },
+      "4_6": {
+        "label": "[6]",
+        "lines": [
+          "CHH Chapter 11, socially mediated versus automatic consequence pathways.",
+          "Automatic consequences are produced directly by responding; socially mediated consequences depend on another person's behavior.",
+          "Not quoted from CHH."
+        ]
+      },
+      "4_7": {
+        "label": "[7]",
+        "lines": [
+          "CHH Chapter 11, unconditioned/conditioned consequence functions and generalized conditioned reinforcement.",
+          "Conditioned consequence functions depend on learning history; generalized conditioned reinforcers are paired with multiple backup reinforcers.",
+          "Not quoted from CHH."
+        ]
+      },
+      "4_8": {
+        "label": "[8]",
+        "lines": [
+          "CHH Chapter 11, consequence relations interpreted in antecedent context (discriminative control relevance).",
+          "Contingency interpretation should include when/where a response historically contacted reinforcement or punishment.",
+          "Not quoted from CHH."
+        ]
+      },
+      "4_9": {
+        "label": "[9]",
+        "lines": [
+          "CHH Chapter 11, response-class and function-over-form reasoning in operant analysis.",
+          "Functional classification requires separating topography description from consequence effect.",
+          "Not quoted from CHH."
+        ]
+      },
+      "4_10": {
+        "label": "[10]",
+        "lines": [
+          "CHH Chapter 11, integration with functional assessment and intervention design.",
+          "Applied rule: assign contingency labels based on verified response effects over time, not impressionistic snapshots.",
+          "Not quoted from CHH."
+        ]
+      }
+    },
+    "plainLanguageSummary": {
+      "heading": "Plain language — conversational recap",
+      "intro": "Use this as a teaching section for Chapter 11. The goal is to learn how to classify consequence relations accurately, explain why your label is correct, and avoid the most common interpretation errors.",
+      "chunks": [
+        {
+          "subtitle": "Start with the three-term contingency",
+          "segments": [
+            {
+              "type": "text",
+              "text": "Before naming reinforcement or punishment, write the contingency clearly: antecedent context, response class, and consequence relation. This structure prevents guessing and makes your analysis reviewable by other clinicians "
+            },
+            { "type": "footnote", "ref": "4_2" },
+            { "type": "text", "text": "." }
+          ]
+        },
+        {
+          "subtitle": "Classify by effect, not by how it feels",
+          "segments": [
+            {
+              "type": "text",
+              "text": "Reinforcement means behavior increases in the future; punishment means behavior decreases. Positive and negative describe addition versus removal, not moral value. Escape and avoidance are both negative reinforcement, but they differ by timing of the aversive event "
+            },
+            { "type": "footnote", "ref": "4_3" },
+            { "type": "text", "text": " " },
+            { "type": "footnote", "ref": "4_4" },
+            {
+              "type": "text",
+              "text": ". Punishment labels also require future decrease evidence, not just immediate suppression "
+            },
+            { "type": "footnote", "ref": "4_5" },
+            { "type": "text", "text": "." }
+          ]
+        },
+        {
+          "subtitle": "Track where the consequence is coming from",
+          "segments": [
+            {
+              "type": "text",
+              "text": "Differentiate socially mediated consequences from automatic consequences, then determine whether the function is unconditioned, conditioned, or generalized conditioned. This step sharpens your treatment planning and prevents one-size-fits-all assumptions "
+            },
+            { "type": "footnote", "ref": "4_6" },
+            { "type": "text", "text": " " },
+            { "type": "footnote", "ref": "4_7" },
+            { "type": "text", "text": "." }
+          ]
+        },
+        {
+          "subtitle": "Function over topography",
+          "segments": [
+            {
+              "type": "text",
+              "text": "Do not classify behavior only by how it looks. Similar topographies may have different functions, and different topographies may be in one response class if they contact the same maintaining consequence. Always include discriminative context in your interpretation "
+            },
+            { "type": "footnote", "ref": "4_8" },
+            { "type": "text", "text": " " },
+            { "type": "footnote", "ref": "4_9" },
+            { "type": "text", "text": "." }
+          ]
+        },
+        {
+          "subtitle": "How to learn this chapter for exam performance",
+          "segments": [
+            {
+              "type": "text",
+              "text": "For each practice scenario, write your contingency label and then defend it with one sentence of evidence and one sentence ruling out the closest alternative label. This builds the operant-consequence reasoning style needed for difficult BCBA items "
+            },
+            { "type": "footnote", "ref": "4_10" },
+            { "type": "text", "text": "." }
+          ]
+        },
+        {
+          "subtitle": "High-Yield Confusion Points",
+          "segments": [
+            {
+              "type": "text",
+              "text": "High-yield confusion points in this chapter include treating negative reinforcement as punishment, labeling by emotion instead of behavior-change effect, and forgetting to separate escape from avoidance by timing. Resolve them by classifying from response-change evidence and then checking function in context "
+            },
+            { "type": "footnote", "ref": "4_3" },
+            { "type": "text", "text": " " },
+            { "type": "footnote", "ref": "4_4" },
+            { "type": "text", "text": " " },
+            { "type": "footnote", "ref": "4_9" },
+            { "type": "text", "text": "." }
+          ]
+        }
+      ]
+    }
+  },
+  "vocabularySection": {
+    "heading": "VOCABULARY — Chapter 11 anchors",
+    "intro": "These terms mirror Practice 3 (Vocabulary-Match) stems.",
+    "entries": [
+      {
+        "term": "Positive reinforcement",
+        "definition": "Response produces stimulus presentation; future frequency of that response increases."
+      },
+      {
+        "term": "Negative reinforcement (escape)",
+        "definition": "Response removes/reduces an already-present aversive stimulus; future frequency increases."
+      },
+      {
+        "term": "Negative reinforcement (avoidance)",
+        "definition": "Response postpones or prevents onset of an aversive stimulus; future frequency increases."
+      },
+      {
+        "term": "Positive punishment",
+        "definition": "Response produces stimulus presentation that decreases future frequency."
+      },
+      {
+        "term": "Negative punishment",
+        "definition": "Response removes access to a reinforcer; future frequency decreases."
+      },
+      {
+        "term": "Automatic reinforcement",
+        "definition": "Behavior produces reinforcer without another person mediating the consequence."
+      }
+    ]
+  },
+  "keyConceptsSection": {
+    "heading": "KEY CONCEPTS — Chapter 11",
+    "intro": "Use these concepts to teach consequence analysis, not just label it. Each point maps to Cooper Chapter 11 decision logic and should be practiced with case evidence.",
+    "concepts": [
+      {
+        "title": "Three-term contingency is the anchor",
+        "segments": [
+          {
+            "type": "text",
+            "text": "Strong consequence analysis begins by identifying antecedent context, response class, and consequence relation before assigning any operant label. This keeps teams from drifting into vague impression-based interpretations"
+          },
+          { "type": "footnote", "ref": "4_2" },
+          { "type": "text", "text": "." }
+        ]
+      },
+      {
+        "title": "Reinforcement and punishment are defined by future behavior change",
+        "segments": [
+          {
+            "type": "text",
+            "text": "The chapter repeatedly emphasizes function-over-feeling logic: reinforcement increases future responding, punishment decreases it, and positive/negative only denote addition versus removal"
+          },
+          { "type": "footnote", "ref": "4_3" },
+          {
+            "type": "text",
+            "text": " "
+          },
+          { "type": "footnote", "ref": "4_5" },
+          { "type": "text", "text": "." }
+        ]
+      },
+      {
+        "title": "Escape versus avoidance must be separated precisely",
+        "segments": [
+          {
+            "type": "text",
+            "text": "Analysts should distinguish whether the aversive event is already present (escape) or prevented/delayed before onset (avoidance), because those differences drive both assessment interpretation and treatment design"
+          },
+          { "type": "footnote", "ref": "4_4" },
+          { "type": "text", "text": "." }
+        ]
+      },
+      {
+        "title": "Function must be interpreted in context, not by appearance alone",
+        "segments": [
+          {
+            "type": "text",
+            "text": "This material protects against topography-only reasoning by requiring analysts to identify discriminative context, source of consequence, and response-class function before final labeling"
+          },
+          { "type": "footnote", "ref": "4_8" },
+          {
+            "type": "text",
+            "text": " "
+          },
+          { "type": "footnote", "ref": "4_9" },
+          { "type": "text", "text": "." }
+        ]
+      }
+    ],
+    "plainLanguageSummary": {
+      "heading": "Key concepts — plain-language companion",
+      "intro": "Use this as a Chapter 11 teaching companion. Aim to explain each label in evidence language and reject close distractors with confidence.",
+      "chunks": [
+        {
+          "subtitle": "Label by effect first",
+          "segments": [
+            {
+              "type": "text",
+              "text": "When a question is hard, start with future response effect: up means reinforcement, down means punishment. Then classify addition/removal, then classify escape/avoidance timing if relevant"
+            },
+            { "type": "footnote", "ref": "4_3" },
+            {
+              "type": "text",
+              "text": " "
+            },
+            { "type": "footnote", "ref": "4_4" },
+            {
+              "type": "text",
+              "text": " "
+            },
+            { "type": "footnote", "ref": "4_5" },
+            { "type": "text", "text": "." }
+          ]
+        },
+        {
+          "subtitle": "Context protects interpretation",
+          "segments": [
+            {
+              "type": "text",
+              "text": "Do not decide from topography alone. Ask what cues signaled consequence availability, what consequence source was active, and whether the same topography might serve different functions in different contexts"
+            },
+            { "type": "footnote", "ref": "4_8" },
+            {
+              "type": "text",
+              "text": " "
+            },
+            { "type": "footnote", "ref": "4_9" },
+            { "type": "text", "text": "." }
+          ]
+        },
+        {
+          "subtitle": "High-Yield Confusion Points",
+          "segments": [
+            {
+              "type": "text",
+              "text": "High-yield confusion points in this chapter include confusing negative reinforcement with punishment, mixing escape and avoidance timing, and using emotional reactions as evidence instead of future response change. Resolve them by writing the contingency and checking effect over time"
+            },
+            { "type": "footnote", "ref": "4_2" },
+            {
+              "type": "text",
+              "text": " "
+            },
+            { "type": "footnote", "ref": "4_10" },
+            { "type": "text", "text": "." }
+          ]
+        }
+      ]
+    }
+  },
+  "activities": [
+    {
+      "activity_id": 402,
+      "game_type": "Contingency-Matrix-Sorter",
+      "instructions": "For each vignette, write the contingency in sequence (antecedent, response, consequence), then classify the operant relation. Always decide from future behavior effect first, then addition/removal second.",
+      "mechanics": {
+        "pass_threshold_accuracy": 1
+      },
+      "stimulus_sets": [
+        {
+          "sample_stimulus": "An individual experiences intense migraine pain. They consume a specific prescription pill. Within twenty minutes, the pain terminates completely. The next time a migraine begins, the individual immediately consumes the exact same pill model.",
+          "comparison_options": [
+            "Positive Reinforcement",
+            "Negative Reinforcement (Escape)",
+            "Negative Reinforcement (Avoidance)",
+            "Positive Punishment"
+          ],
+          "correct_match": "Negative Reinforcement (Escape)",
+          "error_feedback": "Incorrect. The behavior (consuming the pill) successfully terminated an ongoing, pre-existing aversive stimulus (migraine pain), which increased the future probability of that behavior under similar conditions. This matches Negative Reinforcement - Escape."
+        },
+        {
+          "sample_stimulus": "A student views a notification stating that the online class assignment portal closes in two hours. To prevent a zero grade, the student immediately logs in and completes the module. On subsequent weeks, the student completes assignments hours before the final deadline.",
+          "comparison_options": [
+            "Positive Reinforcement",
+            "Negative Reinforcement (Escape)",
+            "Negative Reinforcement (Avoidance)",
+            "Negative Punishment"
+          ],
+          "correct_match": "Negative Reinforcement (Avoidance)",
+          "error_feedback": "Incorrect. The response prevented or postponed the presentation of an aversive condition (receiving a zero grade) before it occurred. This is a classic Negative Reinforcement - Avoidance contingency."
+        }
+      ]
+    },
+    {
+      "activity_id": 4021,
+      "game_type": "Behavior-Chain",
+      "instructions": "Order the chain as operant-consequence reasoning in action: define and measure the response class, verify controlling variables, align intervention with function, then monitor integrity and outcomes over time.",
+      "mechanics": {
+        "pass_threshold_accuracy": 1
+      },
+      "chain": {
+        "title": "Intervention linkage after contingency identification",
+        "fragments": [
+          {
+            "id": "b",
+            "text": "Select replacement skills and design differential reinforcement contingencies aligned with hypothesized reinforcers."
+          },
+          {
+            "id": "d",
+            "text": "Progress-monitor treatment integrity and summarize outcomes against the operational definition."
+          },
+          {
+            "id": "a",
+            "text": "Operationally define the target response class and confirming dimensions of measurement."
+          },
+          {
+            "id": "c",
+            "text": "Conduct experimental functional analysis phases or synthesized assessments to isolate reinforcer/punisher involvement."
+          }
+        ],
+        "correct_order": ["a", "c", "b", "d"],
+        "remediation": "Error: Review aligning assessment-to-treatment sequencing for operant cases (CHH Chapter 11)."
+      }
+    },
+    {
+      "activity_id": 4022,
+      "game_type": "Vocabulary-Match",
+      "instructions": "Use each term as concept training: select the best answer, then state one feature that confirms your choice and one feature that rules out the nearest distractor.",
+      "mechanics": {
+        "pass_threshold_accuracy": 1
+      },
+      "items": [
+        {
+          "id": "vm_1",
+          "prompt_definition": "Response produces stimulus presentation; future frequency of that response increases.",
+          "options": [
+            "Automatic reinforcement",
+            "Negative punishment",
+            "Negative reinforcement (avoidance)",
+            "Positive reinforcement"
+          ],
+          "correct_term": "Positive reinforcement"
+        },
+        {
+          "id": "vm_2",
+          "prompt_definition": "Response removes/reduces an already-present aversive stimulus; future frequency increases.",
+          "options": [
+            "Negative reinforcement (avoidance)",
+            "Negative reinforcement (escape)",
+            "Positive punishment",
+            "Positive reinforcement"
+          ],
+          "correct_term": "Negative reinforcement (escape)"
+        },
+        {
+          "id": "vm_3",
+          "prompt_definition": "Response postpones or prevents onset of an aversive stimulus; future frequency increases.",
+          "options": [
+            "Negative reinforcement (avoidance)",
+            "Negative reinforcement (escape)",
+            "Positive punishment",
+            "Positive reinforcement"
+          ],
+          "correct_term": "Negative reinforcement (avoidance)"
+        },
+        {
+          "id": "vm_4",
+          "prompt_definition": "Response produces stimulus presentation that decreases future frequency.",
+          "options": [
+            "Automatic reinforcement",
+            "Negative punishment",
+            "Positive punishment",
+            "Positive reinforcement"
+          ],
+          "correct_term": "Positive punishment"
+        },
+        {
+          "id": "vm_5",
+          "prompt_definition": "Response removes access to a reinforcer; future frequency decreases.",
+          "options": [
+            "Automatic reinforcement",
+            "Negative punishment",
+            "Positive punishment",
+            "Positive reinforcement"
+          ],
+          "correct_term": "Negative punishment"
+        },
+        {
+          "id": "vm_6",
+          "prompt_definition": "Behavior produces reinforcer without another person mediating the consequence.",
+          "options": [
+            "Automatic reinforcement",
+            "Negative punishment",
+            "Negative reinforcement (escape)",
+            "Positive reinforcement"
+          ],
+          "correct_term": "Automatic reinforcement"
+        }
+      ]
+    }
+  ],
+  "worksheet": {
+    "title": "Automatic vs. Socially Mediated Contingency Extraction",
+    "instructions": "Work each scenario in four steps: identify consequence source (socially mediated vs automatic), classify operant relation, defend your label with behavior-change evidence, and reject one plausible alternative label.",
+    "scenario": "Scenario A — Residential picking.\n\nAn adult residing in a residential facility engages in chronic, high-intensity skin-picking on their forearms. Staff attempt to intervene by offering attention, tokens, and sensory items whenever the individual stops picking. Despite these rich schedules of social rewards, descriptive assessments show that the picking occurs at identical rates when the individual is isolated in their room with zero demands, zero social access, and zero ambient interaction.",
+    "scenario_follow_up": "Scenario B — Medication escape.\n\nA migraine begins while the individual is already at peak pain; within minutes they swallow medication they know usually terminates that headache.\n\nScenario C — Deadline avoidance.\n\nEach Friday afternoon the teacher warns that unfinished packets earn after-school detention on Monday. The student completes packets Thursday evening before detention could ever occur.\n\nScenario D — Loud reprimands.\n\nEach time Jay blurts during silent reading the teacher delivers a booming public reprimand at his desk; blurting becomes more frequent across two weeks.\n\nScenario E — Token fine.\n\nEach aggressive grab toward peers loses five tokens from the student's bracelet chart; grabbing reliably declines.",
+    "fields": [
+      {
+        "id": "response_1",
+        "label": "Scenario A · Isolate the operational consequence source maintaining picking:",
+        "options": [
+          "Socially Mediated Reinforcement",
+          "Automatic Reinforcement"
+        ],
+        "correct": "Automatic Reinforcement"
+      },
+      {
+        "id": "response_2",
+        "label": "Scenario A · Identify the likely maintaining behavioral mechanism:",
+        "options": [
+          "Positive Social Reinforcement",
+          "Direct Automatic Reinforcement",
+          "Social Escape"
+        ],
+        "correct": "Direct Automatic Reinforcement"
+      },
+      {
+        "id": "response_3",
+        "label": "Scenario B · Migraine fading after medication once pain is already present — MOST precise classification:",
+        "options": [
+          "Negative reinforcement (escape)",
+          "Negative reinforcement (avoidance)",
+          "Positive reinforcement",
+          "Positive punishment"
+        ],
+        "correct": "Negative reinforcement (escape)"
+      },
+      {
+        "id": "response_4",
+        "label": "Scenario C · Completing packets Thursday so Monday detention never begins — MOST precise classification:",
+        "options": [
+          "Negative reinforcement (avoidance)",
+          "Negative reinforcement (escape)",
+          "Positive punishment",
+          "Negative punishment"
+        ],
+        "correct": "Negative reinforcement (avoidance)"
+      },
+      {
+        "id": "response_5",
+        "label": "Scenario D · Future blurting rises because reprimands reliably follow blurts — MOST precise classification:",
+        "options": [
+          "Positive reinforcement via socially mediated stimuli",
+          "Positive punishment via socially mediated stimuli",
+          "Negative reinforcement (escape)",
+          "Automatic reinforcement exclusively"
+        ],
+        "correct": "Positive reinforcement via socially mediated stimuli"
+      },
+      {
+        "id": "response_6",
+        "label": "Scenario E · Loss of tokens contingent on grabbing decreases grabbing — MOST precise classification:",
+        "options": [
+          "Negative punishment",
+          "Positive punishment",
+          "Negative reinforcement (escape)",
+          "Positive reinforcement"
+        ],
+        "correct": "Negative punishment"
+      },
+      {
+        "id": "response_7",
+        "label": "Contrast check · Which pairing distinguishes avoidance from escape?",
+        "options": [
+          "Avoidance postpones/prevents an aversive event before it begins; escape terminates/reduces one already acting",
+          "Escape always involves tangible reinforcers while avoidance never does",
+          "Avoidance equals extinction whereas escape equals punishment",
+          "Both labels describe identical contingencies"
+        ],
+        "correct": "Avoidance postpones/prevents an aversive event before it begins; escape terminates/reduces one already acting"
+      },
+      {
+        "id": "response_8",
+        "label": "Contrast check · Positive punishment ALWAYS involves:",
+        "options": [
+          "Presentation of a stimulus contingent on behavior that decreases future frequency",
+          "Removal of a reinforcer contingent on behavior",
+          "Termination of an aversive stimulus",
+          "No change in behavior frequency"
+        ],
+        "correct": "Presentation of a stimulus contingent on behavior that decreases future frequency"
+      }
+    ],
+    "remediationLog": "Rebuild Chapter 11 performance with a fixed routine: contingency mapping, function label, effect-direction check, and distractor rejection. Practice escape-vs-avoidance and reinforcement-vs-punishment contrasts until the labels are automatic."
+  },
+  "bdsBank": [
+    {
+      "id": "mod02-q1",
+      "stem": "A child diagnosed with an autism spectrum disorder regularly emits high-frequency vocal tracking sounds (screaming) when their home environment transitions from structured activities to unstructured free time. When the child screams, the parent immediately approaches, delivers a firm verbal reprimand (\"No screaming, sit down\"), and provides deep manual massage touch inputs to help them calm down. A retrospective archival data analysis reveals that the future frequency of the screaming behavior increased by 65% across the preceding quarter. What exact behavioral mechanism explains the increase in screaming?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Positive Reinforcement via Socially Mediated Attention Delivery",
+          "correct": false,
+          "rationale": "While the parent delivers explicit social inputs (verbal reprimands, proximity, physical contact) directly following the vocal behavior, we cannot automatically conclude that attention is the functional reinforcer. The reprimand is paired with deep manual massage touch inputs, which represent a significant tactile, sensory stimulus. This makes it impossible to isolate social attention from sensory input based solely on this correlation."
+        },
+        {
+          "key": "B",
+          "text": "Negative Reinforcement via Escape from Environmental Transitions",
+          "correct": false,
+          "rationale": "Environmental transitions can function as an aversive conditioned stimulus, and escape from transitions can be a powerful reinforcer. However, the scenario states that the child is transitioning to unstructured free time (where task demands drop to zero). Furthermore, the parent's response does not remove the child from the environment or terminate the transition; instead, it adds specific social and physical stimuli, which points away from an escape contingency."
+        },
+        {
+          "key": "C",
+          "text": "Positive Reinforcement via Automatic Sensory Regulation",
+          "correct": false,
+          "rationale": "Automatic reinforcement occurs when the response itself produces the reinforcing consequence, independent of social mediation (CHH Chapter 11). In this case, the parent explicitly mediates the consequences (delivering reprimands and deep tissue input) immediately following the behavior. Because the environment changes via another person, the contingency cannot be classified as purely automatic."
+        },
+        {
+          "key": "D",
+          "text": "The current contextual data are insufficient to isolate the functional reinforcer mechanism.",
+          "correct": true,
+          "rationale": "This question mirrors board-style practice questions and the actual BCBA exam. The scenario describes a behavior followed by a compound consequence: social attention (the reprimand) and intense physical sensory input (deep manual massage). Although the behavior's future frequency increased by 65% (confirming reinforcement), the data do not isolate whether the behavior is maintained by the social attention, the physical sensory input, or a combination of both. To identify the exact maintaining mechanism, a systematic functional analysis must be conducted to isolate these variables (CHH Chapter 11)."
+        }
+      ]
+    },
+    {
+      "id": "mod02-q2",
+      "stem": "Following each correct math worksheet, the teacher smiles, gives a thumbs-up sticker, and the student’s correct completion rate climbs over weeks. MOST precise classification of the contingency maintaining higher completion:",
+      "options": [
+        { "key": "A", "text": "Positive reinforcement (presentation of reinforcing stimuli contingent on responding).", "correct": true, "rationale": "Added praise/sticker stimuli follow correct responses while future responding increases—a textbook positive reinforcement pattern (CHH Chs. 11–15)." },
+        { "key": "B", "text": "Negative reinforcement.", "correct": false, "rationale": "No aversive stimulus is terminated or postponed after the responses." },
+        { "key": "C", "text": "Positive punishment.", "correct": false, "rationale": "Consequences appended are appetitive—not presentations that suppress responding." },
+        { "key": "D", "text": "Extinction.", "correct": false, "rationale": "Relevant reinforcers are delivered rather than withheld." }
+      ]
+    },
+    {
+      "id": "mod02-q3",
+      "stem": "A teen loses 15 minutes of video-game access contingent on yelling at siblings; yelling decreases within days. MOST accurate label:",
+      "options": [
+        { "key": "A", "text": "Negative punishment (Type II punishment involving loss of a reinforcer).", "correct": true, "rationale": "Removing access to an activity that functions as reinforcement reduces future yelling (negative punishment)." },
+        { "key": "B", "text": "Negative reinforcement.", "correct": false, "rationale": "Removal is contingent on yelling but future frequency declines—punishment topography, not NR." },
+        { "key": "C", "text": "Positive reinforcement.", "correct": false, "rationale": "No appetitive stimulus is presented to increase yelling." },
+        { "key": "D", "text": "Automatic reinforcement exclusively.", "correct": false, "rationale": "Caregiver-imposed restriction is mediated socially." }
+      ]
+    },
+    {
+      "id": "mod02-q4",
+      "stem": "After consuming a large lunch, a pigeon pecks a food key at near-zero rates even though pellets remain unchanged physically. MOST accurate interpretation:",
+      "options": [
+        { "key": "A", "text": "An abolishing operation temporarily reduces the reinforcing effectiveness of food pellets.", "correct": true, "rationale": "Satiation reduces the establishing value of the food reinforcer—a classic abolishing motivational effect." },
+        { "key": "B", "text": "A discriminative stimulus for extinction.", "correct": false, "rationale": "No stimulus signals reinforcement unavailability—it is motivational state alteration." },
+        { "key": "C", "text": "Positive punishment for key pecks.", "correct": false, "rationale": "No aversive presentation suppresses pecks; motivation shifted." },
+        { "key": "D", "text": "Negative reinforcement removing hunger.", "correct": false, "rationale": "Residual eating reduces motivation rather than terminates an aversive state through the key peck." }
+      ]
+    },
+    {
+      "id": "mod02-q5",
+      "stem": "A green light illuminates ONLY when polite requests yield snack access; amber means requests never produce snacks tonight. MOST accurate mapping:",
+      "options": [
+        { "key": "A", "text": "Green light functions as an SD signaling reinforcement availability; amber signals extinction for that contingency.", "correct": true, "rationale": "SD correlates historically with reinforcement; SΔ/extinction correlate documents non-reinforcement (CHH contingency vocabulary)." },
+        { "key": "B", "text": "Both lights abolish motivation equally.", "correct": false, "rationale": "Signals describe contingency availability—not satiation mechanics." },
+        { "key": "C", "text": "Amber cues positive reinforcement for requests.", "correct": false, "rationale": "Snack access is withheld under amber signaling." },
+        { "key": "D", "text": "Green light cues respondent elicitation of requests.", "correct": false, "rationale": "Requests remain operants occasioned historically by discriminative stimuli." }
+      ]
+    },
+    {
+      "id": "mod02-q6",
+      "stem": "Compared with respondent salivation to meat powder, MOST diagnostic feature of operant key pecks producing food?",
+      "options": [
+        { "key": "A", "text": "Consequences select frequencies of emitted responses shaped by contingency history.", "correct": true, "rationale": "Operant behavior varies with reinforcing consequences unlike purely elicited reflex arcs tied to phylogeny." },
+        { "key": "B", "text": "It never requires discriminative stimuli.", "correct": false, "rationale": "Operants still contact SD histories despite consequence focus." },
+        { "key": "C", "text": "It cannot be punished.", "correct": false, "rationale": "Operants remain sensitive to punitive consequences." },
+        { "key": "D", "text": "It automatically implies automatic reinforcement only.", "correct": false, "rationale": "Food mediated by apparatus still involves mediated reinforcers even if socially automated." }
+      ]
+    }
+  ]
+}

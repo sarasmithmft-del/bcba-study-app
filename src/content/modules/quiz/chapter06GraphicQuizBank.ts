@@ -1,0 +1,575 @@
+import type { BDSQuestion } from "@/lib/content-types";
+
+/** Cooper/Heron/Heward Ch. 6 — Constructing and Interpreting Graphic Displays of Behavioral Data. */
+
+function bx(
+  id: string,
+  stem: string,
+  correctLetter: "A" | "B" | "C" | "D",
+  bundle: Record<"A" | "B" | "C" | "D", { text: string; rationale: string }>,
+): BDSQuestion {
+  const letters = ["A", "B", "C", "D"] as const;
+  return {
+    id,
+    stem,
+    options: letters.map((L) => ({
+      key: L,
+      text: bundle[L].text,
+      correct: L === correctLetter,
+      rationale: bundle[L].rationale,
+    })),
+  };
+}
+
+export const CHAPTER_06_GRAPHIC_QUIZ_BANK: BDSQuestion[] = [
+  bx(
+    "mod11-q1",
+    "Cooper Chapter 6 emphasizes graphic displays primarily because they:",
+    "B",
+    {
+      A: { text: "Replace the need for operational definitions.", rationale: "Definitions remain prerequisite to meaningful graphs." },
+      B: { text: "Organize behavioral data so patterns can be inspected and communicated.", rationale: "Graphs make time-series relations visible for analysis and reporting." },
+      C: { text: "Eliminate interobserver agreement requirements.", rationale: "IOA (Chapter 5) still applies to underlying data." },
+      D: { text: "Prove functional relations without experimental design.", rationale: "Graphs display data; design logic supports inference." },
+    },
+  ),
+  bx(
+    "mod11-q2",
+    "On a standard single-subject line graph, the horizontal axis typically represents:",
+    "A",
+    {
+      A: { text: "Sessions or units of time.", rationale: "Time/session is the standard x-axis for behavioral line graphs." },
+      B: { text: "Reinforcer magnitude only.", rationale: "Magnitude may appear on y-axis when measured—not typically x-axis." },
+      C: { text: "IOA percentages exclusively.", rationale: "IOA is reported separately—not the default x-axis." },
+      D: { text: "Caregiver satisfaction ratings.", rationale: "Social validity data differ from standard session plotting." },
+    },
+  ),
+  bx(
+    "mod11-q3",
+    "Phase change lines on a graph indicate:",
+    "C",
+    {
+      A: { text: "Random decoration for presentations.", rationale: "Phase lines mark procedural changes—not decoration." },
+      B: { text: "IOA agreement thresholds.", rationale: "IOA is documented in notes or tables." },
+      C: { text: "When experimental conditions or procedures changed.", rationale: "Vertical phase lines separate condition periods." },
+      D: { text: "Automatic punishment episodes.", rationale: "Phase lines are analytic—not contingency labels alone." },
+    },
+  ),
+  bx(
+    "mod11-q4",
+    "Condition labels on graphs should:",
+    "D",
+    {
+      A: { text: "Use vague nicknames only.", rationale: "Labels must identify conditions clearly for replication." },
+      B: { text: "Hide treatment details from reviewers.", rationale: "Transparency supports audit and ethics." },
+      C: { text: "Change every session without notation.", rationale: "Unmarked changes corrupt phase interpretation." },
+      D: { text: "Identify each phase's procedure so readers know what was in effect.", rationale: "Condition labels link graph regions to interventions." },
+    },
+  ),
+  bx(
+    "mod11-q5",
+    "Standard celeration (standard ratio) charts use logarithmic scaling to:",
+    "B",
+    {
+      A: { text: "Eliminate all variability.", rationale: "Variability remains visible on ratio charts." },
+      B: { text: "Compare rates of change across widely different magnitudes proportionally.", rationale: "Log scaling preserves proportional slope comparisons." },
+      C: { text: "Replace event recording.", rationale: "Recording methods precede graph construction." },
+      D: { text: "Avoid labeling axes.", rationale: "Ratio charts still require disciplined labeling." },
+    },
+  ),
+  bx(
+    "mod11-q6",
+    "Mid-graph axis rescaling without annotation MOST threatens:",
+    "A",
+    {
+      A: { text: "Proportional comparison and honest visual inspection.", rationale: "Distorted axes create false impressions of change." },
+      B: { text: "Only font choices.", rationale: "Rescaling affects inference—not typography alone." },
+      C: { text: "MO documentation.", rationale: "MO is separate from graph construction ethics." },
+      D: { text: "Token economy integrity exclusively.", rationale: "Axis ethics apply to all graphs." },
+    },
+  ),
+  bx(
+    "mod11-q7",
+    "Chartjunk refers to:",
+    "C",
+    {
+      A: { text: "Phase lines with fidelity notes.", rationale: "Annotations aid interpretation—not chartjunk." },
+      B: { text: "Standard ratio chart training.", rationale: "Ratio charts are disciplined tools." },
+      C: { text: "Decorative clutter that obscures data.", rationale: "Chartjunk harms readable comparison." },
+      D: { text: "IOA calculation worksheets.", rationale: "IOA documents are not graph decoration." },
+    },
+  ),
+  bx(
+    "mod11-q8",
+    "Bar graphs in behavior analysis are MOST often used to:",
+    "D",
+    {
+      A: { text: "Replace all single-subject time-series displays.", rationale: "Line graphs remain primary for continuous session data." },
+      B: { text: "Hide variability within phases.", rationale: "Ethical reporting shows variability." },
+      C: { text: "Eliminate baseline phases.", rationale: "Design structure is independent of graph type." },
+      D: { text: "Summarize or compare levels across conditions or groups when appropriate.", rationale: "Bar graphs summarize aggregated comparisons." },
+    },
+  ),
+  bx(
+    "mod11-q9",
+    "When constructing a graph, Cooper stresses plotting:",
+    "B",
+    {
+      A: { text: "Only the best-looking sessions.", rationale: "Selective plotting violates integrity." },
+      B: { text: "All collected data points for the phase unless ethically documented otherwise.", rationale: "Complete plotting supports honest inspection." },
+      C: { text: "Predicted outcomes instead of observed data.", rationale: "Graphs display observed measurement." },
+      D: { text: "Caregiver opinions without measurement.", rationale: "Behavioral graphs require measured data." },
+    },
+  ),
+  bx(
+    "mod11-q10",
+    "Consistent y-axis scaling across comparable phases preserves:",
+    "A",
+    {
+      A: { text: "Visual comparability of level and trend.", rationale: "Stable scaling prevents illusion of change." },
+      B: { text: "Automatic FA conclusions.", rationale: "FA logic is separate from axis scaling." },
+      C: { text: "Zero need for condition labels.", rationale: "Labels remain required." },
+      D: { text: "Respondent extinction proof.", rationale: "Unrelated to axis conventions." },
+    },
+  ),
+  bx(
+    "mod11-q11",
+    "A graph with unlabeled axes MOST violates:",
+    "C",
+    {
+      A: { text: "Only aesthetic preferences.", rationale: "Unlabeled axes impede replication and inspection." },
+      B: { text: "Shaping procedures.", rationale: "Graph labeling is measurement display." },
+      C: { text: "Basic graph construction standards readers need to interpret data.", rationale: "Axes must identify dimension and unit." },
+      D: { text: "Equivalence-based instruction.", rationale: "Unrelated domain." },
+    },
+  ),
+  bx(
+    "mod11-q12",
+    "Visual inspection on a well-constructed graph begins with:",
+    "D",
+    {
+      A: { text: "Selecting the answer that praises intervention.", rationale: "Inspection is evidence-based—not biased." },
+      B: { text: "Ignoring baseline data.", rationale: "Baseline context is essential." },
+      C: { text: "Deleting outlier sessions.", rationale: "Outliers require explanation—not silent deletion." },
+      D: { text: "Reading the overall pattern of data within and across phases.", rationale: "Holistic inspection is Chapter 6–7 foundation." },
+    },
+  ),
+  bx(
+    "mod11-q13",
+    "Level on a graph refers to:",
+    "A",
+    {
+      A: { text: "The central tendency or height of data within a phase.", rationale: "Level describes where data cluster." },
+      B: { text: "IOA agreement only.", rationale: "Level is a visual dimension of behavior." },
+      C: { text: "Latency from SD to response exclusively.", rationale: "Latency is a separate measure." },
+      D: { text: "Graph font size.", rationale: "Not a behavioral dimension." },
+    },
+  ),
+  bx(
+    "mod11-q14",
+    "Trend on a graph refers to:",
+    "B",
+    {
+      A: { text: "Caregiver mood shifts.", rationale: "Trend describes data direction within a phase." },
+      B: { text: "Directional movement of data over time within a phase.", rationale: "Trend is slope/direction of the data path." },
+      C: { text: "Punishment intensity.", rationale: "Unrelated to graph trend definition." },
+      D: { text: "Token cost schedules.", rationale: "Schedule concept differs from graph trend." },
+    },
+  ),
+  bx(
+    "mod11-q15",
+    "Variability on a graph refers to:",
+    "C",
+    {
+      A: { text: "Whether the graph uses color.", rationale: "Variability is dispersion of data points." },
+      B: { text: "Number of observers.", rationale: "Observer count differs from within-phase scatter." },
+      C: { text: "How widely data points scatter around the phase path.", rationale: "High variability cautions interpretation." },
+      D: { text: "MO abolishment.", rationale: "Unrelated construct." },
+    },
+  ),
+  bx(
+    "mod11-q16",
+    "Constructing graphs before intervention decisions helps teams:",
+    "D",
+    {
+      A: { text: "Skip IOA permanently.", rationale: "IOA remains required." },
+      B: { text: "Avoid operational definitions.", rationale: "Definitions precede plotting." },
+      C: { text: "Replace experimental design.", rationale: "Graphs complement design—they do not replace it." },
+      D: { text: "See baseline patterns that inform whether and how to intervene.", rationale: "Visual displays reveal level, trend, and variability." },
+    },
+  ),
+  bx(
+    "mod11-q17",
+    "Split-middle or trend-line overlays on graphs are:",
+    "A",
+    {
+      A: { text: "Heuristic aids that scaffold inspection—not replacements for judgment.", rationale: "Overlays assist but require fidelity context." },
+      B: { text: "Proof of statistical significance.", rationale: "Visual aids are not inferential tests." },
+      C: { text: "Mandatory for all BACB submissions.", rationale: "Not universally required—context dependent." },
+      D: { text: "Substitutes for data points.", rationale: "Data points remain primary." },
+    },
+  ),
+  bx(
+    "mod11-q18",
+    "Exporting slides that drop baseline phases before funders MOST violates:",
+    "B",
+    {
+      A: { text: "Only color palette guidelines.", rationale: "Omitting phases misrepresents evidence." },
+      B: { text: "Honest graphic reporting (Domain C/E).", rationale: "Selective display distorts analytic context." },
+      C: { text: "Shaping grain size rules.", rationale: "Unrelated procedure." },
+      D: { text: "Verbal behavior classification.", rationale: "Unrelated domain." },
+    },
+  ),
+  bx(
+    "mod11-q19",
+    "Celeration on a standard ratio chart relates to:",
+    "C",
+    {
+      A: { text: "Caregiver acceleration in driving.", rationale: "Celeration is rate of change on ratio charts." },
+      B: { text: "IOA trial counts.", rationale: "IOA is separate metric." },
+      C: { text: "Multiplicative rate of change across time on logarithmic axes.", rationale: "Precision Teaching tradition uses celeration on ratio charts." },
+      D: { text: "Extinction burst duration only.", rationale: "Extinction is procedural—not celeration definition." },
+    },
+  ),
+  bx(
+    "mod11-q20",
+    "Graph construction should reflect data from:",
+    "D",
+    {
+      A: { text: "Only sessions that support the desired narrative.", rationale: "Cherry-picking violates ethics." },
+      B: { text: "Anecdotes when data are missing.", rationale: "Graphs require measured data." },
+      C: { text: "Projected outcomes not yet collected.", rationale: "Plot observed—not wished—data." },
+      D: { text: "Documented measurement with known recording method limits.", rationale: "Graphs display measured behavior with stated limits." },
+    },
+  ),
+  bx(
+    "mod11-q21",
+    "Baseline drift visible before intervention starts suggests analysts should:",
+    "A",
+    {
+      A: { text: "Note trending baseline in inspection before attributing change to intervention.", rationale: "Drift is a confound for causal attribution." },
+      B: { text: "Erase baseline points.", rationale: "Deletion misrepresents data." },
+      C: { text: "Ignore because intervention phase matters only.", rationale: "Baseline context drives interpretation." },
+      D: { text: "Switch to bar graphs to hide drift.", rationale: "Hiding drift violates reporting integrity." },
+    },
+  ),
+  bx(
+    "mod11-q22",
+    "Which element is ESSENTIAL on a published behavior graph?",
+    "C",
+    {
+      A: { text: "Animated transitions.", rationale: "Not essential—can distract." },
+      B: { text: "Stock photography.", rationale: "Chartjunk risk." },
+      C: { text: "Labeled axes identifying the measured dimension and time unit.", rationale: "Readers must know what is plotted." },
+      D: { text: "Confidential removal of all phase labels.", rationale: "Phase identification is required." },
+    },
+  ),
+  bx(
+    "mod11-q23",
+    "Plotting only every third session because others 'look bad' is:",
+    "B",
+    {
+      A: { text: "Standard Cooper practice.", rationale: "Selective plotting misrepresents data." },
+      B: { text: "Data misrepresentation requiring ethical remediation.", rationale: "All relevant sessions should appear unless documented." },
+      C: { text: "Required for ratio charts.", rationale: "Ratio charts plot available data—not subsets for optics." },
+      D: { text: "IOA calculation method.", rationale: "Unrelated to session selection." },
+    },
+  ),
+  bx(
+    "mod11-q24",
+    "Line graphs versus bar graphs: line graphs are preferred when:",
+    "A",
+    {
+      A: { text: "Showing continuous session-by-session behavioral data over time.", rationale: "Time-series single-subject data use line graphs." },
+      B: { text: "Hiding variability within phases.", rationale: "Ethical graphs show variability." },
+      C: { text: "Replacing all measurement.", rationale: "Graphs display—they do not replace—measurement." },
+      D: { text: "Eliminating phase change lines.", rationale: "Phase lines remain useful on line graphs." },
+    },
+  ),
+  bx(
+    "mod11-q25",
+    "Annotation of deliberate axis breaks should:",
+    "D",
+    {
+      A: { text: "Never be used under any circumstance.", rationale: "When unavoidable, breaks must be marked clearly." },
+      B: { text: "Hide the break from all readers.", rationale: "Hidden breaks distort comparison." },
+      C: { text: "Replace condition labels.", rationale: "Labels and breaks serve different purposes." },
+      D: { text: "Mark discontinuities clearly when rescaling is necessary.", rationale: "Transparency preserves interpretability." },
+    },
+  ),
+  bx(
+    "mod11-q26",
+    "Chapter 6 pairs graph construction with Chapter 7 because:",
+    "C",
+    {
+      A: { text: "Chapter 6 eliminates need for interpretation.", rationale: "Ch 6 constructs; Ch 7 analyzes in depth." },
+      B: { text: "Graphs replace IOA.", rationale: "IOA remains Chapter 5." },
+      C: { text: "Well-built displays enable valid visual inspection and analysis.", rationale: "Construction quality enables interpretation." },
+      D: { text: "Only bar graphs matter on exams.", rationale: "Line and ratio charts are central too." },
+    },
+  ),
+  bx(
+    "mod11-q27",
+    "High variability within a phase on a graph suggests:",
+    "B",
+    {
+      A: { text: "Automatic mastery.", rationale: "Variability cautions strong claims." },
+      B: { text: "Caution before declaring clear treatment effects.", rationale: "Scatter affects inspection confidence." },
+      C: { text: "IOA is unnecessary.", rationale: "Variability increases need for reliable measurement." },
+      D: { text: "Delete outlier points silently.", rationale: "Outliers require analytic attention—not deletion." },
+    },
+  ),
+  bx(
+    "mod11-q28",
+    "Phase labels should correspond to:",
+    "A",
+    {
+      A: { text: "Documented procedural changes in the independent variable.", rationale: "Labels link graph regions to what changed." },
+      B: { text: "Random color themes.", rationale: "Labels are procedural—not decorative." },
+      C: { text: "Caregiver zodiac signs.", rationale: "Irrelevant to behavior analysis." },
+      D: { text: "Hidden notes unavailable to reviewers.", rationale: "Transparency supports replication." },
+    },
+  ),
+  bx(
+    "mod11-q29",
+    "Standard ratio chart training helps analysts:",
+    "D",
+    {
+      A: { text: "Avoid all event recording.", rationale: "Recording precedes charting." },
+      B: { text: "Skip baseline.", rationale: "Baseline remains essential." },
+      C: { text: "Eliminate ethics review.", rationale: "Ethics apply regardless of chart type." },
+      D: { text: "Inspect multiplicative change across orders of magnitude.", rationale: "Log axes standardize proportional comparisons." },
+    },
+  ),
+  bx(
+    "mod11-q30",
+    "Exam stem: Graph y-axis changes from 0–10 to 0–100 mid-intervention without note. Issue:",
+    "C",
+    {
+      A: { text: "None—readers infer automatically.", rationale: "Undocumented rescaling misleads." },
+      B: { text: "Only a font problem.", rationale: "Scale change affects perceived change magnitude." },
+      C: { text: "Distorted visual comparison violating graphic conventions.", rationale: "Domain C/E require honest scaling." },
+      D: { text: "Proof of negative reinforcement.", rationale: "Unrelated contingency." },
+    },
+  ),
+  bx(
+    "mod11-q31",
+    "Data paths connect consecutive sessions on line graphs to:",
+    "B",
+    {
+      A: { text: "Hide individual points.", rationale: "Points remain visible on standard graphs." },
+      B: { text: "Show sequence and trend across time.", rationale: "Connecting lines display temporal pattern." },
+      C: { text: "Replace IOA.", rationale: "IOA is separate." },
+      D: { text: "Eliminate variability.", rationale: "Variability still visible in scatter." },
+    },
+  ),
+  bx(
+    "mod11-q32",
+    "Graphs shared with families should:",
+    "A",
+    {
+      A: { text: "Use clear labels and explain what changed between phases in plain language.", rationale: "Stakeholder communication is ethical reporting." },
+      B: { text: "Hide baseline to simplify messaging.", rationale: "Omission distorts understanding." },
+      C: { text: "Use jargon without definitions.", rationale: "Accessible explanation supports informed consent." },
+      D: { text: "Omit measurement limits.", rationale: "Limits should be disclosed honestly." },
+    },
+  ),
+  bx(
+    "mod11-q33",
+    "Overlap between baseline and intervention data paths indicates:",
+    "D",
+    {
+      A: { text: "Definitive proof intervention failed.", rationale: "Overlap suggests caution—not automatic failure." },
+      B: { text: "IOA above 100%.", rationale: "Overlap is visual—not IOA." },
+      C: { text: "Need to delete baseline.", rationale: "Baseline remains in display." },
+      D: { text: "Ambiguous differentiation requiring cautious interpretation (see also Chapter 7).", rationale: "Overlap slows strong causal language." },
+    },
+  ),
+  bx(
+    "mod11-q34",
+    "Constructing a graph before team meeting helps:",
+    "C",
+    {
+      A: { text: "Skip defining behavior.", rationale: "Definitions precede plotting." },
+      B: { text: "Finalize punishment without data.", rationale: "Graphs inform—they do not bypass ethics." },
+      C: { text: "Align the team on what the data show before changing procedures.", rationale: "Shared visual display supports decisions." },
+      D: { text: "Avoid all documentation.", rationale: "Graphs are part of documentation." },
+    },
+  ),
+  bx(
+    "mod11-q35",
+    "Which is an example of chartjunk?",
+    "B",
+    {
+      A: { text: "Vertical line marking intervention start with label.", rationale: "Phase line is standard annotation." },
+      B: { text: "3D clip art obscuring data points.", rationale: "Decorative clutter obscures data." },
+      C: { text: "Y-axis labeled 'Instances per session'.", rationale: "Axis label is required." },
+      D: { text: "Condition label 'DRA + FCT'.", rationale: "Condition label aids interpretation." },
+    },
+  ),
+  bx(
+    "mod11-q36",
+    "Ratio charts are especially useful when behavior rates span:",
+    "A",
+    {
+      A: { text: "Very low to very high counts across phases.", rationale: "Log scaling handles wide magnitude ranges." },
+      B: { text: "Only zero occurrences.", rationale: "Zero rates need careful interpretation on any chart." },
+      C: { text: "Only one session.", rationale: "Trend requires multiple sessions." },
+      D: { text: "Caregiver interviews only.", rationale: "Charts plot measured behavior." },
+    },
+  ),
+  bx(
+    "mod11-q37",
+    "Fidelity notes on graphs link:",
+    "D",
+    {
+      A: { text: "MO to respondent extinction.", rationale: "Unrelated pairing." },
+      B: { text: "IOA to punishment only.", rationale: "Fidelity is treatment implementation." },
+      C: { text: "Graph color to student age.", rationale: "Irrelevant." },
+      D: { text: "Phase changes to what procedure was actually delivered.", rationale: "Annotations connect IV to graph regions." },
+    },
+  ),
+  bx(
+    "mod11-q38",
+    "Before claiming visual differentiation between phases, inspect:",
+    "C",
+    {
+      A: { text: "Only the last data point.", rationale: "Inspection is holistic across phases." },
+      B: { text: "Only the graph title font.", rationale: "Title does not replace data inspection." },
+      C: { text: "Level, trend, and variability within and between phases.", rationale: "Core visual dimensions from Cooper." },
+      D: { text: "Only caregiver opinion.", rationale: "Inspection is data-based." },
+    },
+  ),
+  bx(
+    "mod11-q39",
+    "Graph construction ethics align with Domain E when analysts:",
+    "B",
+    {
+      A: { text: "Rescale axes to please funders without disclosure.", rationale: "Misleading displays violate honesty." },
+      B: { text: "Report graph limits and avoid selective session plotting.", rationale: "Transparent reporting is ethical." },
+      C: { text: "Hide dissenting reviewer notes.", rationale: "Suppression violates integrity." },
+      D: { text: "Replace data with illustrations.", rationale: "Graphs must show measured data." },
+    },
+  ),
+  bx(
+    "mod11-q40",
+    "Session numbers on the x-axis should:",
+    "A",
+    {
+      A: { text: "Progress sequentially reflecting observation order.", rationale: "Sequential sessions support time-series inspection." },
+      B: { text: "Randomize to reduce bias.", rationale: "Random x-order destroys temporal logic." },
+      C: { text: "Skip all odd sessions without note.", rationale: "Omissions must be documented." },
+      D: { text: "Use letters only without mapping.", rationale: "Readers need clear session/time units." },
+    },
+  ),
+  bx(
+    "mod11-q41",
+    "Bar graph showing mean aggression per phase risks:",
+    "C",
+    {
+      A: { text: "Showing too much session-level detail.", rationale: "Bar graphs summarize—may hide session trend." },
+      B: { text: "Excessive IOA.", rationale: "IOA is independent." },
+      C: { text: "Hiding within-phase variability and session-by-session trend.", rationale: "Aggregates can obscure dynamic patterns." },
+      D: { text: "Proving FA conclusions.", rationale: "Graph type does not prove function." },
+    },
+  ),
+  bx(
+    "mod11-q42",
+    "When two reviewers disagree on graph interpretation, Cooper-style practice includes:",
+    "D",
+    {
+      A: { text: "Deleting the dissenting review.", rationale: "Document disagreement transparently." },
+      B: { text: "Publishing only the optimistic view.", rationale: "Selective reporting violates ethics." },
+      C: { text: "Stopping all measurement.", rationale: "Remediation—not abandonment." },
+      D: { text: "Documenting ambiguity and reconciliation attempts.", rationale: "Structured memos support honest reporting." },
+    },
+  ),
+  bx(
+    "mod11-q43",
+    "Graph y-axis should reflect:",
+    "B",
+    {
+      A: { text: "Whatever scale makes the team look best.", rationale: "Scale serves accurate representation." },
+      B: { text: "The measured dimension with appropriate units.", rationale: "Y-axis identifies what is counted or timed." },
+      C: { text: "IOA percentages only always.", rationale: "Behavior dimension is primary on behavior graphs." },
+      D: { text: "Unlabeled values.", rationale: "Labels are required." },
+    },
+  ),
+  bx(
+    "mod11-q44",
+    "Chapter 6 study priority: construction stems ask about:",
+    "A",
+    {
+      A: { text: "Axis labels, phase lines, graph type, and scaling conventions.", rationale: "Construction elements dominate Ch 6 items." },
+      B: { text: "FA condition logic exclusively.", rationale: "FA is later chapter content." },
+      C: { text: "Token economy backup reinforcers only.", rationale: "Unrelated to graph construction." },
+      D: { text: "Verbal operant classification.", rationale: "Different chapter domain." },
+    },
+  ),
+  bx(
+    "mod11-q45",
+    "Plotting cumulative records differs from daily counts because cumulative graphs show:",
+    "C",
+    {
+      A: { text: "Only IOA.", rationale: "Cumulative displays running totals or counts." },
+      B: { text: "Caregiver mood.", rationale: "Not behavioral cumulative measure." },
+      C: { text: "Running totals accumulating across sessions.", rationale: "Cumulative graphs display aggregate growth." },
+      D: { text: "Punishment intensity only.", rationale: "Cumulative can plot various dimensions." },
+    },
+  ),
+  bx(
+    "mod11-q46",
+    "Minimalist graph design Cooper would endorse includes:",
+    "D",
+    {
+      A: { text: "Heavy 3D effects and background images.", rationale: "Chartjunk harms readability." },
+      B: { text: "Unlabeled phases.", rationale: "Phases must be identified." },
+      C: { text: "Hidden baseline sessions.", rationale: "Selective plotting misleads." },
+      D: { text: "Clear data points, labeled axes, and marked phase changes.", rationale: "Clarity supports inspection." },
+    },
+  ),
+  bx(
+    "mod11-q47",
+    "Linking measurement (Ch 4–5) to graphs (Ch 6): if interval sampling biased data, the graph should:",
+    "B",
+    {
+      A: { text: "Hide the recording method.", rationale: "Method limits must accompany graphs." },
+      B: { text: "Be interpreted with stated recording bias noted in captions or text.", rationale: "Construction includes honest context." },
+      C: { text: "Prove continuous recording was used.", rationale: "Graph cannot falsely imply method." },
+      D: { text: "Eliminate IOA.", rationale: "IOA still matters." },
+    },
+  ),
+  bx(
+    "mod11-q48",
+    "Visual inspection heuristics like split-middle lines:",
+    "C",
+    {
+      A: { text: "Replace need for raw data.", rationale: "Data points remain primary." },
+      B: { text: "Guarantee p-values.", rationale: "Not inferential statistics." },
+      C: { text: "Assist trend estimation when used with fidelity context.", rationale: "Heuristics scaffold—not replace—judgment." },
+      D: { text: "Eliminate baseline phases.", rationale: "Phases remain on graph." },
+    },
+  ),
+  bx(
+    "mod11-q49",
+    "For BCBA prep, after building a graph ask:",
+    "D",
+    {
+      A: { text: "Does it look impressive regardless of data?", rationale: "Accuracy over impression." },
+      B: { text: "Can we remove all labels?", rationale: "Labels aid interpretation." },
+      C: { text: "Is IOA unnecessary now?", rationale: "IOA remains separate quality check." },
+      D: { text: "Can an outsider identify phases, units, and whether scaling is honest?", rationale: "Reproducibility test for construction." },
+    },
+  ),
+  bx(
+    "mod11-q50",
+    "Closing Chapter 6 principle: behavioral graphs must:",
+    "A",
+    {
+      A: { text: "Truthfully represent measured behavior with clear construction standards enabling inspection.", rationale: "Core Chapter 6 message for practice and exam." },
+      B: { text: "Maximize marketing appeal over accuracy.", rationale: "Ethics forbid misleading displays." },
+      C: { text: "Replace experimental designs.", rationale: "Graphs display outcomes of designs." },
+      D: { text: "Eliminate stakeholder review.", rationale: "Stakeholders rely on honest graphs." },
+    },
+  ),
+];
