@@ -45,14 +45,50 @@ export default function Home() {
 
       <section className="space-y-4">
         <h2 className="text-[0.8rem] font-semibold uppercase tracking-[0.22em] text-aba-muted">
+          Interactive labs
+        </h2>
+        <ul className="flex flex-col gap-px border border-aba-divider">
+          <li className="border-b border-aba-divider">
+            <Link
+              prefetch={false}
+              href="/labs/graph/"
+              className="group flex flex-col gap-2 bg-black/35 px-5 py-6 transition-colors hover:bg-black/55"
+            >
+              <span className="text-[1.05rem] font-semibold text-aba-fg group-hover:underline decoration-aba-muted underline-offset-[6px]">
+                Graph reading lab
+              </span>
+              <span className="text-[0.88rem] text-aba-muted">
+                Level, trend, variability, and overlap on A-B phase graphs
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              prefetch={false}
+              href="/labs/scc/"
+              className="group flex flex-col gap-2 bg-black/35 px-5 py-6 transition-colors hover:bg-black/55"
+            >
+              <span className="text-[1.05rem] font-semibold text-aba-fg group-hover:underline decoration-aba-muted underline-offset-[6px]">
+                SCC / celeration mini-lab
+              </span>
+              <span className="text-[0.88rem] text-aba-muted">
+                ×2 / ÷2 celeration, doubling time, multiply-divide chart logic
+              </span>
+            </Link>
+          </li>
+        </ul>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-[0.8rem] font-semibold uppercase tracking-[0.22em] text-aba-muted">
           Mock exams ({MOCK_EXAM_INDEX.length})
         </h2>
         <p className="max-w-2xl text-[0.95rem] leading-relaxed text-aba-muted">
-          Full-length simulations — 185 items each, 4-hour time limit matching the official BCBA exam. Not a BACB
-          product; use your handbook and TCO for wording.
+          Full-length 185-item / 4-hour simulations plus a short cross-chapter synthesis drill. Not a BACB product;
+          verify wording against your handbook and TCO.
         </p>
         <ul className="flex flex-col gap-px border border-aba-divider">
-          {MOCK_EXAM_INDEX.map((exam, index) => (
+          {MOCK_EXAM_INDEX.map((exam) => (
             <li key={exam.id} className="border-b border-aba-divider last:border-b-0">
               <Link
                 prefetch={false}
@@ -60,7 +96,7 @@ export default function Home() {
                 className="group flex flex-col gap-2 border-l-[3px] border-l-[color:var(--aba-correct)] bg-aba-depth px-5 py-6 pl-6 transition-colors hover:bg-black/55"
               >
                 <span className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-aba-muted">
-                  Mock exam {index + 1}
+                  {exam.itemCount >= 185 ? "Full simulation" : "Short drill"}
                 </span>
                 <span className="text-[1.05rem] font-semibold text-aba-fg group-hover:underline decoration-aba-muted underline-offset-[6px]">
                   {exam.title}
@@ -84,13 +120,19 @@ export default function Home() {
       <footer className="flex flex-col gap-3 border-t border-aba-divider pt-6 text-[0.75rem] text-aba-muted">
         <p>Progress is saved locally on this device — nothing is sent to a server.</p>
         <nav className="flex flex-wrap gap-4">
-          <Link href="/settings" className="uppercase tracking-[0.18em] hover:text-aba-fg">
+          <Link href="/schedule/" className="uppercase tracking-[0.18em] hover:text-aba-fg">
+            Study schedule
+          </Link>
+          <Link href="/resources/" className="uppercase tracking-[0.18em] hover:text-aba-fg">
+            Resources
+          </Link>
+          <Link href="/settings/" className="uppercase tracking-[0.18em] hover:text-aba-fg">
             Settings
           </Link>
-          <Link href="/subscribe" className="uppercase tracking-[0.18em] hover:text-aba-fg">
+          <Link href="/subscribe/" className="uppercase tracking-[0.18em] hover:text-aba-fg">
             Subscription
           </Link>
-          <Link href="/privacy" className="uppercase tracking-[0.18em] hover:text-aba-fg">
+          <Link href="/privacy/" className="uppercase tracking-[0.18em] hover:text-aba-fg">
             Privacy
           </Link>
         </nav>

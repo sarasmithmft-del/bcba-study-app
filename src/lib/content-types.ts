@@ -121,6 +121,11 @@ export interface BDSQuestion {
    * I: Personnel Supervision & Management.
    */
   tcoDomain?: "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I";
+  /**
+   * Optional granular TCO task code (e.g. "B-3", "H-2"). Progressive tagging —
+   * not every bank item is coded yet. Verify codes against the current BACB TCO.
+   */
+  tcoCode?: string;
 }
 
 export interface VocabularySection {

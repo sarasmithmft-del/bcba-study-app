@@ -38,7 +38,7 @@ export default function MockExamsIndexPage() {
           Available mock exams ({MOCK_EXAM_INDEX.length})
         </h2>
         <ul className="flex flex-col gap-px border border-aba-divider">
-          {MOCK_EXAM_INDEX.map((exam, index) => (
+          {MOCK_EXAM_INDEX.map((exam) => (
             <li key={exam.id} className="border-b border-aba-divider last:border-b-0">
               <Link
                 prefetch={false}
@@ -46,7 +46,7 @@ export default function MockExamsIndexPage() {
                 className="group flex flex-col gap-2 bg-black/35 px-5 py-6 transition-colors hover:bg-black/55"
               >
                 <span className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-aba-muted">
-                  Mock exam {index + 1}
+                  {exam.itemCount >= 185 ? "Full simulation" : "Short drill"}
                 </span>
                 <span className="text-[1.05rem] font-semibold text-aba-fg group-hover:underline decoration-aba-muted underline-offset-[6px]">
                   {exam.title}

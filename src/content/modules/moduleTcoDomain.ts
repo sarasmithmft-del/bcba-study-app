@@ -59,6 +59,12 @@ const MODULE_TCO_DOMAIN: Record<string, TcoDomain> = {
   mod34: "B",
   mod35: "G",
   mod36: "G",
+  mod37: "I",
+  mod38: "H",
+  mod40: "F",
+  mod41: "F",
+  mod42: "E",
+  mod43: "B",
 };
 
 /** Attach `primaryTcoDomain` when we have a lookup entry for this module id. */

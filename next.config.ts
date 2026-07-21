@@ -13,6 +13,13 @@ import type { NextConfig } from "next";
  *   nested routes without server-side rewrites.
  * - `allowedDevOrigins`: preserved from the dev-server config so
  *   `npm run dev` on 127.0.0.1:3333 keeps working during Windows development.
+ *
+ * OneDrive/Windows note: this project lives under OneDrive, and OneDrive can
+ * lock files inside `.next` while webpack is rebuilding, producing repeated
+ * EBUSY errors. The fix is to make `.next` a Windows directory junction that
+ * points to a folder outside OneDrive (e.g. %LOCALAPPDATA%\bcba-workbook-next).
+ * Run `npm run onedrive-fix` to create the junction. Once the junction exists,
+ * OneDrive treats it as an opaque link and never sync-locks its contents.
  */
 const nextConfig: NextConfig = {
   output: "export",

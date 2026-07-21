@@ -9,6 +9,8 @@ const PUBLIC_PATH_PREFIXES = [
   "/settings",
   "/privacy",
   "/terms",
+  "/resources",
+  "/schedule",
 ];
 
 function isPublicPath(pathname: string | null): boolean {

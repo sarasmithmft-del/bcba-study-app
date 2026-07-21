@@ -1,7 +1,11 @@
 "use client";
 
 import type { BDSOption, BDSQuestion } from "@/lib/content-types";
-import { formatMockExamTimeLimit } from "@/content/mockExam/mockExamTime";
+import { formatMockExamTimeLimit, mockExamTimeLimitSeconds } from "@/content/mockExam/mockExamTime";
+import {
+  DOMAIN_RECOMMENDED_MODULES,
+  TCO_TARGET_ITEMS_185,
+} from "@/lib/tcoDomainModules";
 import { shuffleArray } from "@/lib/shuffle";
 import { submitStudyAttempt } from "@/lib/studyAttemptSubmit";
 import Link from "next/link";
@@ -24,22 +28,11 @@ const TCO_SHORT: Record<TcoDomain, string> = {
 };
 
 /**
- * Approximate BACB 6th ed. Test Content Outline item allocations across the
- * 185-item BCBA exam. These figures are used only for study-planning contrast
- * on the results screen and are NOT official specifications—verify against
+ * Approximate BACB 6th ed. TCO item allocations across a 185-item exam.
+ * Used only for study-planning contrast on the results screen—verify against
  * the currently published BACB TCO before drawing conclusions.
  */
-const TCO_TARGET_ITEMS: Record<TcoDomain, number> = {
-  A: 6,
-  B: 34,
-  C: 25,
-  D: 12,
-  E: 22,
-  F: 20,
-  G: 27,
-  H: 20,
-  I: 19,
-};
+const TCO_TARGET_ITEMS: Record<TcoDomain, number> = TCO_TARGET_ITEMS_185;
 
 const TCO_TARGET_TOTAL = Object.values(TCO_TARGET_ITEMS).reduce(
   (sum, value) => sum + value,
@@ -69,6 +62,7 @@ type PreparedQuestion = {
   id: string;
   stem: string;
   tcoDomain?: BDSQuestion["tcoDomain"];
+  tcoCode?: string;
   options: BDSOption[];
 };
 
@@ -79,6 +73,7 @@ function prepareQuestion(source: BDSQuestion): PreparedQuestion {
     id: source.id,
     stem: source.stem,
     tcoDomain: source.tcoDomain,
+    tcoCode: source.tcoCode,
     options: shuffled.map((option, idx) => ({
       key: keys[idx]!,
       text: option.text,
@@ -247,6 +242,28 @@ export function MockExamRunner({ questions, intro, moduleId = DEFAULT_MOCK_MODUL
     setTimedOut(false);
     setRemaining(intro.timeLimitSeconds);
     setExamSessionId(null);
+  }
+
+  /** Re-run only items that were incorrect or unanswered, with a scaled timer. */
+  function beginMissedDrill() {
+    const missedIds = new Set(
+      preparedRound
+        .filter((_, index) => !answers[index]?.correct)
+        .map((q) => q.id),
+    );
+    if (missedIds.size === 0) return;
+    const subset = shuffleArray(questions.filter((q) => missedIds.has(q.id)));
+    if (!subset.length) return;
+    const prepared = subset.map(prepareQuestion);
+    setPreparedRound(prepared);
+    setAnswers(prepared.map(() => null));
+    setProbeIndex(0);
+    setChoice(undefined);
+    setOpenKey(null);
+    setTimedOut(false);
+    setRemaining(mockExamTimeLimitSeconds(prepared.length));
+    setExamSessionId(mintExamSessionId());
+    setPhase("exam");
   }
 
   function scoreAggregate() {
@@ -588,6 +605,44 @@ export function MockExamRunner({ questions, intro, moduleId = DEFAULT_MOCK_MODUL
           </div>
         : null}
 
+        {anyDelivered ?
+          <div className="rounded border border-aba-divider bg-black/35 p-6">
+            <h2 className="text-[0.9rem] font-semibold uppercase tracking-[0.2em] text-aba-muted">
+              Recommended modules for weak domains
+            </h2>
+            <p className="mt-2 text-[0.78rem] leading-relaxed text-aba-muted">
+              Domains flagged Focus medium/high below 70% accuracy — open a linked chapter before your next full mock.
+            </p>
+            <ul className="mt-4 space-y-3">
+              {summary
+                .filter((row) => row.priority === "high" || row.priority === "medium")
+                .map((row) => (
+                  <li key={row.domain} className="text-[0.86rem]">
+                    <p className="font-semibold text-aba-fg">{TCO_SHORT[row.domain]}</p>
+                    <ul className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-aba-muted">
+                      {(DOMAIN_RECOMMENDED_MODULES[row.domain] ?? []).map((mod) => (
+                        <li key={mod.id}>
+                          <Link
+                            prefetch={false}
+                            href={`/module/${mod.id}/`}
+                            className="underline decoration-aba-muted underline-offset-4 hover:text-aba-fg"
+                          >
+                            {mod.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                ))}
+              {summary.every((row) => row.priority !== "high" && row.priority !== "medium") ?
+                <li className="text-[0.86rem] text-aba-muted">
+                  No weak-domain flags this attempt — keep spacing full mocks and review rationales for any misses.
+                </li>
+              : null}
+            </ul>
+          </div>
+        : null}
+
         <details className="rounded border border-aba-divider bg-aba-depth p-4">
           <summary className="cursor-pointer text-[0.8rem] font-semibold uppercase tracking-[0.18em] text-aba-muted">
             Review keyed items &amp; rationales
@@ -604,6 +659,7 @@ export function MockExamRunner({ questions, intro, moduleId = DEFAULT_MOCK_MODUL
                   <p className="mt-2 text-[0.75rem] uppercase tracking-[0.16em] text-aba-muted">
                     {res ? (ok ? "Correct" : "Incorrect") : "Timed out / not answered"} · key ({keyed})
                     {question.tcoDomain ? ` · ${question.tcoDomain}` : ""}
+                    {question.tcoCode ? ` · ${question.tcoCode}` : ""}
                   </p>
                   <ul className="mt-3 space-y-2 text-[0.84rem] text-aba-muted">
                     {sorted.map((option) => (
@@ -622,6 +678,15 @@ export function MockExamRunner({ questions, intro, moduleId = DEFAULT_MOCK_MODUL
         </details>
 
         <div className="flex flex-wrap gap-3">
+          {wrongAnswered + skippedCount > 0 ?
+            <button
+              type="button"
+              onClick={beginMissedDrill}
+              className="rounded border border-[color:var(--aba-correct)]/55 bg-[color:var(--aba-correct)]/10 px-5 py-2 text-[0.85rem] uppercase tracking-[0.2em] text-aba-fg"
+            >
+              Drill missed items ({wrongAnswered + skippedCount})
+            </button>
+          : null}
           <button
             type="button"
             onClick={restartEverything}
@@ -629,6 +694,13 @@ export function MockExamRunner({ questions, intro, moduleId = DEFAULT_MOCK_MODUL
           >
             Restart from intro
           </button>
+          <Link
+            prefetch={false}
+            href="/schedule/"
+            className="rounded border border-aba-divider px-5 py-2 text-[0.85rem] uppercase tracking-[0.18em] text-aba-muted hover:border-aba-muted hover:text-aba-fg"
+          >
+            Study schedule
+          </Link>
           <Link
             prefetch={false}
             href="/"

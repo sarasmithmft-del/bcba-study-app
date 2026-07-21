@@ -5,6 +5,7 @@ import { MOCK_EXAM_INDEX } from "@/content/mockExam";
 import { listMockExamHistory } from "@/lib/mockExamHistory";
 import type { MockExamHistorySummary, TcoDomain } from "@/lib/mockExamHistoryTypes";
 import { UNAVAILABLE_MOCK_EXAM_HISTORY } from "@/lib/mockExamHistoryTypes";
+import { TCO_TARGET_ITEMS_185 } from "@/lib/tcoDomainModules";
 
 const TCO_LABEL: Record<TcoDomain, string> = {
   A: "A — Foundations / philosophy",
@@ -18,24 +19,8 @@ const TCO_LABEL: Record<TcoDomain, string> = {
   I: "I — Personnel supervision & management",
 };
 
-/**
- * Approximate BACB 6th ed. TCO item allocations across the 185-item BCBA exam.
- * Mirrors `TCO_TARGET_ITEMS` in `MockExamRunner.tsx`; kept in sync so the
- * cumulative dashboard uses the same weights the per-exam dashboard uses.
- * NOT official specifications—verify against the currently published BACB TCO
- * before drawing conclusions.
- */
-const TCO_TARGET_ITEMS: Record<TcoDomain, number> = {
-  A: 6,
-  B: 34,
-  C: 25,
-  D: 12,
-  E: 22,
-  F: 20,
-  G: 27,
-  H: 20,
-  I: 19,
-};
+/** Shared with MockExamRunner — approximate TCO weights for study planning. */
+const TCO_TARGET_ITEMS: Record<TcoDomain, number> = TCO_TARGET_ITEMS_185;
 
 const TCO_TARGET_TOTAL = Object.values(TCO_TARGET_ITEMS).reduce(
   (sum, value) => sum + value,

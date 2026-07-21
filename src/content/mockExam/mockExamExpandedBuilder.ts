@@ -14,8 +14,8 @@ export type MockExamExpandedConfig = {
   stemTemplate?: (itemNumber: number, domain: Dom, issue: string) => string;
 };
 
-const DEFAULT_STEM = (itemNumber: number, domain: Dom, issue: string) =>
-  `[Item ${String(itemNumber).padStart(3, "0")} · TCO ${domain}] ${issue} MOST defensible next step?`;
+const DEFAULT_STEM = (_itemNumber: number, _domain: Dom, issue: string) =>
+  `${issue} MOST defensible next step?`;
 
 export function buildMockExamExpandedBank(config: MockExamExpandedConfig): BDSQuestion[] {
   const {

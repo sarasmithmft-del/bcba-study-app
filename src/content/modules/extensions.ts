@@ -38,6 +38,13 @@ import { MOD29_BLUEPRINT } from "@/content/modules/mod29Chapter28Blueprint";
 import { MOD30_BLUEPRINT } from "@/content/modules/mod30Chapter29Blueprint";
 import { MOD31_BLUEPRINT } from "@/content/modules/mod31Chapter30Blueprint";
 import { MOD32_BLUEPRINT } from "@/content/modules/mod32Chapter31Blueprint";
+import { MOD37_BLUEPRINT } from "@/content/modules/mod37DomainISupervisionBlueprint";
+import { MOD38_BLUEPRINT } from "@/content/modules/mod38DomainHInterventionSelectionBlueprint";
+import { MOD39_BLUEPRINT } from "@/content/modules/mod39TestTakingStrategyBlueprint";
+import { MOD40_BLUEPRINT } from "@/content/modules/mod40FAProtocolsBlueprint";
+import { MOD41_BLUEPRINT } from "@/content/modules/mod41AssessmentToolsBlueprint";
+import { MOD42_BLUEPRINT } from "@/content/modules/mod42EthicsCodeNavigatorBlueprint";
+import { MOD43_BLUEPRINT } from "@/content/modules/mod43RftActBlueprint";
 import { MOD10_BLUEPRINT } from "@/content/modules/mod10Chapter7Blueprint";
 import { MOD11_BLUEPRINT } from "@/content/modules/mod11Chapter6Blueprint";
 import { MOD12_BLUEPRINT } from "@/content/modules/mod12Chapter8Blueprint";
@@ -4185,6 +4192,13 @@ For learning, Chapter 8 should be practiced as condition-logic fluency: identify
   MOD34_BLUEPRINT,
   MOD35_BLUEPRINT,
   MOD36_BLUEPRINT,
+  MOD37_BLUEPRINT,
+  MOD38_BLUEPRINT,
+  MOD39_BLUEPRINT,
+  MOD40_BLUEPRINT,
+  MOD41_BLUEPRINT,
+  MOD42_BLUEPRINT,
+  MOD43_BLUEPRINT,
   ...PEARSON_LATE_CHAPTER_BLUEPRINTS,
 ];
 
