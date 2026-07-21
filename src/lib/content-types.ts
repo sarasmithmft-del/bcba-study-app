@@ -122,8 +122,9 @@ export interface BDSQuestion {
    */
   tcoDomain?: "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I";
   /**
-   * Optional granular TCO task code (e.g. "B-3", "H-2"). Progressive tagging —
-   * not every bank item is coded yet. Verify codes against the current BACB TCO.
+   * Granular BACB 6th ed. TCO task code (e.g. "B-3", "H-2").
+   * Auto-inferred from stem/options within `tcoDomain` when not authored.
+   * Study approximation — verify against the current BACB TCO.
    */
   tcoCode?: string;
 }

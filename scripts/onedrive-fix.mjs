@@ -2,16 +2,14 @@
 /**
  * OneDrive recovery helper for Windows.
  *
- * Do NOT relocate `.next` outside the project (junctions / absolute distDir
+ * Do NOT relocate `.next` outside the project (custom distDir / junctions
  * break Next.js module resolution for react/jsx-runtime).
  *
- * This script only:
- * 1. Stops if `.next` is a leftover junction and removes it
- * 2. Wipes a normal `.next` cache so the next `npm run dev` starts clean
+ * This script:
+ * 1. Removes leftover junctions / in-project `.next`
+ * 2. Removes any stale %LOCALAPPDATA%\bcba-workbook-next cache
  *
- * If EBUSY lock errors return, pause OneDrive sync for this folder
- * (OneDrive tray → Pause syncing) while developing, or move the project
- * out of OneDrive to a local path like C:\dev\aba.
+ * Then pause OneDrive sync (tray → Pause syncing) and run: npm run dev
  */
 import { execSync } from "node:child_process";
 import { existsSync, lstatSync, rmSync } from "node:fs";
@@ -29,39 +27,28 @@ const staleTarget = join(
   "bcba-workbook-next",
 );
 
-console.log("[onedrive-fix] Cleaning Next.js cache (keeping build inside project)...");
-
-if (existsSync(projectNext)) {
+function removePath(target, label) {
+  if (!existsSync(target)) return;
   try {
-    const stat = lstatSync(projectNext);
-    if (stat.isSymbolicLink() || (stat.isDirectory() && (stat.mode & 0o120000))) {
-      // Junction/reparse point — remove link only
+    const stat = lstatSync(target);
+    if (stat.isSymbolicLink()) {
       try {
-        execSync("cmd /c rmdir .next", { stdio: "inherit" });
+        execSync(`cmd /c rmdir "${target}"`, { stdio: "inherit" });
       } catch {
-        rmSync(projectNext, { recursive: true, force: true });
+        rmSync(target, { recursive: true, force: true });
       }
     } else {
-      rmSync(projectNext, { recursive: true, force: true });
+      rmSync(target, { recursive: true, force: true });
     }
-    console.log("[onedrive-fix] Removed .next");
+    console.log(`[onedrive-fix] Removed ${label}`);
   } catch (err) {
-    console.error("[onedrive-fix] Could not remove .next:", err.message);
+    console.error(`[onedrive-fix] Could not remove ${label}:`, err.message);
     console.error("[onedrive-fix] Stop `npm run dev` and retry.");
     process.exit(1);
   }
 }
 
-if (existsSync(staleTarget)) {
-  try {
-    rmSync(staleTarget, { recursive: true, force: true });
-    console.log("[onedrive-fix] Removed stale", staleTarget);
-  } catch (err) {
-    console.warn("[onedrive-fix] Could not wipe stale cache:", err.message);
-  }
-}
-
-console.log("[onedrive-fix] Done. Run: npm run dev");
-console.log(
-  "[onedrive-fix] Tip: if EBUSY returns, pause OneDrive sync while developing.",
-);
+console.log("[onedrive-fix] Cleaning Next.js cache (keeping build inside project)...");
+removePath(projectNext, ".next");
+removePath(staleTarget, staleTarget);
+console.log("[onedrive-fix] Done. Pause OneDrive sync, then: npm run dev");

@@ -1,4 +1,5 @@
 import type { BDSQuestion, StudyModule } from "@/lib/content-types";
+import { withTcoCodes } from "@/lib/tco/assignTcoCode";
 
 type TcoDomain = NonNullable<BDSQuestion["tcoDomain"]>;
 
@@ -61,16 +62,38 @@ const MODULE_TCO_DOMAIN: Record<string, TcoDomain> = {
   mod36: "G",
   mod37: "I",
   mod38: "H",
+  /** Test-taking strategy spans domains; tag quizzes under concepts by default. */
+  mod39: "B",
   mod40: "F",
   mod41: "F",
   mod42: "E",
   mod43: "B",
 };
 
-/** Attach `primaryTcoDomain` when we have a lookup entry for this module id. */
+/**
+ * Attach `primaryTcoDomain` and granular `tcoCode` on chapter quiz items.
+ * Codes are keyword-inferred study approximations — verify against the current BACB TCO.
+ */
 export function assignPrimaryTcoDomain(module: StudyModule): StudyModule {
-  const domain = MODULE_TCO_DOMAIN[module.id];
-  if (!domain) return module;
-  if (module.primaryTcoDomain === domain) return module;
-  return { ...module, primaryTcoDomain: domain };
+  const domain = MODULE_TCO_DOMAIN[module.id] ?? module.primaryTcoDomain;
+  const bank = module.bdsBank
+    ? withTcoCodes(module.bdsBank, domain)
+    : module.bds
+      ? withTcoCodes([module.bds], domain)
+      : undefined;
+
+  const next: StudyModule = {
+    ...module,
+    ...(domain ? { primaryTcoDomain: domain } : {}),
+    ...(bank ? { bdsBank: bank, bds: undefined } : {}),
+  };
+
+  if (
+    next.primaryTcoDomain === module.primaryTcoDomain &&
+    next.bdsBank === module.bdsBank &&
+    next.bds === module.bds
+  ) {
+    return module;
+  }
+  return next;
 }

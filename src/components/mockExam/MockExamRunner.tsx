@@ -6,6 +6,7 @@ import {
   DOMAIN_RECOMMENDED_MODULES,
   TCO_TARGET_ITEMS_185,
 } from "@/lib/tcoDomainModules";
+import { formatTcoCodeLabel } from "@/lib/tco/tcoTaskCatalog";
 import { shuffleArray } from "@/lib/shuffle";
 import { submitStudyAttempt } from "@/lib/studyAttemptSubmit";
 import Link from "next/link";
@@ -131,6 +132,23 @@ export function MockExamRunner({ questions, intro, moduleId = DEFAULT_MOCK_MODUL
    * attempts without relying on time-gap heuristics.
    */
   const [examSessionId, setExamSessionId] = useState<string | null>(null);
+  const [reviewCodeFilter, setReviewCodeFilter] = useState<string>("all");
+
+  const reviewCodeOptions = useMemo(() => {
+    const codes = new Set<string>();
+    for (const question of preparedRound) {
+      if (question.tcoCode) codes.add(question.tcoCode);
+    }
+    return [...codes].sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+  }, [preparedRound]);
+
+  const reviewItems = useMemo(() => {
+    return preparedRound
+      .map((question, index) => ({ question, index }))
+      .filter(({ question }) =>
+        reviewCodeFilter === "all" ? true : question.tcoCode === reviewCodeFilter,
+      );
+  }, [preparedRound, reviewCodeFilter]);
 
   const safeProbeIndex = useMemo(
     () =>
@@ -215,6 +233,7 @@ export function MockExamRunner({ questions, intro, moduleId = DEFAULT_MOCK_MODUL
         score: correct ? 100 : 0,
         payload: {
           tcoDomain: current.tcoDomain,
+          tcoCode: current.tcoCode,
           probeIndex: safeProbeIndex,
           choice,
           ...(examSessionId ? { examSessionId } : {}),
@@ -242,6 +261,7 @@ export function MockExamRunner({ questions, intro, moduleId = DEFAULT_MOCK_MODUL
     setTimedOut(false);
     setRemaining(intro.timeLimitSeconds);
     setExamSessionId(null);
+    setReviewCodeFilter("all");
   }
 
   /** Re-run only items that were incorrect or unanswered, with a scaled timer. */
@@ -385,6 +405,7 @@ export function MockExamRunner({ questions, intro, moduleId = DEFAULT_MOCK_MODUL
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-aba-divider pb-4 text-[0.78rem] uppercase tracking-[0.16em] text-aba-muted">
           <p>
             Item {safeProbeIndex + 1} / {preparedRound.length}
+            {current?.tcoCode ? ` · ${current.tcoCode}` : current?.tcoDomain ? ` · ${current.tcoDomain}` : ""}
             {current.tcoDomain ?
               <>
                 {" · "}
@@ -647,8 +668,25 @@ export function MockExamRunner({ questions, intro, moduleId = DEFAULT_MOCK_MODUL
           <summary className="cursor-pointer text-[0.8rem] font-semibold uppercase tracking-[0.18em] text-aba-muted">
             Review keyed items &amp; rationales
           </summary>
+          {reviewCodeOptions.length > 0 ? (
+            <label className="mt-4 flex flex-wrap items-center gap-2 text-[0.78rem] text-aba-muted">
+              <span className="uppercase tracking-[0.16em]">Filter by TCO task</span>
+              <select
+                className="rounded border border-aba-divider bg-black/40 px-2 py-1 text-aba-fg"
+                value={reviewCodeFilter}
+                onChange={(event) => setReviewCodeFilter(event.target.value)}
+              >
+                <option value="all">All tasks ({preparedRound.length})</option>
+                {reviewCodeOptions.map((code) => (
+                  <option key={code} value={code}>
+                    {formatTcoCodeLabel(code)}
+                  </option>
+                ))}
+              </select>
+            </label>
+          ) : null}
           <ol className="mt-4 flex list-decimal flex-col gap-4 pl-5 text-[0.9rem]">
-            {preparedRound.map((question, index) => {
+            {reviewItems.map(({ question, index }) => {
               const keyed = correctKeyFor(question);
               const res = answers[index];
               const ok = Boolean(res?.correct);

@@ -24,6 +24,13 @@ export function mockQ(
     { text: string; correct: boolean; rationale: string },
     { text: string; correct: boolean; rationale: string },
   ],
+  tcoCode?: string,
 ): BDSQuestion {
-  return { id, tcoDomain: domain, stem, options: opt(choices[0]!, choices[1]!, choices[2]!, choices[3]!) };
+  return {
+    id,
+    tcoDomain: domain,
+    stem,
+    options: opt(choices[0]!, choices[1]!, choices[2]!, choices[3]!),
+    ...(tcoCode ? { tcoCode } : {}),
+  };
 }

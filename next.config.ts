@@ -14,12 +14,11 @@ import type { NextConfig } from "next";
  * - `allowedDevOrigins`: preserved from the dev-server config so
  *   `npm run dev` on 127.0.0.1:3333 keeps working during Windows development.
  *
- * OneDrive/Windows note: this project lives under OneDrive, and OneDrive can
- * lock files inside `.next` while webpack is rebuilding, producing repeated
- * EBUSY errors. The fix is to make `.next` a Windows directory junction that
- * points to a folder outside OneDrive (e.g. %LOCALAPPDATA%\bcba-workbook-next).
- * Run `npm run onedrive-fix` to create the junction. Once the junction exists,
- * OneDrive treats it as an opaque link and never sync-locks its contents.
+ * OneDrive/Windows: keep `distDir` as `.next` inside the project. Moving the
+ * cache outside OneDrive (absolute/relative distDir or junctions) breaks Next
+ * module resolution (`Cannot find module 'react/jsx-runtime'`). If you see
+ * EBUSY / Internal Server Error, pause OneDrive sync and run
+ * `npm run onedrive-fix`, then `npm run dev`.
  */
 const nextConfig: NextConfig = {
   output: "export",

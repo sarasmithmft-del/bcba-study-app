@@ -2,7 +2,8 @@
 
 import type { BDSQuestion } from "@/lib/content-types";
 import { submitStudyAttempt } from "@/lib/studyAttemptSubmit";
-import { useMemo, useState, useTransition } from "react";
+import { formatTcoCodeLabel } from "@/lib/tco/tcoTaskCatalog";
+import { useEffect, useMemo, useState, useTransition } from "react";
 
 type TcoDomain = NonNullable<BDSQuestion["tcoDomain"]>;
 
@@ -36,23 +37,56 @@ interface BDSBankProps {
 }
 
 export function BDSBank({ moduleId, questions, title, primaryTcoDomain }: BDSBankProps) {
+  const codeOptions = useMemo(() => {
+    const codes = new Set<string>();
+    for (const question of questions) {
+      if (question.tcoCode) codes.add(question.tcoCode);
+    }
+    return [...codes].sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+  }, [questions]);
+
+  const [codeFilter, setCodeFilter] = useState<string>("all");
+  const activeQuestions = useMemo(
+    () =>
+      codeFilter === "all"
+        ? questions
+        : questions.filter((question) => question.tcoCode === codeFilter),
+    [questions, codeFilter],
+  );
+
   const [probeIndex, setProbeIndex] = useState(0);
   const [choice, setChoice] = useState<string | undefined>();
   const [answers, setAnswers] = useState<Array<{ choice: string; correct: boolean } | null>>(() =>
-    questions.map(() => null),
+    activeQuestions.map(() => null),
   );
   const [openKey, setOpenKey] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
-  const current = questions[probeIndex];
-  const sortedOptions = useMemo(() => sortedOptionsFor(current), [current]);
-  const correctKey = useMemo(() => correctKeyFor(current), [current]);
+  useEffect(() => {
+    setProbeIndex(0);
+    setChoice(undefined);
+    setAnswers(
+      (codeFilter === "all"
+        ? questions
+        : questions.filter((question) => question.tcoCode === codeFilter)
+      ).map(() => null),
+    );
+    setOpenKey(null);
+  }, [codeFilter, questions]);
+
+  const current = activeQuestions[probeIndex];
+  const sortedOptions = useMemo(
+    () => (current ? sortedOptionsFor(current) : []),
+    [current],
+  );
+  const correctKey = useMemo(() => (current ? correctKeyFor(current) : ""), [current]);
 
   const submittedForCurrent = answers[probeIndex] !== null;
-  const allComplete = answers.every((entry) => entry !== null);
+  const allComplete =
+    activeQuestions.length > 0 && answers.every((entry) => entry !== null);
 
   const submit = () => {
-    if (!choice || submittedForCurrent) return;
+    if (!choice || !current || submittedForCurrent) return;
     const correct = choice === correctKey;
     setAnswers((previous) => {
       const next = [...previous];
@@ -65,13 +99,13 @@ export function BDSBank({ moduleId, questions, title, primaryTcoDomain }: BDSBan
         kind: "bds_bank",
         reference: current.id,
         score: correct ? 100 : 0,
-        payload: { probeIndex, choice },
+        payload: { probeIndex, choice, tcoCode: current.tcoCode },
       });
     });
   };
 
   const goNext = () => {
-    if (probeIndex >= questions.length - 1) return;
+    if (probeIndex >= activeQuestions.length - 1) return;
     setProbeIndex((index) => index + 1);
     setChoice(undefined);
     setOpenKey(null);
@@ -80,14 +114,44 @@ export function BDSBank({ moduleId, questions, title, primaryTcoDomain }: BDSBan
   const restart = () => {
     setProbeIndex(0);
     setChoice(undefined);
-    setAnswers(questions.map(() => null));
+    setAnswers(activeQuestions.map(() => null));
     setOpenKey(null);
   };
 
   const scorePct =
     (answers.reduce((acc, entry) => acc + (entry?.correct ? 1 : 0), 0) /
-      Math.max(questions.length, 1)) *
+      Math.max(activeQuestions.length, 1)) *
     100;
+
+  const filterControl =
+    codeOptions.length > 0 ? (
+      <label className="flex flex-wrap items-center gap-2 text-[0.78rem] text-aba-muted">
+        <span className="uppercase tracking-[0.16em]">TCO task filter</span>
+        <select
+          className="rounded border border-aba-divider bg-black/40 px-2 py-1 text-aba-fg"
+          value={codeFilter}
+          onChange={(event) => setCodeFilter(event.target.value)}
+        >
+          <option value="all">All tasks ({questions.length})</option>
+          {codeOptions.map((code) => (
+            <option key={code} value={code}>
+              {formatTcoCodeLabel(code)}
+            </option>
+          ))}
+        </select>
+      </label>
+    ) : null;
+
+  if (activeQuestions.length === 0) {
+    return (
+      <section className="flex flex-col gap-4 rounded border border-aba-divider bg-aba-depth p-6">
+        {filterControl}
+        <p className="text-[0.9rem] text-aba-muted">No quiz items match this TCO task filter.</p>
+      </section>
+    );
+  }
+
+  if (!current) return null;
 
   if (allComplete) {
     return (
@@ -101,18 +165,20 @@ export function BDSBank({ moduleId, questions, title, primaryTcoDomain }: BDSBan
           </h2>
         </header>
 
+        {filterControl}
+
         <p
           className="rounded border border-[color:var(--aba-correct)] bg-black/35 px-4 py-3 text-[0.82rem] font-semibold uppercase tracking-[0.14em] text-[color:var(--aba-correct)]"
           role="status"
         >
           Overall score · {scorePct.toFixed(0)}% ({answers.filter((a) => a?.correct).length}/
-          {questions.length} correct)
+          {activeQuestions.length} correct)
         </p>
 
         {primaryTcoDomain ? (
           (() => {
             const correctCount = answers.filter((a) => a?.correct).length;
-            const total = questions.length;
+            const total = activeQuestions.length;
             const pct = total > 0 ? (correctCount / total) * 100 : 0;
             const priority: "high" | "medium" | "low" =
               pct < 70 ? "high" : pct < 85 ? "medium" : "low";
@@ -161,7 +227,7 @@ export function BDSBank({ moduleId, questions, title, primaryTcoDomain }: BDSBan
         ) : null}
 
         <ol className="flex flex-col gap-5">
-          {questions.map((question, index) => {
+          {activeQuestions.map((question, index) => {
             const sorted = sortedOptionsFor(question);
             const keyed = correctKeyFor(question);
             const result = answers[index];
@@ -173,6 +239,7 @@ export function BDSBank({ moduleId, questions, title, primaryTcoDomain }: BDSBan
                 <p className="font-semibold text-aba-fg">{question.stem}</p>
                 <p className="mt-2 text-[0.78rem] uppercase tracking-[0.16em] text-aba-muted">
                   Result · {result?.correct ? "Correct" : "Incorrect"} · answer ({keyed})
+                  {question.tcoCode ? ` · ${question.tcoCode}` : ""}
                 </p>
                 <div className="mt-3 flex flex-col gap-2 border-t border-aba-divider pt-3">
                   {sorted.map((option) => (
@@ -298,7 +365,7 @@ export function BDSBank({ moduleId, questions, title, primaryTcoDomain }: BDSBan
         >
           Submit and review explanations
         </button>
-        {submittedForCurrent && probeIndex < questions.length - 1 ? (
+        {submittedForCurrent && probeIndex < activeQuestions.length - 1 ? (
           <button
             type="button"
             onClick={goNext}
@@ -307,7 +374,7 @@ export function BDSBank({ moduleId, questions, title, primaryTcoDomain }: BDSBan
             Next question
           </button>
         ) : null}
-        {submittedForCurrent && probeIndex === questions.length - 1 ? (
+        {submittedForCurrent && probeIndex === activeQuestions.length - 1 ? (
           <p className="text-[0.8rem] text-aba-muted" role="status">
             Last question saved—opening summary…
           </p>
