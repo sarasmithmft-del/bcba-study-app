@@ -10,7 +10,7 @@
 - **Marketing name:** `BCBA Study Workbook`
 - **Pricing model:** 3-day free trial → $9.99/month auto-renewing subscription (via RevenueCat + StoreKit 2)
 - **Distribution:** Apple App Store (Apple Developer Program membership already active)
-- **Latest content commit:** `a83bd3c` (audit gaps closed) + Capacitor Windows prep on `main`
+- **Latest content commit:** `4b97c22` on `main` (TCO task codes + Capacitor Windows prep + audit content)
 
 ---
 
@@ -195,4 +195,4 @@ Paste this on the Mac after cloning:
 
 ---
 
-_Last updated: 2026-07-21 · Capacitor Windows prep + audit content shipped_
+_Last updated: 2026-07-21 · Granular TCO codes + Capacitor Windows prep + audit content on `main`_
