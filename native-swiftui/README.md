@@ -1,12 +1,13 @@
 # SwiftUI reader for BCBA Study Workbook
 
-These three Swift files are what SwiftUI / Xcode need to show the app in a native shell:
+These Swift files plus the built HTML are what SwiftUI / Xcode need:
 
-| File | Role |
+| File / folder | Role |
 |------|------|
 | `BCBAStudyWorkbookApp.swift` | `@main` SwiftUI app |
 | `ContentView.swift` | Root view |
 | `WebView.swift` | Loads the HTML workbook |
+| `out/index.html` | Built website (add whole `out/` folder to the Xcode target) |
 
 ## Create the Xcode SwiftUI project (Mac)
 
