@@ -8,5 +8,6 @@
 | [MAC_CURSOR_PROMPT.md](./MAC_CURSOR_PROMPT.md) | Paste into a fresh Mac Cursor chat |
 | [XCODE_STEPS_NOW.md](./XCODE_STEPS_NOW.md) | Click-by-click if Xcode is already open |
 | [APPLE_DEVELOPER_FOR_BEGINNERS.md](./APPLE_DEVELOPER_FOR_BEGINNERS.md) | Simple Apple Developer + App Store Connect walkthrough |
+| [FINISHING.md](./FINISHING.md) | End-to-end finish path: Xcode → TestFlight → submit |
 
 Bootstrap script (creates Desktop folder `bcba study app`): [`../scripts/mac-apple-bootstrap.sh`](../scripts/mac-apple-bootstrap.sh)
