@@ -3,6 +3,7 @@
 **Canonical Desktop folder name:** `bcba study app`  
 **Path on Mac:** `~/Desktop/bcba study app`  
 **GitHub:** https://github.com/sarasmithmft-del/bcba-study-app  
+**Xcode remote URL:** `https://github.com/sarasmithmft-del/bcba-study-app.git` (see [`GIT_REMOTE_FOR_XCODE.md`](./GIT_REMOTE_FOR_XCODE.md))  
 **Bundle ID:** `com.euphoria.bcbaworkbook`  
 **Marketing name:** `BCBA Study Workbook`  
 **Apple Developer Program:** already active (per project handoff)
