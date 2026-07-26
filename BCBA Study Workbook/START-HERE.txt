@@ -1,0 +1,9 @@
+BCBA Study Workbook (SwiftUI + HTML)
+
+Open these in Xcode SwiftUI app:
+  BCBAStudyWorkbookApp.swift
+  ContentView.swift
+  WebView.swift
+  out/   ← add this whole folder to the Xcode target
+
+Main HTML entry: out/index.html
