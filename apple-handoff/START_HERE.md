@@ -37,6 +37,7 @@ This folder in the repo (`apple-handoff/`) is the complete checklist so a Mac + 
 | 8 | Ship | Archive → TestFlight → Submit for Review |
 
 Detailed checkboxes: [`CHECKLIST.md`](./CHECKLIST.md)  
+**New to Apple Developer?** → [`APPLE_DEVELOPER_FOR_BEGINNERS.md`](./APPLE_DEVELOPER_FOR_BEGINNERS.md)  
 **Xcode open already?** → [`XCODE_STEPS_NOW.md`](./XCODE_STEPS_NOW.md)  
 App Store Connect fields: [`APP_STORE_CONNECT.md`](./APP_STORE_CONNECT.md)  
 Fresh Cursor prompt: [`MAC_CURSOR_PROMPT.md`](./MAC_CURSOR_PROMPT.md)

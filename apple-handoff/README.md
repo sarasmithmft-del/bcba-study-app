@@ -7,5 +7,6 @@
 | [APP_STORE_CONNECT.md](./APP_STORE_CONNECT.md) | Listing + IAP field drafts |
 | [MAC_CURSOR_PROMPT.md](./MAC_CURSOR_PROMPT.md) | Paste into a fresh Mac Cursor chat |
 | [XCODE_STEPS_NOW.md](./XCODE_STEPS_NOW.md) | Click-by-click if Xcode is already open |
+| [APPLE_DEVELOPER_FOR_BEGINNERS.md](./APPLE_DEVELOPER_FOR_BEGINNERS.md) | Simple Apple Developer + App Store Connect walkthrough |
 
 Bootstrap script (creates Desktop folder `bcba study app`): [`../scripts/mac-apple-bootstrap.sh`](../scripts/mac-apple-bootstrap.sh)
