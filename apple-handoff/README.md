@@ -10,5 +10,6 @@
 | [APPLE_DEVELOPER_FOR_BEGINNERS.md](./APPLE_DEVELOPER_FOR_BEGINNERS.md) | Simple Apple Developer + App Store Connect walkthrough |
 | [FINISHING.md](./FINISHING.md) | End-to-end finish path: Xcode → TestFlight → submit |
 | [GIT_REMOTE_FOR_XCODE.md](./GIT_REMOTE_FOR_XCODE.md) | GitHub URL to paste when Xcode says Update Remote URL |
+| [OPEN_IN_XCODE.md](./OPEN_IN_XCODE.md) | How to open the Capacitor Swift/Xcode project |
 
 Bootstrap script (creates Desktop folder `bcba study app`): [`../scripts/mac-apple-bootstrap.sh`](../scripts/mac-apple-bootstrap.sh)
