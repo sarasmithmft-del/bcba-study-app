@@ -10,5 +10,6 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - Despite `README.md`/`.env.example` mentioning Prisma + PostgreSQL + `DATABASE_URL`, there is no `prisma/` dir and no Prisma dependency in the current code. No database or `.env` is required to run, lint, build, or test this app.
 - Run/build/lint use the standard `package.json` scripts. Dev server: `npm run dev` (webpack) serves on `http://127.0.0.1:3333` (binds `0.0.0.0:3333`); ignore the Windows/OneDrive/`localhost`-proxy troubleshooting docs — they don't apply on this Linux VM.
 - `npm run lint` currently reports pre-existing errors and warnings; a clean exit is not expected. Don't treat those pre-existing failures as regressions.
+- There is no `test` script and no Jest/Vitest/Playwright setup in this repo; smoke-test via the running app instead.
 - Core flow to smoke-test: home (`/`) → `/mock-exam/` → start an exam → select a choice → "LOCK ANSWER & EXPLAIN" shows correctness feedback.
-- `.bat` helper scripts (`RUN-MOCK-EXAM.bat`, etc.) are Windows-only and irrelevant here.
+- `.bat` helper scripts (`RUN-MOCK-EXAM.bat`, etc.) are Windows-only and irrelevant here. `npm run build` succeeds (static export to `out/`) and is safe to run while developing; prefer `npm run dev` for interactive work.
