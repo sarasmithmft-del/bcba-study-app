@@ -1,5 +1,7 @@
 # BCBA interactive study app
 
+**Apple / App Store takeover:** put the project on your Mac Desktop as **`bcba study app`** and follow [`apple-handoff/START_HERE.md`](./apple-handoff/START_HERE.md). Bootstrap: `./scripts/mac-apple-bootstrap.sh`.
+
 **Roadmap (accounts, login, saved progress, web + iPhone, payments):** see [`docs/PRODUCT-ROADMAP.md`](./docs/PRODUCT-ROADMAP.md).
 
 Next.js app with **The Codex** (split viewer + footnote inspector), drag-and-drop rehearsal (MTS, behavior-chain sorting, SAFMEDS), rubric worksheets, and BDS items with exploded feedback. Content lives in `src/content/modules/*.json`.

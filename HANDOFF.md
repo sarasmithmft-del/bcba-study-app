@@ -1,16 +1,24 @@
 # HANDOFF — BCBA Interactive Study Workbook · iOS build
 
 > **Purpose:** Single source of truth for continuing this project after switching from Windows to macOS.
-> When you clone this repo on your Mac and start a fresh Cursor chat, paste the prompt in
-> the [PROMPT TO START A FRESH CHAT](#prompt-to-start-a-fresh-chat) section and the new
-> agent will have everything it needs to pick up exactly where we left off.
+> **Desktop folder name:** `bcba study app` → on Mac: `~/Desktop/bcba study app`
+> **Complete Apple package:** see [`apple-handoff/START_HERE.md`](./apple-handoff/START_HERE.md) (checklist, App Store Connect draft, Mac Cursor prompt, bootstrap script).
+
+When you are on Mac, prefer:
+
+```bash
+chmod +x scripts/mac-apple-bootstrap.sh
+./scripts/mac-apple-bootstrap.sh
+```
+
+Then paste [`apple-handoff/MAC_CURSOR_PROMPT.md`](./apple-handoff/MAC_CURSOR_PROMPT.md) into a fresh Cursor chat.
 
 - **GitHub repo:** https://github.com/sarasmithmft-del/bcba-study-app
 - **Bundle ID:** `com.euphoria.bcbaworkbook`
 - **Marketing name:** `BCBA Study Workbook`
 - **Pricing model:** 3-day free trial → $9.99/month auto-renewing subscription (via RevenueCat + StoreKit 2)
 - **Distribution:** Apple App Store (Apple Developer Program membership already active)
-- **Latest content commit:** `4b97c22` on `main` (TCO task codes + Capacitor Windows prep + audit content)
+- **Latest content commit:** see `main` on GitHub (TCO task codes + Capacitor prep + apple-handoff package)
 
 ---
 
