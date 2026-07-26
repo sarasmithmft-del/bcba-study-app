@@ -197,10 +197,12 @@ Archive in Xcode → upload → TestFlight sandbox → Submit for Review.
 
 ## PROMPT TO START A FRESH CHAT
 
-Paste this on the Mac after cloning:
+**Preferred:** paste the full prompt in [`apple-handoff/MAC_CURSOR_PROMPT.md`](./apple-handoff/MAC_CURSOR_PROMPT.md).
 
-> Read `HANDOFF.md` in the repo root — that's the state of this project. I'm on macOS now, and my goal is to publish this to the Apple App Store. Windows-side content, static export, Capacitor npm packages, and `capacitor.config.ts` are already done and on GitHub `main`. Next: Phase 2 — run `npm run build`, `npx cap add ios`, `npx cap sync ios`, and walk me through Xcode signing. Bundle ID is `com.euphoria.bcbaworkbook`. Apple Developer team is already active. Do not re-author content modules or mock exams unless a build error requires it.
+Short version (Mac, after Desktop bootstrap):
+
+> Read `apple-handoff/START_HERE.md` and `HANDOFF.md`. I'm on macOS; Desktop folder is `~/Desktop/bcba study app`. Goal: App Store. Content + static export + Capacitor packages are done. Next: Phase 2 — `npm run build`, `npx cap add ios`, `npx cap sync ios`, Xcode signing for `com.euphoria.bcbaworkbook`. Follow `apple-handoff/CHECKLIST.md`. Do not re-author modules/mocks unless a build error requires it.
 
 ---
 
-_Last updated: 2026-07-21 · Granular TCO codes + Capacitor Windows prep + audit content on `main`_
+_Last updated: 2026-07-26 · Apple handoff package + Desktop folder bootstrap (`bcba study app`)_
