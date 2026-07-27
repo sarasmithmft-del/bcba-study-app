@@ -2,6 +2,8 @@
 
 This cloud agent **cannot click Xcode on your Mac**. Complete these in the Xcode window you already have open.
 
+**Prefer the easy launcher first:** double-click `OPEN-XCODE.command` or see [`FOR_SARA_OPEN_XCODE.md`](./FOR_SARA_OPEN_XCODE.md).
+
 ## 1 · Signing (required)
 
 1. In the left sidebar, click the blue **App** project (top item).

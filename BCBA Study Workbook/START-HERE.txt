@@ -1,9 +1,17 @@
-BCBA Study Workbook (SwiftUI + HTML)
+BCBA Study Workbook — START HERE (Mac)
 
-Open these in Xcode SwiftUI app:
-  BCBAStudyWorkbookApp.swift
-  ContentView.swift
-  WebView.swift
-  out/   ← add this whole folder to the Xcode target
+I cannot click Xcode for you. Use the easy launcher instead:
 
-Main HTML entry: out/index.html
+  1. Put the repo on your Mac Desktop as:  bcba study app
+  2. Double-click:  OPEN-XCODE.command   (in that folder)
+  3. In Xcode: pick your Team → press ▶ Run
+
+Picture-style steps:
+  apple-handoff/FOR_SARA_OPEN_XCODE.md
+
+Do NOT create a new blank Xcode app unless someone asks you to.
+The real iPhone project is already here:
+  ios/App/App.xcodeproj
+
+(The Swift files in THIS folder are an optional alternate shell.
+ Prefer OPEN-XCODE.command + Capacitor.)

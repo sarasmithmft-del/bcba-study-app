@@ -13,7 +13,12 @@ Capacitor already created a real Xcode project with Swift:
 Bundle ID: `com.euphoria.bcbaworkbook`  
 Display name: `BCBA Study Workbook`
 
-## On your Mac
+## On your Mac (easiest)
+
+Double-click **`OPEN-XCODE.command`** in the project folder  
+(or follow [`FOR_SARA_OPEN_XCODE.md`](./FOR_SARA_OPEN_XCODE.md)).
+
+## On your Mac (manual)
 
 ```bash
 cd ~/Desktop/"bcba study app"
