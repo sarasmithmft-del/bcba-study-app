@@ -51,7 +51,8 @@ export default function ChatPage() {
           content: msg.content,
         }));
 
-      const response = await fetch('/api/chat', {
+      // trailingSlash: true → use /api/chat/ so POST is not 308-redirected
+      const response = await fetch('/api/chat/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -61,11 +62,15 @@ export default function ChatPage() {
         }),
       });
 
-      if (!response.ok) {
-        throw new Error(`API error: ${response.status}`);
-      }
+      const data = await response.json().catch(() => ({}));
 
-      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(
+          typeof data.error === 'string'
+            ? data.error
+            : `API error: ${response.status}`,
+        );
+      }
 
       // Add assistant message
       const assistantMessage: Message = {
@@ -90,7 +95,10 @@ export default function ChatPage() {
       {/* Header */}
       <header className="border-b border-aba-divider bg-aba-depth px-6 py-4">
         <h1 className="text-xl font-semibold text-aba-fg">BCBA Study Assistant</h1>
-        <p className="text-sm text-aba-muted">Powered by Claude AI</p>
+        <p className="text-sm text-aba-muted">
+          Powered by Claude AI · requires <code className="text-aba-fg">npm run dev</code> and{" "}
+          <code className="text-aba-fg">CLAUDE_API_KEY</code> (not available in the offline iOS bundle)
+        </p>
       </header>
 
       {/* Messages */}

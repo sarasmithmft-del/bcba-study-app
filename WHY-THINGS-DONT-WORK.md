@@ -20,7 +20,7 @@ Git **does** become useful **if**:
 This is a **Next.js** app — it runs as a **small web server on your PC**. There is nothing useful to open with `File → Open` in the browser (`file:///...` URLs will fail). You need **`npm`** (Node.js) plus **one running server process**:
 
 - **`npm run dev`** = development mode (hot reload)
-- **`npm run build:start`** *(see script below)* = production build, then **`next start`** (often more stable than dev)
+- **`npm run build:start`** = production **static** build (`out/`), then **`npm run serve:local`** on port **3333** (often more stable than `next dev`)
 
 Until that process is listening, **every** chapter route will look “offline” — not just mock exam.
 
@@ -41,7 +41,7 @@ Until that process is listening, **every** chapter route will look “offline”
 
 3. Leave that terminal **OPEN**. In the browser go to **`http://127.0.0.1:3333/`**.
 
-Or double‑click **`LAUNCH-PRODUCTION.bat`** in this folder (does `npm run build:start`).
+Or double‑click **`LAUNCH-PRODUCTION.bat`** in this folder (builds, then **`npm run serve:local`** on **`http://127.0.0.1:3333/`**).
 
 > **Important:** Scripts in this repo open **`127.0.0.1:3333`**, not `:3000` and preferably not bare `localhost` (school/work proxies sometimes break `localhost`).
 
