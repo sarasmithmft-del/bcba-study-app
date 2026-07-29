@@ -48,18 +48,27 @@ Fresh Cursor prompt: [`MAC_CURSOR_PROMPT.md`](./MAC_CURSOR_PROMPT.md)
 
 ## Fastest path on Mac (copy/paste)
 
+**Easiest for opening Xcode (recommended):** follow  
+[`FOR_SARA_OPEN_XCODE.md`](./FOR_SARA_OPEN_XCODE.md)  
+— or double-click **`OPEN-XCODE.command`** in the repo after it’s on your Desktop.
+
 ```bash
 # From a clone of this repo (or after Desktop bootstrap):
-chmod +x scripts/mac-apple-bootstrap.sh
+chmod +x scripts/mac-apple-bootstrap.sh OPEN-XCODE.command scripts/open-xcode.sh
 ./scripts/mac-apple-bootstrap.sh
+# Then either:
+./scripts/open-xcode.sh
+# or double-click OPEN-XCODE.command in Finder
 ```
 
-That script:
+Bootstrap script:
 
 1. Creates `~/Desktop/bcba study app` (or updates it)
 2. Clones/pulls this GitHub repo into that folder
 3. Runs `npm install` + `npm run build`
 4. Prints the exact next Capacitor / Xcode commands
+
+`open-xcode.sh` / `OPEN-XCODE.command` also run `npx cap sync ios` and open `ios/App/App.xcodeproj`.
 
 Then open Cursor on that folder and paste [`MAC_CURSOR_PROMPT.md`](./MAC_CURSOR_PROMPT.md).
 

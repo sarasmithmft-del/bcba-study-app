@@ -126,6 +126,9 @@ export default function Home() {
           <Link href="/resources/" className="uppercase tracking-[0.18em] hover:text-aba-fg">
             Resources
           </Link>
+          <Link href="/chat/" className="uppercase tracking-[0.18em] hover:text-aba-fg">
+            Study assistant
+          </Link>
           <Link href="/settings/" className="uppercase tracking-[0.18em] hover:text-aba-fg">
             Settings
           </Link>
