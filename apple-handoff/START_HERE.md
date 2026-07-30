@@ -52,6 +52,10 @@ Fresh Cursor prompt: [`MAC_CURSOR_PROMPT.md`](./MAC_CURSOR_PROMPT.md)
 [`FOR_SARA_OPEN_XCODE.md`](./FOR_SARA_OPEN_XCODE.md)  
 — or double-click **`OPEN-XCODE.command`** in the repo after it’s on your Desktop.
 
+**Want a clean Desktop folder with only iOS/app files?**  
+Run [`../scripts/export-ios-clean-to-desktop.sh`](../scripts/export-ios-clean-to-desktop.sh) → creates **`~/Desktop/TEST`**.  
+Details: [`CLEAN_TEST_PACKAGE.md`](./CLEAN_TEST_PACKAGE.md).
+
 ```bash
 # From a clone of this repo (or after Desktop bootstrap):
 chmod +x scripts/mac-apple-bootstrap.sh OPEN-XCODE.command scripts/open-xcode.sh
