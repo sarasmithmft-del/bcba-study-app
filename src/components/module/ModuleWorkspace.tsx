@@ -122,7 +122,37 @@ export function ModuleWorkspace({ module }: { module: StudyModule }) {
         ) : null}
 
         {tab === "vocabulary" && module.vocabularySection ? (
-          <VocabularyPanel section={module.vocabularySection} footnotes={mergedFootnotes} />
+          <div className="flex flex-col gap-12">
+            <VocabularyPanel
+              section={module.vocabularySection}
+              footnotes={mergedFootnotes}
+              quizQuestionCount={module.vocabQuizBank?.length}
+              onOpenQuiz={
+                module.vocabQuizBank && module.vocabQuizBank.length > 0
+                  ? () => setTab("vocabQuiz")
+                  : undefined
+              }
+            />
+            {module.vocabQuizBank && module.vocabQuizBank.length > 0 ? (
+              <div className="flex flex-col gap-6" id="vocab-quiz">
+                <div className="space-y-2 border-b border-aba-divider pb-4">
+                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-aba-muted">
+                    Vocabulary quiz · Chapter {module.chapterNumber}
+                  </p>
+                  <p className="max-w-3xl text-[0.95rem] leading-relaxed text-aba-muted">
+                    Definition matches, application vignettes, and discrimination items for this
+                    chapter’s vocabulary words.
+                  </p>
+                </div>
+                <BDSBank
+                  moduleId={`${module.id}-vocab`}
+                  questions={module.vocabQuizBank}
+                  title={`Chapter ${module.chapterNumber} vocabulary quiz`}
+                  primaryTcoDomain={module.primaryTcoDomain}
+                />
+              </div>
+            ) : null}
+          </div>
         ) : null}
 
         {tab === "vocabQuiz" && module.vocabQuizBank && module.vocabQuizBank.length > 0 ? (
@@ -137,7 +167,7 @@ export function ModuleWorkspace({ module }: { module: StudyModule }) {
               </p>
             </div>
             <BDSBank
-              moduleId={module.id}
+              moduleId={`${module.id}-vocab`}
               questions={module.vocabQuizBank}
               title={`Chapter ${module.chapterNumber} vocabulary quiz`}
               primaryTcoDomain={module.primaryTcoDomain}
