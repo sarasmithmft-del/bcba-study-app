@@ -30,7 +30,7 @@ export function VocabQuizSection({
     >
       <div className="space-y-3 rounded border border-aba-divider bg-aba-depth px-5 py-4">
         <p className="text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-aba-muted">
-          End of chapter · Vocabulary quiz
+          Vocabulary quiz
         </p>
         <h2 className="text-[1.35rem] font-semibold text-aba-fg">
           Chapter {chapterNumber} vocabulary quiz

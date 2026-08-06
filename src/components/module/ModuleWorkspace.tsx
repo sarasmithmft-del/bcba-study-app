@@ -18,8 +18,7 @@ type TabId =
   | "keyConcepts"
   | "activities"
   | "worksheet"
-  | "quiz"
-  | "vocabQuiz";
+  | "quiz";
 
 export function ModuleWorkspace({ module }: { module: StudyModule }) {
   const mergedFootnotes = useMemo(
@@ -46,17 +45,8 @@ export function ModuleWorkspace({ module }: { module: StudyModule }) {
           module.bdsBank && module.bdsBank.length > 1 ? "Chapter quizzes" : "Chapter quiz",
       },
     );
-    // Last tab = end of chapter vocabulary quiz (easy to find)
-    if (hasVocabQuiz) {
-      list.push({ id: "vocabQuiz", label: "Vocabulary quiz" });
-    }
     return list;
-  }, [
-    module.keyConceptsSection,
-    module.vocabularySection,
-    module.bdsBank,
-    hasVocabQuiz,
-  ]);
+  }, [module.keyConceptsSection, module.vocabularySection, module.bdsBank]);
 
   const [tab, setTab] = useState<TabId>("codex");
 
@@ -66,14 +56,12 @@ export function ModuleWorkspace({ module }: { module: StudyModule }) {
     }
   }, [tabs, tab]);
 
-  const vocabQuiz = hasVocabQuiz ? (
-    <VocabQuizSection
-      moduleId={module.id}
-      chapterNumber={module.chapterNumber}
-      questions={module.vocabQuizBank!}
-      primaryTcoDomain={module.primaryTcoDomain}
-    />
-  ) : null;
+  const scrollToVocabQuiz = () => {
+    document.getElementById("chapter-vocab-quiz")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
 
   const chapterQuiz =
     module.bdsBank && module.bdsBank.length > 0 ? (
@@ -101,15 +89,6 @@ export function ModuleWorkspace({ module }: { module: StudyModule }) {
         <h1 className="text-[clamp(1.6rem,2vw,2.35rem)] font-semibold leading-tight">
           {module.title}
         </h1>
-        {hasVocabQuiz ? (
-          <button
-            type="button"
-            onClick={() => setTab("vocabQuiz")}
-            className="rounded border border-[color:var(--aba-muted)] bg-black/35 px-4 py-2 text-[0.75rem] font-semibold uppercase tracking-[0.18em] text-aba-fg hover:bg-black/50"
-          >
-            Jump to vocabulary quiz ({module.vocabQuizBank!.length} questions)
-          </button>
-        ) : null}
       </header>
 
       <nav
@@ -135,16 +114,12 @@ export function ModuleWorkspace({ module }: { module: StudyModule }) {
 
       <div className="flex flex-col gap-16">
         {tab === "codex" ? (
-          <div className="flex flex-col gap-16">
-            <CodexView
-              heading={module.codex.heading}
-              segments={module.codex.segments}
-              footnotes={mergedFootnotes}
-              plainLanguageSummary={module.codex.plainLanguageSummary}
-            />
-            {/* End of chapter reading → vocabulary quiz */}
-            {vocabQuiz}
-          </div>
+          <CodexView
+            heading={module.codex.heading}
+            segments={module.codex.segments}
+            footnotes={mergedFootnotes}
+            plainLanguageSummary={module.codex.plainLanguageSummary}
+          />
         ) : null}
 
         {tab === "vocabulary" && module.vocabularySection ? (
@@ -153,9 +128,16 @@ export function ModuleWorkspace({ module }: { module: StudyModule }) {
               section={module.vocabularySection}
               footnotes={mergedFootnotes}
               quizQuestionCount={module.vocabQuizBank?.length}
-              onOpenQuiz={hasVocabQuiz ? () => setTab("vocabQuiz") : undefined}
+              onOpenQuiz={hasVocabQuiz ? scrollToVocabQuiz : undefined}
             />
-            {vocabQuiz}
+            {hasVocabQuiz ? (
+              <VocabQuizSection
+                moduleId={module.id}
+                chapterNumber={module.chapterNumber}
+                questions={module.vocabQuizBank!}
+                primaryTcoDomain={module.primaryTcoDomain}
+              />
+            ) : null}
           </div>
         ) : null}
 
@@ -169,15 +151,7 @@ export function ModuleWorkspace({ module }: { module: StudyModule }) {
 
         {tab === "worksheet" ? <Worksheet moduleId={module.id} worksheet={module.worksheet} /> : null}
 
-        {tab === "quiz" ? (
-          <div className="flex flex-col gap-16">
-            {chapterQuiz}
-            {/* After the chapter quiz = end of chapter vocabulary quiz */}
-            {vocabQuiz}
-          </div>
-        ) : null}
-
-        {tab === "vocabQuiz" ? vocabQuiz : null}
+        {tab === "quiz" ? chapterQuiz : null}
       </div>
     </div>
   );
