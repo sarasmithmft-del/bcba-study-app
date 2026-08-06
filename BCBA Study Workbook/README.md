@@ -1,54 +1,42 @@
-# SwiftUI reader for BCBA Study Workbook
+# BCBA Study Workbook — SwiftUI Xcode project
 
-These Swift files plus the built HTML are what SwiftUI / Xcode need:
+Ready-to-open Xcode app. The website HTML is already included as a **blue** `out` folder reference (no Finder drag needed).
 
-| File / folder | Role |
+| Item | Path |
 |------|------|
-| `BCBAStudyWorkbookApp.swift` | `@main` SwiftUI app |
-| `ContentView.swift` | Root view |
-| `WebView.swift` | Loads the HTML workbook |
-| `out/index.html` | Built website (add whole `out/` folder to the Xcode target) |
+| Xcode project | `BCBA Study Workbook.xcodeproj` |
+| Swift entry | `BCBAStudyWorkbookApp.swift` |
+| WebView | `WebView.swift` (custom scheme `bcba-workbook://`) |
+| Bundled site | `out/` (**blue folder** in Resources) |
 
-## Create the Xcode SwiftUI project (Mac)
+Bundle ID: `com.euphoria.bcbaworkbook`
 
-1. Open **Xcode** → **File → New → Project…**
-2. **iOS → App** → Next  
-3. Product Name: `BCBAStudyWorkbook`  
-4. Team: your Apple team  
-5. Organization Identifier: `com.euphoria`  
-6. Bundle ID becomes: `com.euphoria.BCBAStudyWorkbook`  
-   (or set it to `com.euphoria.bcbaworkbook` in Signing)  
-7. Interface: **SwiftUI** · Language: **Swift** → Create  
-   Save to: `~/Desktop/BCBA/native-swiftui-xcode` (or similar)
-
-8. Delete the stub `ContentView.swift` / `*App.swift` Xcode generated.  
-9. Drag these three files from `native-swiftui/` into the Xcode project (copy items if needed).  
-10. In Terminal, build the website and add `out/` to the Xcode target:
+## Open on Mac
 
 ```bash
-cd ~/Desktop/BCBA   # or your repo folder
-npm install
-npm run build
+open "BCBA Study Workbook.xcodeproj"
 ```
 
-11. In Xcode: right-click the app folder → **Add Files to…** → select the `out` folder  
-    ✅ Copy items if needed  
-    ✅ Create folder references (blue folder)  
-    ✅ Add to target  
+Or double-click **`OPEN-IN-XCODE.command`**.
 
-12. ▶ Run on Simulator.
+In Xcode: **Team** → iPhone simulator → **▶ Run**.
 
-### Dev mode (no `out/` in bundle yet)
+You should see a **blue** `out` folder in the Project Navigator. That means it is a folder reference and will ship inside the app bundle.
 
-Keep `npm run dev` running, then Run in Simulator — `ContentView` falls back to `http://127.0.0.1:3333/`.
+## Refresh the website after content changes
 
-### Bundled HTML loading
+From the **repo root**:
 
-The WebView serves `out/` through the custom URL scheme `bcba-workbook://` so Next.js absolute paths (`/_next/...`, `/module/...`) resolve correctly. Do **not** open `index.html` with a plain `file://` load if you want chapters and assets to work.
+```bash
+npm install
+npm run build
+rm -rf "BCBA Study Workbook/out"
+cp -R out "BCBA Study Workbook/out"
+```
+
+Then ▶ Run again in Xcode.
 
 ## Note vs Capacitor
 
-- **`ios/App/App.xcodeproj`** = Capacitor shell (recommended for App Store).  
-- **`native-swiftui/`** = pure SwiftUI WebView shell (what you asked for).  
-
-You only need one of these to ship; Capacitor is the path already set up for App Store Connect.
+- **This folder** = pure SwiftUI WebView shell (what the Desktop “BCBA Study Workbook” project uses).
+- **`ios/App/App.xcodeproj`** = Capacitor shell (recommended App Store path). See `RUN-ON-SIMULATOR.command` in the repo root.

@@ -1,17 +1,25 @@
-BCBA Study Workbook — START HERE (Mac)
+BCBA Study Workbook — SwiftUI Xcode project
 
-I cannot click Xcode for you. Use the easy launcher instead:
+The blue "out" folder is ALREADY wired into the Xcode project.
+You do NOT need to drag it in from Finder.
 
-  1. Put the repo on your Mac Desktop as:  bcba study app
-  2. Double-click:  OPEN-XCODE.command   (in that folder)
-  3. In Xcode: pick your Team → press ▶ Run
+ON YOUR MAC
+-----------
+1. Put this folder on your Desktop (or open it from the git clone):
+     ~/Desktop/BCBA Study Workbook
+   or inside the repo:
+     …/bcba-study-app/BCBA Study Workbook
 
-Picture-style steps:
-  apple-handoff/FOR_SARA_OPEN_XCODE.md
+2. Double-click:  OPEN-IN-XCODE.command
+   OR double-click:  BCBA Study Workbook.xcodeproj
 
-Do NOT create a new blank Xcode app unless someone asks you to.
-The real iPhone project is already here:
-  ios/App/App.xcodeproj
+3. In Xcode:
+   - Confirm you see a BLUE folder named "out" in the left sidebar
+   - Signing & Capabilities → Team → your Apple ID
+   - Bundle ID: com.euphoria.bcbaworkbook
+   - Pick an iPhone simulator → press ▶ Run
 
-(The Swift files in THIS folder are an optional alternate shell.
- Prefer OPEN-XCODE.command + Capacitor.)
+If "out" is missing or empty, from the repo root on Mac:
+  npm install && npm run build
+  rm -rf "BCBA Study Workbook/out" && cp -R out "BCBA Study Workbook/out"
+  Then open the .xcodeproj again.
