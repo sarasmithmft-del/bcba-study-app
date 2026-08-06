@@ -37,7 +37,7 @@ fail() {
   log ""
   log "FAILED: $1"
   log "Full log: ${LOG}"
-  if [[ "${OPEN_XCODE_FALLBACK}" == "1" && -d "${PROJECT}" ]]; then
+  if [[ "$(uname -s)" == "Darwin" && "${OPEN_XCODE_FALLBACK}" == "1" && -d "${PROJECT}" ]]; then
     log "Opening Xcode so you can set Team and press ▶ Run…"
     open "${PROJECT}" 2>/dev/null || true
   fi
