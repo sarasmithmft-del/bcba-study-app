@@ -93,9 +93,12 @@ copy_file OPEN-XCODE.command
 mkdir -p "${DEST}/scripts"
 cp -a "${ROOT}/scripts/open-xcode.sh" "${DEST}/scripts/open-xcode.sh"
 cp -a "${ROOT}/scripts/mac-apple-bootstrap.sh" "${DEST}/scripts/mac-apple-bootstrap.sh"
+cp -a "${ROOT}/scripts/mac-fix-and-open-xcode.sh" "${DEST}/scripts/mac-fix-and-open-xcode.sh"
+cp -a "${ROOT}/scripts/export-ios-clean-to-desktop.sh" "${DEST}/scripts/export-ios-clean-to-desktop.sh"
 chmod +x "${DEST}/OPEN-XCODE.command" \
   "${DEST}/scripts/open-xcode.sh" \
   "${DEST}/scripts/mac-apple-bootstrap.sh" \
+  "${DEST}/scripts/mac-fix-and-open-xcode.sh" \
   "${DEST}/scripts/export-ios-clean-to-desktop.sh" 2>/dev/null || true
 
 # Keep a copy of this exporter inside TEST so Mac can re-run it later from the full repo only.

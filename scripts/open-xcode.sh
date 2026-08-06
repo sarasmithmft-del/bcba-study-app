@@ -30,10 +30,12 @@ if [[ ! -d "ios/App/App.xcodeproj" ]]; then
   exit 1
 fi
 
-# Prefer the fix branch when present; otherwise stay on current branch / main.
+# Prefer the latest iOS-clean / fix branch when present.
 BRANCH="${BCBA_BRANCH:-}"
 if [[ -z "$BRANCH" ]]; then
-  if git rev-parse --verify origin/cursor/fix-bcba-study-workbook-1314 >/dev/null 2>&1; then
+  if git rev-parse --verify origin/cursor/ios-clean-test-folder-1314 >/dev/null 2>&1; then
+    BRANCH="cursor/ios-clean-test-folder-1314"
+  elif git rev-parse --verify origin/cursor/fix-bcba-study-workbook-1314 >/dev/null 2>&1; then
     BRANCH="cursor/fix-bcba-study-workbook-1314"
   else
     BRANCH="$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo main)"
