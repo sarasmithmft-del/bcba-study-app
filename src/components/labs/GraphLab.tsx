@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { HomeLink } from "@/components/HomeLink";
 import { GRAPH_LAB_ITEMS } from "@/content/labs/graphLabItems";
 
 function Sparkline({
@@ -183,9 +184,7 @@ export function GraphLab() {
         <Link href="/labs/scc/" className="uppercase tracking-[0.18em] hover:text-aba-fg">
           SCC / celeration lab →
         </Link>
-        <Link href="/" className="uppercase tracking-[0.18em] hover:text-aba-fg">
-          ← Home
-        </Link>
+        <HomeLink className="uppercase tracking-[0.18em] hover:text-aba-fg" />
       </footer>
     </div>
   );

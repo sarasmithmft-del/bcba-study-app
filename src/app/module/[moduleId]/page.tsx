@@ -1,6 +1,6 @@
+import { HomeLink } from "@/components/HomeLink";
 import { ModuleWorkspace } from "@/components/module/ModuleWorkspace";
 import { MODULE_INDEX, getModule } from "@/lib/modules";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export const dynamicParams = false;
@@ -31,9 +31,7 @@ export default async function ModulePage(props: PageProps) {
   return (
     <>
       <div className="border-b border-aba-divider bg-black/55 px-4 py-4 text-[0.8rem] text-aba-muted">
-        <Link prefetch={false} href="/" className="uppercase tracking-[0.26em] text-aba-muted hover:text-aba-fg">
-          ← Home
-        </Link>
+        <HomeLink className="uppercase tracking-[0.26em] text-aba-muted hover:text-aba-fg" />
       </div>
       <ModuleWorkspace key={studyModule.id} module={studyModule} />
     </>

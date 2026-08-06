@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { HomeLink } from "@/components/HomeLink";
 
 /** App-wide 404 — default Next page is easy to miss on dark OS / Simple Browser. */
 export default function NotFound() {
@@ -25,13 +26,7 @@ export default function NotFound() {
         </p>
       </div>
       <div className="flex flex-wrap gap-3 pt-4">
-        <Link
-          prefetch={false}
-          href="/"
-          className="rounded border border-aba-muted px-5 py-3 text-[0.85rem] font-semibold uppercase tracking-[0.18em]"
-        >
-          ← Home · chapter list
-        </Link>
+        <HomeLink className="rounded border border-aba-muted px-5 py-3 text-[0.85rem] font-semibold uppercase tracking-[0.18em]">← Home · chapter list</HomeLink>
         <Link
           prefetch={false}
           href="/mock-exams"

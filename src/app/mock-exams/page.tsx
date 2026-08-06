@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { HomeLink } from "@/components/HomeLink";
 import { formatMockExamTimeLimit } from "@/content/mockExam/mockExamTime";
 import { MOCK_EXAM_INDEX } from "@/content/mockExam";
 import { MockExamHistoryPanel } from "@/components/mockExam/MockExamHistoryPanel";
@@ -61,13 +62,7 @@ export default function MockExamsIndexPage() {
         </ul>
       </section>
 
-      <Link
-        prefetch={false}
-        href="/"
-        className="inline-flex w-fit rounded border border-aba-divider px-5 py-3 text-[0.85rem] uppercase tracking-[0.18em] text-aba-muted hover:border-aba-muted hover:text-aba-fg"
-      >
-        ← Home · chapter list
-      </Link>
+      <HomeLink className="inline-flex w-fit rounded border border-aba-divider px-5 py-3 text-[0.85rem] uppercase tracking-[0.18em] text-aba-muted hover:border-aba-muted hover:text-aba-fg">← Home · chapter list</HomeLink>
     </div>
   );
 }

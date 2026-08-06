@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { HomeLink } from "@/components/HomeLink";
 import { useState, useTransition } from "react";
 import { useSubscription } from "@/lib/subscription/useSubscription";
 
@@ -62,12 +63,7 @@ export default function SettingsPage() {
             Subscription &amp; app info
           </h1>
         </div>
-        <Link
-          href="/"
-          className="text-[0.8rem] uppercase tracking-[0.22em] text-aba-muted hover:text-aba-fg"
-        >
-          ← Home
-        </Link>
+        <HomeLink className="text-[0.8rem] uppercase tracking-[0.22em] text-aba-muted hover:text-aba-fg" />
       </header>
 
       {isDevStub ? (

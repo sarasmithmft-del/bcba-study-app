@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { HomeLink } from "@/components/HomeLink";
 import { useMemo, useState } from "react";
 import { SCC_LAB_ITEMS } from "@/content/labs/sccLabItems";
 
@@ -140,9 +141,7 @@ export function SccLab() {
         <Link href="/labs/graph/" className="uppercase tracking-[0.18em] hover:text-aba-fg">
           ← Graph reading lab
         </Link>
-        <Link href="/" className="uppercase tracking-[0.18em] hover:text-aba-fg">
-          Home
-        </Link>
+        <HomeLink className="uppercase tracking-[0.18em] hover:text-aba-fg">Home</HomeLink>
       </footer>
     </div>
   );
