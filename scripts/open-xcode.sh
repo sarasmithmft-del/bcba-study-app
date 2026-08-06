@@ -46,9 +46,11 @@ fi
 
 if [[ -d .git ]]; then
   echo "==> Updating git ($BRANCH)…"
+  git stash push -u -m "bcba-open-xcode-$(date +%Y%m%d-%H%M%S)" >/dev/null 2>&1 || true
   git fetch origin || true
   if git rev-parse --verify "origin/$BRANCH" >/dev/null 2>&1; then
-    git checkout "$BRANCH" 2>/dev/null || git checkout -b "$BRANCH" "origin/$BRANCH"
+    git checkout -f "$BRANCH" 2>/dev/null || git checkout -B "$BRANCH" "origin/$BRANCH"
+    git reset --hard "origin/$BRANCH" >/dev/null 2>&1 || true
     git pull --ff-only origin "$BRANCH" || true
   fi
 fi

@@ -79,11 +79,14 @@ log "Working directory: $(pwd)"
 
 if [[ -d .git ]]; then
   log "==> Updating git → ${BRANCH}"
+  git stash push -u -m "bcba-mac-fix-$(date +%Y%m%d-%H%M%S)" >>"${LOG}" 2>&1 \
+    || log "(nothing to stash — ok)"
   git fetch origin >>"${LOG}" 2>&1 || log "(fetch warning — continuing)"
   if git rev-parse --verify "origin/${BRANCH}" >/dev/null 2>&1; then
-    git checkout "${BRANCH}" >>"${LOG}" 2>&1 \
+    git checkout -f "${BRANCH}" >>"${LOG}" 2>&1 \
       || git checkout -B "${BRANCH}" "origin/${BRANCH}" >>"${LOG}" 2>&1 \
       || log "(checkout warning — continuing on $(git rev-parse --abbrev-ref HEAD))"
+    git reset --hard "origin/${BRANCH}" >>"${LOG}" 2>&1 || log "(reset warning — continuing)"
     git pull --ff-only origin "${BRANCH}" >>"${LOG}" 2>&1 || log "(pull warning — continuing)"
   else
     log "(branch ${BRANCH} not on remote — staying on $(git rev-parse --abbrev-ref HEAD 2>/dev/null))"

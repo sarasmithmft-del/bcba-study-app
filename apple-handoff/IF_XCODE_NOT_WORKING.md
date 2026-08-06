@@ -47,6 +47,22 @@ The script opens Xcode as a fallback. Then:
 2. Bundle ID: `com.euphoria.bcbaworkbook`  
 3. Pick an **iPhone** simulator → press **▶ Run**
 
+## Local changes blocking `git checkout` (package-lock.json)
+
+If Terminal says local changes would be overwritten:
+
+```bash
+cd ~/Desktop/"bcba study app"
+git stash push -u -m "temp" || true
+git fetch origin
+git checkout -f cursor/local-xcode-build-8982
+git reset --hard origin/cursor/local-xcode-build-8982
+chmod +x CONTINUE-ON-MAC.command scripts/*.sh
+./scripts/mac-resume-and-open-swiftui.sh
+```
+
+Or double-click **`CONTINUE-ON-MAC.command`** after you’re on that branch.
+
 ## Common problems
 
 | What you see | Fix |
@@ -57,6 +73,7 @@ The script opens Xcode as a fallback. Then:
 | ▶ Run disabled / signing error | Set **Team** in Signing & Capabilities |
 | Blank black Simulator | Re-run `./scripts/mac-build-and-run-simulator.sh` |
 | `git clone` asks for login | Sign in with GitHub (`sarasmithmft-del`) |
+| checkout blocked by `package-lock.json` | Use the stash block above |
 
 If it still fails: open **`BCBA-XCODE-LOG.txt`** and paste its contents into Cursor.
 
