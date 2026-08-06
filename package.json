@@ -9,10 +9,13 @@
     "onedrive-fix": "node scripts/onedrive-fix.mjs",
     "build": "next build",
     "build:webpack": "next build --webpack",
+    "serve:local": "npx --yes serve out -p 3333 -n",
+    "build:start": "npm run build && npm run serve:local",
     "cap:sync": "npm run build && npx cap sync ios",
     "cap:open": "npx cap open ios",
     "lint": "eslint",
-    "open-site": "cmd /c start http://127.0.0.1:3333/"
+    "open-site": "cmd /c start http://127.0.0.1:3333/",
+    "open-mock-exam": "cmd /c start http://127.0.0.1:3333/mock-exam/"
   },
   "dependencies": {
     "@capacitor/app": "^8.1.1",
