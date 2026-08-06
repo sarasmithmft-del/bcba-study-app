@@ -13,6 +13,8 @@
     "build:start": "npm run build && npm run serve:local",
     "cap:sync": "npm run build && npx cap sync ios",
     "cap:open": "npx cap open ios",
+    "ios:sim": "bash scripts/mac-build-and-run-simulator.sh",
+    "ios:xcode": "bash scripts/open-xcode.sh",
     "lint": "eslint",
     "open-site": "cmd /c start http://127.0.0.1:3333/",
     "open-mock-exam": "cmd /c start http://127.0.0.1:3333/mock-exam/"

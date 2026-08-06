@@ -88,15 +88,19 @@ copy_dir ios
 copy_dir apple-handoff
 copy_file HANDOFF.md
 
-# --- One-click Xcode helpers ---
+# --- One-click Xcode / Simulator helpers ---
 copy_file OPEN-XCODE.command
+copy_file RUN-ON-SIMULATOR.command
 mkdir -p "${DEST}/scripts"
 cp -a "${ROOT}/scripts/open-xcode.sh" "${DEST}/scripts/open-xcode.sh"
+cp -a "${ROOT}/scripts/mac-build-and-run-simulator.sh" "${DEST}/scripts/mac-build-and-run-simulator.sh"
 cp -a "${ROOT}/scripts/mac-apple-bootstrap.sh" "${DEST}/scripts/mac-apple-bootstrap.sh"
 cp -a "${ROOT}/scripts/mac-fix-and-open-xcode.sh" "${DEST}/scripts/mac-fix-and-open-xcode.sh"
 cp -a "${ROOT}/scripts/export-ios-clean-to-desktop.sh" "${DEST}/scripts/export-ios-clean-to-desktop.sh"
 chmod +x "${DEST}/OPEN-XCODE.command" \
+  "${DEST}/RUN-ON-SIMULATOR.command" \
   "${DEST}/scripts/open-xcode.sh" \
+  "${DEST}/scripts/mac-build-and-run-simulator.sh" \
   "${DEST}/scripts/mac-apple-bootstrap.sh" \
   "${DEST}/scripts/mac-fix-and-open-xcode.sh" \
   "${DEST}/scripts/export-ios-clean-to-desktop.sh" 2>/dev/null || true
@@ -119,27 +123,31 @@ ON YOUR MAC
    - Xcode from the Mac App Store (open it once, accept license)
    - Node.js LTS from https://nodejs.org
 
-3. Double-click:  OPEN-XCODE.command
+3. BEST: double-click  RUN-ON-SIMULATOR.command
+   (builds and launches the iPhone Simulator app automatically)
+
+   Fallback: double-click  OPEN-XCODE.command
    OR in Terminal:
      cd ~/Desktop/TEST
-     chmod +x OPEN-XCODE.command scripts/open-xcode.sh
-     ./scripts/open-xcode.sh
+     chmod +x RUN-ON-SIMULATOR.command scripts/*.sh
+     ./scripts/mac-build-and-run-simulator.sh
 
-4. In Xcode:
+4. If Xcode opens instead of the Simulator app:
    - Signing & Capabilities → Team → your Apple ID
    - Bundle ID: com.euphoria.bcbaworkbook
    - Pick an iPhone simulator → press ▶ Run
 
 WHAT IS IN HERE
 ---------------
-  src/                 App screens + study content
-  public/              Static assets
-  ios/                 Capacitor Xcode project (App Store path)
-  capacitor.config.ts  App ID + webDir
-  package.json         Dependencies + build scripts
-  apple-handoff/       App Store / Xcode checklists
-  HANDOFF.md           Project state for Apple takeover
-  OPEN-XCODE.command   Build + sync + open Xcode
+  src/                      App screens + study content
+  public/                   Static assets
+  ios/                      Capacitor Xcode project (App Store path)
+  capacitor.config.ts       App ID + webDir
+  package.json              Dependencies + build scripts
+  apple-handoff/            App Store / Xcode checklists
+  HANDOFF.md                Project state for Apple takeover
+  RUN-ON-SIMULATOR.command  Build + launch Simulator (preferred)
+  OPEN-XCODE.command        Build + sync + open Xcode
 
 WHAT WAS LEFT OUT (on purpose)
 ------------------------------
@@ -162,13 +170,13 @@ Minimal set of files to **build the study app** and **open it in Xcode** for App
 
 ```bash
 cd ~/Desktop/TEST
-chmod +x OPEN-XCODE.command scripts/open-xcode.sh
-./scripts/open-xcode.sh
+chmod +x RUN-ON-SIMULATOR.command scripts/mac-build-and-run-simulator.sh
+./scripts/mac-build-and-run-simulator.sh
 ```
 
-Or double-click **`OPEN-XCODE.command`**.
+Or double-click **`RUN-ON-SIMULATOR.command`** (preferred).
 
-Then in Xcode: **Team** → **▶ Run**.
+Fallback: double-click **`OPEN-XCODE.command`**, then in Xcode: **Team** → **▶ Run**.
 
 See **`START-HERE.txt`** and **`apple-handoff/FOR_SARA_OPEN_XCODE.md`**.
 
@@ -178,6 +186,7 @@ See **`START-HERE.txt`** and **`apple-handoff/FOR_SARA_OPEN_XCODE.md`**.
 npm install
 npm run build          # creates out/
 npx cap sync ios       # copies out/ into the iOS project
+npm run ios:sim        # build + launch Simulator (Mac + Xcode)
 npx cap open ios       # opens Xcode
 ```
 
@@ -200,5 +209,5 @@ echo " Clean package ready"
 echo "   ${DEST}"
 echo "   ${FILE_COUNT} files · ${SIZE}"
 echo "========================================"
-echo "Next on Mac: double-click OPEN-XCODE.command"
+echo "Next on Mac: double-click RUN-ON-SIMULATOR.command"
 echo ""

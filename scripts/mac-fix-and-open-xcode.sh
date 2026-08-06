@@ -13,7 +13,7 @@ set -u
 
 LOG="${HOME}/Desktop/BCBA-XCODE-LOG.txt"
 REPO_URL="${BCBA_REPO_URL:-https://github.com/sarasmithmft-del/bcba-study-app.git}"
-BRANCH="${BCBA_BRANCH:-cursor/ios-clean-test-folder-1314}"
+BRANCH="${BCBA_BRANCH:-cursor/local-xcode-build-8982}"
 DEST=""
 
 mkdir -p "${HOME}/Desktop"
@@ -104,21 +104,38 @@ log "==> npx cap sync ios…"
 npx cap sync ios >>"${LOG}" 2>&1 || fail "cap sync ios failed — see log."
 [[ -d ios/App/App/public ]] || fail "After sync, ios/App/App/public is missing."
 
+# Prefer automatic Simulator launch (no ▶ Run). Falls back to opening Xcode.
+if [[ -x "${DEST}/scripts/mac-build-and-run-simulator.sh" ]] || [[ -f "${DEST}/scripts/mac-build-and-run-simulator.sh" ]]; then
+  log "==> Building + launching iOS Simulator (no ▶ Run needed)…"
+  chmod +x "${DEST}/scripts/mac-build-and-run-simulator.sh" 2>/dev/null || true
+  # Avoid nested log overwrite: child script rewrites the same Desktop log.
+  if BCBA_OPEN_XCODE_FALLBACK=1 bash "${DEST}/scripts/mac-build-and-run-simulator.sh"; then
+    log ""
+    log "SUCCESS — app should be open in the iOS Simulator."
+    log "Log file: ${LOG}"
+    open -R "${LOG}" 2>/dev/null || true
+    echo ""
+    echo "========================================"
+    echo " App launched in Simulator"
+    echo " Log: ~/Desktop/BCBA-XCODE-LOG.txt"
+    echo "========================================"
+    echo ""
+    exit 0
+  fi
+  log "Automatic Simulator launch failed — opening Xcode for manual ▶ Run…"
+fi
+
 log "==> Opening Xcode…"
 open "${DEST}/ios/App/App.xcodeproj" || fail "Could not open Xcode project."
 
 log ""
-log "SUCCESS so far. Xcode should be open."
-log ""
-log "In Xcode do these 3 things:"
+log "Xcode should be open. Do these 3 things:"
 log "  1. Left sidebar → blue App → Signing & Capabilities → Team = your Apple ID"
 log "     Bundle ID must be: com.euphoria.bcbaworkbook"
 log "  2. Top bar → pick iPhone 16 Pro (or any iPhone simulator)"
 log "  3. Press ▶ Run (Cmd+R)"
 log ""
-log "If ▶ Run is red/grey: signing Team is not set."
-log "If Simulator is blank: run this script again, then ▶ Run."
-log ""
+log "Or double-click RUN-ON-SIMULATOR.command to try automatic launch again."
 log "Log file: ${LOG}"
 open -R "${LOG}" 2>/dev/null || true
 

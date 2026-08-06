@@ -11,5 +11,7 @@
 | [FINISHING.md](./FINISHING.md) | End-to-end finish path: Xcode → TestFlight → submit |
 | [GIT_REMOTE_FOR_XCODE.md](./GIT_REMOTE_FOR_XCODE.md) | GitHub URL to paste when Xcode says Update Remote URL |
 | [OPEN_IN_XCODE.md](./OPEN_IN_XCODE.md) | How to open the Capacitor Swift/Xcode project |
+| [IF_XCODE_NOT_WORKING.md](./IF_XCODE_NOT_WORKING.md) | One-paste Mac fix + automatic Simulator launch |
+| [FOR_SARA_OPEN_XCODE.md](./FOR_SARA_OPEN_XCODE.md) | Beginner path: `RUN-ON-SIMULATOR.command` |
 
 Bootstrap script (creates Desktop folder `bcba study app`): [`../scripts/mac-apple-bootstrap.sh`](../scripts/mac-apple-bootstrap.sh)
