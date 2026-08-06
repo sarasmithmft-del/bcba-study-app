@@ -4,7 +4,26 @@ A cloud agent **cannot click Xcode on your Mac**. Use the scripts below on the M
 
 ---
 
-## Best path: build + launch Simulator automatically
+## SwiftUI Desktop project (blue `out` already included)
+
+If you are using **`~/Desktop/BCBA Study Workbook`** / `BCBA Study Workbook.xcodeproj`:
+
+You do **not** need to drag `out` from Finder into Xcode. The repo project already has a **blue** `out` folder reference.
+
+On Mac Terminal:
+
+```bash
+cd ~/Desktop/"bcba study app" 2>/dev/null || cd ~/Projects/bcba-study-app
+git fetch origin && git checkout cursor/local-xcode-build-8982 && git pull
+chmod +x scripts/sync-swiftui-xcode-to-desktop.sh
+./scripts/sync-swiftui-xcode-to-desktop.sh
+```
+
+That rebuilds the site, copies the ready project to **`~/Desktop/BCBA Study Workbook`**, and opens Xcode. Then: **Team** → **▶ Run**.
+
+---
+
+## Best path: Capacitor build + launch Simulator automatically
 
 Open **Terminal** (Spotlight → type `Terminal` → Enter) and paste:
 
