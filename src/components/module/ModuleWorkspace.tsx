@@ -14,6 +14,7 @@ import { useEffect, useMemo, useState } from "react";
 type TabId =
   | "codex"
   | "vocabulary"
+  | "vocabQuiz"
   | "keyConcepts"
   | "activities"
   | "worksheet"
@@ -30,6 +31,9 @@ export function ModuleWorkspace({ module }: { module: StudyModule }) {
     if (module.vocabularySection) {
       list.push({ id: "vocabulary", label: "Vocabulary" });
     }
+    if (module.vocabQuizBank && module.vocabQuizBank.length > 0) {
+      list.push({ id: "vocabQuiz", label: "Vocab quiz" });
+    }
     if (module.keyConceptsSection) {
       list.push({ id: "keyConcepts", label: "Key concepts" });
     }
@@ -43,7 +47,12 @@ export function ModuleWorkspace({ module }: { module: StudyModule }) {
       },
     );
     return list;
-  }, [module.keyConceptsSection, module.vocabularySection, module.bdsBank]);
+  }, [
+    module.keyConceptsSection,
+    module.vocabularySection,
+    module.vocabQuizBank,
+    module.bdsBank,
+  ]);
 
   const [tab, setTab] = useState<TabId>("codex");
 
@@ -114,6 +123,26 @@ export function ModuleWorkspace({ module }: { module: StudyModule }) {
 
         {tab === "vocabulary" && module.vocabularySection ? (
           <VocabularyPanel section={module.vocabularySection} footnotes={mergedFootnotes} />
+        ) : null}
+
+        {tab === "vocabQuiz" && module.vocabQuizBank && module.vocabQuizBank.length > 0 ? (
+          <div className="flex flex-col gap-6">
+            <div className="space-y-2 border-b border-aba-divider pb-4">
+              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-aba-muted">
+                Vocabulary quiz · Chapter {module.chapterNumber}
+              </p>
+              <p className="max-w-3xl text-[0.95rem] leading-relaxed text-aba-muted">
+                Practice this chapter’s vocabulary terms with definition matches, application
+                vignettes, and discrimination items. Review the Vocabulary tab if you miss one.
+              </p>
+            </div>
+            <BDSBank
+              moduleId={module.id}
+              questions={module.vocabQuizBank}
+              title={`Chapter ${module.chapterNumber} vocabulary quiz`}
+              primaryTcoDomain={module.primaryTcoDomain}
+            />
+          </div>
         ) : null}
 
         {tab === "keyConcepts" && module.keyConceptsSection ? (

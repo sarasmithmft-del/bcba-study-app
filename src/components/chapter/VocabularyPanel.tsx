@@ -24,6 +24,10 @@ export function VocabularyPanel({ section, footnotes }: VocabularyPanelProps) {
         {section.intro ? (
           <p className="text-[0.92rem] leading-relaxed text-aba-muted">{section.intro}</p>
         ) : null}
+        <p className="rounded border border-aba-divider bg-black/20 px-3 py-2 text-[0.84rem] leading-relaxed text-aba-muted">
+          After you review these terms, open the <span className="font-semibold text-aba-fg">Vocab quiz</span> tab
+          for definition matches, application vignettes, and discrimination items on the same words.
+        </p>
         <dl className="flex flex-col gap-5">
           {section.entries.map((entry) => (
             <div
