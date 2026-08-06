@@ -6,6 +6,7 @@ import { KeyConceptsPanel } from "@/components/chapter/KeyConceptsPanel";
 import { VocabularyPanel } from "@/components/chapter/VocabularyPanel";
 import { CodexView } from "@/components/codex/CodexView";
 import { GameRegistry } from "@/components/games/GameRegistry";
+import { VocabQuizSection } from "@/components/module/VocabQuizSection";
 import { Worksheet } from "@/components/worksheet/Worksheet";
 import type { StudyModule } from "@/lib/content-types";
 import { mergeChapterFootnotes } from "@/lib/mergeFootnotes";
@@ -17,13 +18,16 @@ type TabId =
   | "keyConcepts"
   | "activities"
   | "worksheet"
-  | "quiz";
+  | "quiz"
+  | "vocabQuiz";
 
 export function ModuleWorkspace({ module }: { module: StudyModule }) {
   const mergedFootnotes = useMemo(
     () => mergeChapterFootnotes(module.codex.footnotes, module.supplementalFootnotes),
     [module.codex.footnotes, module.supplementalFootnotes],
   );
+
+  const hasVocabQuiz = Boolean(module.vocabQuizBank && module.vocabQuizBank.length > 0);
 
   const tabs = useMemo(() => {
     const list: Array<{ id: TabId; label: string }> = [{ id: "codex", label: "Reading" }];
@@ -42,8 +46,17 @@ export function ModuleWorkspace({ module }: { module: StudyModule }) {
           module.bdsBank && module.bdsBank.length > 1 ? "Chapter quizzes" : "Chapter quiz",
       },
     );
+    // Last tab = end of chapter vocabulary quiz (easy to find)
+    if (hasVocabQuiz) {
+      list.push({ id: "vocabQuiz", label: "Vocabulary quiz" });
+    }
     return list;
-  }, [module.keyConceptsSection, module.vocabularySection, module.bdsBank]);
+  }, [
+    module.keyConceptsSection,
+    module.vocabularySection,
+    module.bdsBank,
+    hasVocabQuiz,
+  ]);
 
   const [tab, setTab] = useState<TabId>("codex");
 
@@ -52,6 +65,15 @@ export function ModuleWorkspace({ module }: { module: StudyModule }) {
       setTab("codex");
     }
   }, [tabs, tab]);
+
+  const vocabQuiz = hasVocabQuiz ? (
+    <VocabQuizSection
+      moduleId={module.id}
+      chapterNumber={module.chapterNumber}
+      questions={module.vocabQuizBank!}
+      primaryTcoDomain={module.primaryTcoDomain}
+    />
+  ) : null;
 
   const chapterQuiz =
     module.bdsBank && module.bdsBank.length > 0 ? (
@@ -79,6 +101,15 @@ export function ModuleWorkspace({ module }: { module: StudyModule }) {
         <h1 className="text-[clamp(1.6rem,2vw,2.35rem)] font-semibold leading-tight">
           {module.title}
         </h1>
+        {hasVocabQuiz ? (
+          <button
+            type="button"
+            onClick={() => setTab("vocabQuiz")}
+            className="rounded border border-[color:var(--aba-muted)] bg-black/35 px-4 py-2 text-[0.75rem] font-semibold uppercase tracking-[0.18em] text-aba-fg hover:bg-black/50"
+          >
+            Jump to vocabulary quiz ({module.vocabQuizBank!.length} questions)
+          </button>
+        ) : null}
       </header>
 
       <nav
@@ -104,16 +135,28 @@ export function ModuleWorkspace({ module }: { module: StudyModule }) {
 
       <div className="flex flex-col gap-16">
         {tab === "codex" ? (
-          <CodexView
-            heading={module.codex.heading}
-            segments={module.codex.segments}
-            footnotes={mergedFootnotes}
-            plainLanguageSummary={module.codex.plainLanguageSummary}
-          />
+          <div className="flex flex-col gap-16">
+            <CodexView
+              heading={module.codex.heading}
+              segments={module.codex.segments}
+              footnotes={mergedFootnotes}
+              plainLanguageSummary={module.codex.plainLanguageSummary}
+            />
+            {/* End of chapter reading → vocabulary quiz */}
+            {vocabQuiz}
+          </div>
         ) : null}
 
         {tab === "vocabulary" && module.vocabularySection ? (
-          <VocabularyPanel section={module.vocabularySection} footnotes={mergedFootnotes} />
+          <div className="flex flex-col gap-12">
+            <VocabularyPanel
+              section={module.vocabularySection}
+              footnotes={mergedFootnotes}
+              quizQuestionCount={module.vocabQuizBank?.length}
+              onOpenQuiz={hasVocabQuiz ? () => setTab("vocabQuiz") : undefined}
+            />
+            {vocabQuiz}
+          </div>
         ) : null}
 
         {tab === "keyConcepts" && module.keyConceptsSection ? (
@@ -126,7 +169,15 @@ export function ModuleWorkspace({ module }: { module: StudyModule }) {
 
         {tab === "worksheet" ? <Worksheet moduleId={module.id} worksheet={module.worksheet} /> : null}
 
-        {tab === "quiz" ? chapterQuiz : null}
+        {tab === "quiz" ? (
+          <div className="flex flex-col gap-16">
+            {chapterQuiz}
+            {/* After the chapter quiz = end of chapter vocabulary quiz */}
+            {vocabQuiz}
+          </div>
+        ) : null}
+
+        {tab === "vocabQuiz" ? vocabQuiz : null}
       </div>
     </div>
   );

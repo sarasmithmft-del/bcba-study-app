@@ -7,9 +7,17 @@ import { useState } from "react";
 interface VocabularyPanelProps {
   section: VocabularySection;
   footnotes: Record<string, FootnoteEntry>;
+  /** When provided, shows a button that jumps to the Vocab quiz tab. */
+  onOpenQuiz?: () => void;
+  quizQuestionCount?: number;
 }
 
-export function VocabularyPanel({ section, footnotes }: VocabularyPanelProps) {
+export function VocabularyPanel({
+  section,
+  footnotes,
+  onOpenQuiz,
+  quizQuestionCount,
+}: VocabularyPanelProps) {
   const [activeRef, setActiveRef] = useState<string | null>(null);
 
   return (
@@ -24,6 +32,28 @@ export function VocabularyPanel({ section, footnotes }: VocabularyPanelProps) {
         {section.intro ? (
           <p className="text-[0.92rem] leading-relaxed text-aba-muted">{section.intro}</p>
         ) : null}
+        {onOpenQuiz ? (
+          <div className="flex flex-col gap-3 rounded border border-aba-divider bg-black/20 px-4 py-3">
+            <p className="text-[0.84rem] leading-relaxed text-aba-muted">
+              Ready to practice these terms? The vocabulary quiz has definition matches,
+              application vignettes, and discrimination items
+              {typeof quizQuestionCount === "number" ? ` (${quizQuestionCount} questions)` : ""}.
+            </p>
+            <button
+              type="button"
+              onClick={onOpenQuiz}
+              className="self-start rounded border border-[color:var(--aba-muted)] bg-black/35 px-4 py-2 text-[0.75rem] font-semibold uppercase tracking-[0.18em] text-aba-fg hover:bg-black/50"
+            >
+              Start vocab quiz
+            </button>
+          </div>
+        ) : (
+          <p className="rounded border border-aba-divider bg-black/20 px-3 py-2 text-[0.84rem] leading-relaxed text-aba-muted">
+            After you review these terms, open the{" "}
+            <span className="font-semibold text-aba-fg">Vocab quiz</span> tab for definition
+            matches, application vignettes, and discrimination items on the same words.
+          </p>
+        )}
         <dl className="flex flex-col gap-5">
           {section.entries.map((entry) => (
             <div

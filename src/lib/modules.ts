@@ -8,6 +8,7 @@ import { enrichModuleWithCooperMeta } from "@/content/cooperCatalog";
 import { augmentModuleQuizBank } from "@/content/modules/quiz/augmentModuleQuizBank";
 import { deepenStudyModule } from "@/content/modules/activityWorksheetDepth";
 import { ensureSafmeds } from "@/content/modules/ensureSafmeds";
+import { ensureVocabQuiz } from "@/content/modules/ensureVocabQuiz";
 import { assignPrimaryTcoDomain } from "@/content/modules/moduleTcoDomain";
 
 const RAW = ([mod01, mod03, ...EXTENSION_MODULES] as StudyModule[])
@@ -20,6 +21,7 @@ const RAW = ([mod01, mod03, ...EXTENSION_MODULES] as StudyModule[])
   .map(deepenStudyModule)
   .map(augmentModuleQuizBank)
   .map(ensureSafmeds)
+  .map(ensureVocabQuiz)
   .map(assignPrimaryTcoDomain);
 
 export const MODULE_BY_ID: Record<string, StudyModule> = Object.fromEntries(
