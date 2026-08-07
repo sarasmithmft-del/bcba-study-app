@@ -21,13 +21,17 @@
 - `ContentView.swift` — `RootView` gate: PaywallView if unsubscribed, workbook if subscribed, CustomerCenter sheet
 - `WebView.swift` — `/subscribe` taps open Customer Center
 
-### Xcode one-time (must be done on Mac GUI)
+### Xcode on Mac
 
-1. File → Add Package Dependencies  
-2. URL: `https://github.com/RevenueCat/purchases-ios-spm.git`  
-3. Add products: **RevenueCat** + **RevenueCatUI**  
-4. Signing → Team → your Apple ID  
-5. ▶ Run (sandbox / StoreKit testing)
+SPM packages **RevenueCat** + **RevenueCatUI** are already linked in
+`BCBA Study Workbook.xcodeproj` (repo URL `purchases-ios-spm`, up to next major from 5.0.0).
+
+1. Sync / open the project (Xcode resolves packages on first open)  
+2. Signing → Team → your Apple ID  
+3. ▶ Run (sandbox / StoreKit testing)
+
+If Package Dependencies are empty after a merge conflict, re-add via  
+File → Add Package Dependencies → `https://github.com/RevenueCat/purchases-ios-spm.git`.
 
 ## Secondary / unused for v1
 

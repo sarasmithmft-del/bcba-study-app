@@ -54,7 +54,7 @@ Mark items as you finish them on the Mac. Items under **Already complete** stay 
 - [ ] Subscription group **BCBA Workbook Pro**
 - [ ] ASC products `monthly` ($12.99) + `yearly` ($129.99), 3-day trial each
 - [ ] RevenueCat offering `$rc_monthly` / `$rc_annual` linked to those products
-- [ ] Native SwiftUI: SPM **RevenueCat** + **RevenueCatUI** added in Xcode
+- [x] Native SwiftUI: SPM **RevenueCat** + **RevenueCatUI** wired in `.xcodeproj`
 - [x] RevenueCat iOS SDK key set to production `appl_…`
 - [ ] Chat removed from v1 (done in repo)
 - [ ] Sandbox purchase + restore tested (device or StoreKit config)
