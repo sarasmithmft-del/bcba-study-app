@@ -1,65 +1,54 @@
 #!/usr/bin/env bash
-# Builds the site, refreshes BCBA Study Workbook/out, copies the ready Xcode
-# project (Swift + SPM RevenueCat packages already in .xcodeproj) to Desktop,
-# and opens it.
+# DEPRECATED destructive full-copy sync.
+# The canonical Mac project is ~/Desktop/BCBA Study Workbook (with SPM packages).
+# This script NO LONGER deletes that folder.
 #
-# Prefer nested path used with the git clone:
-#   ~/Desktop/bcba study app/BCBA Study Workbook
-# Fallback:
-#   ~/Desktop/BCBA Study Workbook
+# For web updates use:
+#   ./scripts/sync-swiftui-out-only.sh
 #
-# Usage (Mac):
-#   ./scripts/sync-swiftui-xcode-to-desktop.sh
+# If you truly need to recreate a missing Desktop project from the repo template,
+# set FORCE_FULL_COPY=1 (still refuses if Package Dependencies / purchases-ios-spm
+# already exist in the Desktop .xcodeproj).
 
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 SRC="${ROOT}/BCBA Study Workbook"
+DEST="${HOME}/Desktop/BCBA Study Workbook"
 
-# Prefer the project inside the git clone on Desktop
-if [[ -d "${HOME}/Desktop/bcba study app" ]]; then
-  DEST="${HOME}/Desktop/bcba study app/BCBA Study Workbook"
-else
-  DEST="${HOME}/Desktop/BCBA Study Workbook"
+echo "========================================"
+echo " NOTE: Prefer non-destructive out/ sync:"
+echo "   ./scripts/sync-swiftui-out-only.sh"
+echo "========================================"
+echo ""
+
+if [[ "${FORCE_FULL_COPY:-}" != "1" ]]; then
+  echo "Refusing full Desktop overwrite (would wipe SPM packages)."
+  echo "Run:  ./scripts/sync-swiftui-out-only.sh"
+  echo "Or:   FORCE_FULL_COPY=1 ./scripts/sync-swiftui-xcode-to-desktop.sh"
+  exit 1
+fi
+
+if [[ -f "${DEST}/BCBA Study Workbook.xcodeproj/project.pbxproj" ]] \
+  && grep -q 'purchases-ios-spm' "${DEST}/BCBA Study Workbook.xcodeproj/project.pbxproj"; then
+  echo "ERROR: ${DEST} already has RevenueCat SPM wired."
+  echo "Will not overwrite. Use ./scripts/sync-swiftui-out-only.sh instead."
+  exit 1
 fi
 
 cd "$ROOT"
-
-echo "==> npm install + build…"
 npm install
 npm run build
 [[ -d out ]] || { echo "ERROR: out/ missing"; exit 1; }
 
-echo "==> Refreshing ${SRC}/out…"
 rm -rf "${SRC}/out"
 cp -a out "${SRC}/out"
 
-echo "==> Copying ready Xcode project → ${DEST}"
-mkdir -p "$(dirname "${DEST}")"
+mkdir -p "${HOME}/Desktop"
 rm -rf "${DEST}"
 mkdir -p "${DEST}"
-rsync -a \
-  --exclude native-swiftui \
-  --exclude .DS_Store \
-  "${SRC}/" "${DEST}/"
-
+rsync -a --exclude native-swiftui --exclude .DS_Store "${SRC}/" "${DEST}/"
 chmod +x "${DEST}/OPEN-IN-XCODE.command" 2>/dev/null || true
-
-# Confirm SPM wiring is present in the copied project
-if ! grep -q 'purchases-ios-spm' "${DEST}/BCBA Study Workbook.xcodeproj/project.pbxproj"; then
-  echo "ERROR: RevenueCat SPM reference missing from copied .xcodeproj"
-  exit 1
-fi
-
-echo "==> Opening Xcode…"
 open "${DEST}/BCBA Study Workbook.xcodeproj"
 
-echo ""
-echo "========================================"
-echo " Opened: ${DEST}/BCBA Study Workbook.xcodeproj"
-echo " Packages: RevenueCat + RevenueCatUI (SPM) already linked"
-echo " Left sidebar: BLUE folder out + Package Dependencies"
-echo " Then: Signing → Team → ▶ Run"
-echo " (First open may take a minute while Xcode resolves packages.)"
-echo "========================================"
-echo ""
+echo "Full template copied to ${DEST} (FORCE_FULL_COPY=1)."

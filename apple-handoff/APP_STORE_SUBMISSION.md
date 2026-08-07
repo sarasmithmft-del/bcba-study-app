@@ -7,7 +7,8 @@
 
 | Item | Value |
 |------|--------|
-| Xcode project | `~/Desktop/BCBA Study Workbook/BCBA Study Workbook.xcodeproj` (also in repo under `BCBA Study Workbook/`) |
+| Xcode project (canonical) | `~/Desktop/BCBA Study Workbook/BCBA Study Workbook.xcodeproj` |
+| Repo template (backup Swift + SPM wiring) | `BCBA Study Workbook/` in git — do **not** overwrite Desktop with full sync |
 | Bundle ID | `com.euphoria.bcbaworkbook` |
 | Monetization | **Native RevenueCat + StoreKit** (Swift SDK, not JS) |
 | Entitlement | Unlock on **any active entitlement** (Pro tier) |
@@ -25,13 +26,16 @@
 
 SPM packages **RevenueCat** + **RevenueCatUI** are already linked in
 `BCBA Study Workbook.xcodeproj` (repo URL `purchases-ios-spm`, up to next major from 5.0.0).
+`Package.resolved` is under `project.xcworkspace/xcshareddata/swiftpm/`.
 
-1. Sync / open the project (Xcode resolves packages on first open)  
+1. Open the **Desktop** project (`~/Desktop/BCBA Study Workbook/…xcodeproj`)  
 2. Signing → Team → your Apple ID  
 3. ▶ Run (sandbox / StoreKit testing)
 
-If Package Dependencies are empty after a merge conflict, re-add via  
-File → Add Package Dependencies → `https://github.com/RevenueCat/purchases-ios-spm.git`.
+If Xcode shows **“The file swiftpm doesn’t exist”** / package graph fatalError: run
+`./scripts/fix-desktop-swiftpm.sh` from the clone, quit Xcode, clear SPM caches
+(see `BCBA Study Workbook/README.md`), then **File → Packages → Resolve Package Versions**.
+Do **not** Add Package again while it’s already in `project.pbxproj`.
 
 ## Secondary / unused for v1
 

@@ -17,25 +17,42 @@ Pricing: **$12.99/mo** · **$129.99/yr** · **3-day free trial**
 
 RevenueCat + RevenueCatUI are already wired into `BCBA Study Workbook.xcodeproj` via SPM
 (`https://github.com/RevenueCat/purchases-ios-spm.git`, up to next major from 5.0.0).
+`Package.resolved` lives at  
+`BCBA Study Workbook.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved`.
 
 1. Open `BCBA Study Workbook.xcodeproj` (Xcode will resolve packages on first open)
 2. Signing → **Team** → your Apple ID
 3. ▶ Run on Simulator
 
-If Package Dependencies are missing after a bad merge: **File → Add Package Dependencies…** → same URL → add **RevenueCat** + **RevenueCatUI**.
+### If you see `The file “swiftpm” doesn’t exist` / package graph fatalError
 
-## Refresh website HTML after content changes
-
-From the **repo root**:
+Do **not** Add Package again (it’s already in the project). On the Mac:
 
 ```bash
-npm install
-npm run build
-rm -rf "BCBA Study Workbook/out"
-cp -R out "BCBA Study Workbook/out"
+# From the git clone:
+./scripts/fix-desktop-swiftpm.sh
+
+# Quit Xcode (Cmd-Q), then:
+defaults write com.apple.dt.Xcode IDEPackageSupportUseBuiltinSCM -bool YES
+rm -rf ~/Library/Caches/org.swift.swiftpm
+rm -rf ~/Library/Developer/Xcode/DerivedData/BCBA_Study_Workbook-*
 ```
 
-Then ▶ Run again.
+Reopen the Desktop `.xcodeproj` → **File → Packages → Resolve Package Versions** → wait for Package resolved.
+
+## Refresh website HTML after content changes (Mac)
+
+**Canonical Xcode project:** `~/Desktop/BCBA Study Workbook`  
+Do **not** run the old full Desktop overwrite sync — it wipes SPM packages.
+
+From the git clone / repo root:
+
+```bash
+./scripts/sync-swiftui-out-only.sh
+```
+
+That rebuilds the site and copies **only** `out/` into the Desktop project.  
+Then in Xcode: Product → Clean Build Folder → ▶ Run.
 
 ## Before App Store submit
 
