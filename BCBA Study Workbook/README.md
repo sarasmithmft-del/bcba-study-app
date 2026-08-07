@@ -13,16 +13,16 @@
 Bundle ID: `com.euphoria.bcbaworkbook`  
 Pricing: **$12.99/mo** · **$129.99/yr** · **3-day free trial**
 
-## One-time in Xcode (Mac)
+## Open in Xcode (Mac)
 
-1. Open `BCBA Study Workbook.xcodeproj`
-2. **File → Add Package Dependencies…**
-3. URL: `https://github.com/RevenueCat/purchases-ios-spm.git`
-4. Add products: **RevenueCat** + **RevenueCatUI**
-5. Signing → **Team** → your Apple ID
-6. ▶ Run on Simulator
+RevenueCat + RevenueCatUI are already wired into `BCBA Study Workbook.xcodeproj` via SPM
+(`https://github.com/RevenueCat/purchases-ios-spm.git`, up to next major from 5.0.0).
 
-Without the SPM packages, the project will not compile (`import RevenueCat` / `RevenueCatUI`).
+1. Open `BCBA Study Workbook.xcodeproj` (Xcode will resolve packages on first open)
+2. Signing → **Team** → your Apple ID
+3. ▶ Run on Simulator
+
+If Package Dependencies are missing after a bad merge: **File → Add Package Dependencies…** → same URL → add **RevenueCat** + **RevenueCatUI**.
 
 ## Refresh website HTML after content changes
 
