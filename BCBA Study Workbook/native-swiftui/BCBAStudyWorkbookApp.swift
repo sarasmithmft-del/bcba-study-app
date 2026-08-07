@@ -13,8 +13,8 @@ struct BCBAStudyWorkbookApp: App {
         #if DEBUG
         Purchases.logLevel = .debug
         #endif
-        // TEST key for Simulator / sandbox. Swap to `appl_…` before App Store submit.
-        Purchases.configure(withAPIKey: "test_YQNTLAoyxXeLlBWjvWjhQUrKybo")
+        // Public RevenueCat iOS SDK key (safe in client). Sandbox + production App Store.
+        Purchases.configure(withAPIKey: "appl_QzcHkxpeYxGesZtXYcmEsDxCQGG")
     }
 
     var body: some Scene {

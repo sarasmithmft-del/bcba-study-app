@@ -13,8 +13,7 @@
 | Entitlement | Unlock on **any active entitlement** (Pro tier) |
 | Entitlement display name | `BCBA Study Workbook Pro` |
 | Products | `monthly` **$12.99** · `yearly` **$129.99** · **3-day free trial** each |
-| RevenueCat test key (current) | `test_YQNTLAoyxXeLlBWjvWjhQUrKybo` |
-| Production key | swap to `appl_…` before submit |
+| RevenueCat iOS SDK key | `appl_QzcHkxpeYxGesZtXYcmEsDxCQGG` (public client key) |
 
 ### Swift wiring (in repo)
 
@@ -62,7 +61,8 @@
 
 ## Before submit checklist
 
-- [ ] Swap RevenueCat test key → `appl_…` production key  
+- [x] RevenueCat iOS SDK key set to production `appl_…`  
+
 - [ ] ASC subscription products Approved / Ready to Submit  
 - [ ] Privacy policy URL live  
 - [ ] App icon set  

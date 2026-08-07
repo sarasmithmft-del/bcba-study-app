@@ -39,7 +39,7 @@ Then ▶ Run again.
 
 ## Before App Store submit
 
-- Swap test API key in `BCBAStudyWorkbookApp.swift` (`test_…`) → production `appl_…`
+- RevenueCat iOS key is already set to production `appl_…` in `BCBAStudyWorkbookApp.swift`
 - See [`../apple-handoff/APP_STORE_SUBMISSION.md`](../apple-handoff/APP_STORE_SUBMISSION.md)
 
 ## Note vs Capacitor

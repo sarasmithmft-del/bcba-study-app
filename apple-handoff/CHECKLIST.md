@@ -55,7 +55,7 @@ Mark items as you finish them on the Mac. Items under **Already complete** stay 
 - [ ] ASC products `monthly` ($12.99) + `yearly` ($129.99), 3-day trial each
 - [ ] RevenueCat offering `$rc_monthly` / `$rc_annual` linked to those products
 - [ ] Native SwiftUI: SPM **RevenueCat** + **RevenueCatUI** added in Xcode
-- [ ] Test key → production `appl_…` before submit
+- [x] RevenueCat iOS SDK key set to production `appl_…`
 - [ ] Chat removed from v1 (done in repo)
 - [ ] Sandbox purchase + restore tested (device or StoreKit config)
 
