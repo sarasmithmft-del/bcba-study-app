@@ -1,29 +1,30 @@
-# BCBA Study Workbook — SwiftUI Xcode project
+# BCBA Study Workbook — native SwiftUI (App Store path)
 
-Ready-to-open Xcode app. The website HTML is already included as a **blue** `out` folder reference (no Finder drag needed).
+**This is the v1 ship target** (not Capacitor).
 
 | Item | Path |
 |------|------|
 | Xcode project | `BCBA Study Workbook.xcodeproj` |
-| Swift entry | `BCBAStudyWorkbookApp.swift` |
-| WebView | `WebView.swift` (custom scheme `bcba-workbook://`) |
+| App entry | `BCBAStudyWorkbookApp.swift` (RevenueCat configure) |
+| Gate + workbook | `ContentView.swift` (`RootView` → Paywall / WebView / Customer Center) |
+| HTML shell | `WebView.swift` (`bcba-workbook://` + Subscription → Customer Center) |
 | Bundled site | `out/` (**blue folder** in Resources) |
 
-Bundle ID: `com.euphoria.bcbaworkbook`
+Bundle ID: `com.euphoria.bcbaworkbook`  
+Pricing: **$12.99/mo** · **$129.99/yr** · **3-day free trial**
 
-## Open on Mac
+## One-time in Xcode (Mac)
 
-```bash
-open "BCBA Study Workbook.xcodeproj"
-```
+1. Open `BCBA Study Workbook.xcodeproj`
+2. **File → Add Package Dependencies…**
+3. URL: `https://github.com/RevenueCat/purchases-ios-spm.git`
+4. Add products: **RevenueCat** + **RevenueCatUI**
+5. Signing → **Team** → your Apple ID
+6. ▶ Run on Simulator
 
-Or double-click **`OPEN-IN-XCODE.command`**.
+Without the SPM packages, the project will not compile (`import RevenueCat` / `RevenueCatUI`).
 
-In Xcode: **Team** → iPhone simulator → **▶ Run**.
-
-You should see a **blue** `out` folder in the Project Navigator. That means it is a folder reference and will ship inside the app bundle.
-
-## Refresh the website after content changes
+## Refresh website HTML after content changes
 
 From the **repo root**:
 
@@ -34,9 +35,14 @@ rm -rf "BCBA Study Workbook/out"
 cp -R out "BCBA Study Workbook/out"
 ```
 
-Then ▶ Run again in Xcode.
+Then ▶ Run again.
+
+## Before App Store submit
+
+- Swap test API key in `BCBAStudyWorkbookApp.swift` (`test_…`) → production `appl_…`
+- See [`../apple-handoff/APP_STORE_SUBMISSION.md`](../apple-handoff/APP_STORE_SUBMISSION.md)
 
 ## Note vs Capacitor
 
-- **This folder** = pure SwiftUI WebView shell (what the Desktop “BCBA Study Workbook” project uses).
-- **`ios/App/App.xcodeproj`** = Capacitor shell (recommended App Store path). See `RUN-ON-SIMULATOR.command` in the repo root.
+- **This folder** = **primary** App Store path (native SwiftUI + RevenueCat).
+- **`ios/App/App.xcodeproj`** = Capacitor shell (secondary / unused for v1).

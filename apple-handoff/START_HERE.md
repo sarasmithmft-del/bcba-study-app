@@ -6,7 +6,9 @@
 **Xcode remote URL:** `https://github.com/sarasmithmft-del/bcba-study-app.git` (see [`GIT_REMOTE_FOR_XCODE.md`](./GIT_REMOTE_FOR_XCODE.md))  
 **Bundle ID:** `com.euphoria.bcbaworkbook`  
 **Marketing name:** `BCBA Study Workbook`  
-**Apple Developer Program:** already active (per project handoff)
+**Apple Developer Program:** already active (per project handoff)  
+**Ship path (2026-08-07):** **native SwiftUI** (`BCBA Study Workbook/BCBA Study Workbook.xcodeproj`) + native RevenueCat — Capacitor is secondary.  
+**Full plan:** [`APP_STORE_SUBMISSION.md`](./APP_STORE_SUBMISSION.md)
 
 This folder in the repo (`apple-handoff/`) is the complete checklist so a Mac + Xcode session can take over without redoing Windows/content work.
 
@@ -84,8 +86,8 @@ Then open Cursor on that folder and paste [`MAC_CURSOR_PROMPT.md`](./MAC_CURSOR_
 |------|--------|
 | Framework | Next.js 16 static export + Capacitor 8 |
 | Bundle ID | `com.euphoria.bcbaworkbook` |
-| IAP product | `monthly_pro` — $9.99/month — 3-day free trial |
-| Subscription tooling | RevenueCat + StoreKit 2 |
+| IAP products | `monthly` $12.99 · `yearly` $129.99 · 3-day free trial each |
+| Subscription tooling | **Native** RevenueCat + RevenueCatUI (Swift), not the JS SDK |
 | Min iOS | 16.0 |
 | Auth | None for v1 (on-device only) |
 

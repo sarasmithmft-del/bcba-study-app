@@ -16,9 +16,9 @@ Use these values when creating the app record. Adjust marketing copy if branding
 | Field | Value |
 |-------|--------|
 | Group name | BCBA Workbook Pro |
-| Product ID | `monthly_pro` |
+| Product IDs | `monthly` · `yearly` |
 | Reference name | Monthly Pro |
-| Price | $9.99 USD / month |
+| Price | $12.99 USD / month · $129.99 USD / year |
 | Introductory offer | Free trial — 3 days |
 | Type | Auto-renewable subscription |
 

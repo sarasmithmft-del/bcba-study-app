@@ -3,6 +3,7 @@
 | File | Purpose |
 |------|---------|
 | [START_HERE.md](./START_HERE.md) | Master overview — start here |
+| [APP_STORE_SUBMISSION.md](./APP_STORE_SUBMISSION.md) | Native SwiftUI ship plan + RevenueCat + phases |
 | [CHECKLIST.md](./CHECKLIST.md) | Phase-by-phase checkboxes |
 | [APP_STORE_CONNECT.md](./APP_STORE_CONNECT.md) | Listing + IAP field drafts |
 | [MAC_CURSOR_PROMPT.md](./MAC_CURSOR_PROMPT.md) | Paste into a fresh Mac Cursor chat |

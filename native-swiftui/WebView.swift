@@ -11,6 +11,8 @@ struct WebView: UIViewRepresentable {
     let url: URL
     /// Directory that contains `index.html` (usually the bundled `out/` folder).
     let resourceRoot: URL?
+    /// Called when the in-app Subscription /subscribe link is tapped (opens Customer Center).
+    var onOpenSubscription: (() -> Void)?
 
     func makeUIView(context: Context) -> WKWebView {
         let config = WKWebViewConfiguration()
@@ -28,14 +30,13 @@ struct WebView: UIViewRepresentable {
         webView.isOpaque = false
         webView.backgroundColor = UIColor(red: 0.07, green: 0.07, blue: 0.07, alpha: 1) // #121212
         webView.navigationDelegate = context.coordinator
+        context.coordinator.onOpenSubscription = onOpenSubscription
 
         if let root = resourceRoot {
-            // Serve via custom scheme so `/_next/...` and `/module/...` work.
             let start = URL(string: "\(workbookScheme)://localhost/")!
             context.coordinator.schemeHandler?.root = root
             webView.load(URLRequest(url: start))
         } else if url.isFileURL {
-            // Fallback: loadFileURL (absolute `/` asset paths will still break).
             let readAccess = url.deletingLastPathComponent()
             webView.loadFileURL(url, allowingReadAccessTo: readAccess)
         } else {
@@ -45,7 +46,7 @@ struct WebView: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: WKWebView, context: Context) {
-        // no-op
+        context.coordinator.onOpenSubscription = onOpenSubscription
     }
 
     func makeCoordinator() -> Coordinator {
@@ -54,13 +55,29 @@ struct WebView: UIViewRepresentable {
 
     final class Coordinator: NSObject, WKNavigationDelegate {
         var schemeHandler: WorkbookSchemeHandler?
+        var onOpenSubscription: (() -> Void)?
 
         func webView(
             _ webView: WKWebView,
             decidePolicyFor navigationAction: WKNavigationAction,
             decisionHandler: @escaping (WKNavigationActionPolicy) -> Void
         ) {
+            if let url = navigationAction.request.url, Self.isSubscriptionURL(url) {
+                DispatchQueue.main.async { [weak self] in
+                    self?.onOpenSubscription?()
+                }
+                decisionHandler(.cancel)
+                return
+            }
             decisionHandler(.allow)
+        }
+
+        private static func isSubscriptionURL(_ url: URL) -> Bool {
+            let path = url.path.lowercased()
+            if path.contains("/subscribe") { return true }
+            // Footer link text sometimes surfaces as a fragment or query in custom schemes.
+            let absolute = url.absoluteString.lowercased()
+            return absolute.contains("subscribe") && !absolute.contains("/module/")
         }
     }
 }
@@ -91,7 +108,6 @@ final class WorkbookSchemeHandler: NSObject, WKURLSchemeHandler {
             }
         }
 
-        // Strip leading "/" then resolve under out/
         let trimmed = relative.hasPrefix("/") ? String(relative.dropFirst()) : relative
         let fileURL = root.appendingPathComponent(trimmed)
 
