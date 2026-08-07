@@ -56,7 +56,6 @@ Mark items as you finish them on the Mac. Items under **Already complete** stay 
 - [ ] RevenueCat offering `$rc_monthly` / `$rc_annual` linked to those products
 - [ ] Native SwiftUI: SPM **RevenueCat** + **RevenueCatUI** added in Xcode
 - [ ] Test key → production `appl_…` before submit
-- [ ] Sandbox purchase + restore verified
 - [ ] Chat removed from v1 (done in repo)
 - [ ] Sandbox purchase + restore tested (device or StoreKit config)
 
