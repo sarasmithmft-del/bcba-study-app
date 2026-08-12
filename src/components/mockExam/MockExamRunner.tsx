@@ -9,6 +9,7 @@ import {
 import { formatTcoCodeLabel } from "@/lib/tco/tcoTaskCatalog";
 import { shuffleArray } from "@/lib/shuffle";
 import { submitStudyAttempt } from "@/lib/studyAttemptSubmit";
+import { HomeLink } from "@/components/HomeLink";
 import Link from "next/link";
 import { useEffect, useMemo, useState, useTransition } from "react";
 
@@ -386,13 +387,7 @@ export function MockExamRunner({ questions, intro, moduleId = DEFAULT_MOCK_MODUL
             >
               Begin mock exam
             </button>
-            <Link
-              prefetch={false}
-              href="/"
-              className="rounded border border-aba-divider px-5 py-3 text-[0.85rem] uppercase tracking-[0.18em] text-aba-muted hover:border-aba-muted hover:text-aba-fg"
-            >
-              ← Home
-            </Link>
+            <HomeLink className="rounded border border-aba-divider px-5 py-3 text-[0.85rem] uppercase tracking-[0.18em] text-aba-muted hover:border-aba-muted hover:text-aba-fg" />
           </div>
         </header>
       </section>
@@ -739,13 +734,7 @@ export function MockExamRunner({ questions, intro, moduleId = DEFAULT_MOCK_MODUL
           >
             Study schedule
           </Link>
-          <Link
-            prefetch={false}
-            href="/"
-            className="rounded border border-aba-divider px-5 py-2 text-[0.85rem] uppercase tracking-[0.18em] text-aba-muted hover:border-aba-muted hover:text-aba-fg"
-          >
-            ← Home
-          </Link>
+          <HomeLink className="rounded border border-aba-divider px-5 py-2 text-[0.85rem] uppercase tracking-[0.18em] text-aba-muted hover:border-aba-muted hover:text-aba-fg" />
         </div>
       </section>
     );
@@ -768,9 +757,7 @@ export function MockExamRunner({ questions, intro, moduleId = DEFAULT_MOCK_MODUL
       >
         Reload
       </button>
-      <Link href="/" prefetch={false} className="text-[0.82rem] text-neutral-500 underline underline-offset-4">
-        ← Home
-      </Link>
+      <HomeLink className="text-[0.82rem] text-neutral-500 underline underline-offset-4" />
     </div>
   );
 }

@@ -44,9 +44,16 @@ export type EntitlementStatus = {
 };
 
 export const MONTHLY_OFFERING: SubscriptionOffering = {
-  productId: "monthly_pro",
-  priceString: "$9.99",
+  productId: "monthly",
+  priceString: "$12.99",
   period: "month",
+  freeTrialDays: 3,
+};
+
+export const YEARLY_OFFERING: SubscriptionOffering = {
+  productId: "yearly",
+  priceString: "$129.99",
+  period: "year",
   freeTrialDays: 3,
 };
 

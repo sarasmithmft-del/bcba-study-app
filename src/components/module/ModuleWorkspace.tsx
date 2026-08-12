@@ -6,6 +6,7 @@ import { KeyConceptsPanel } from "@/components/chapter/KeyConceptsPanel";
 import { VocabularyPanel } from "@/components/chapter/VocabularyPanel";
 import { CodexView } from "@/components/codex/CodexView";
 import { GameRegistry } from "@/components/games/GameRegistry";
+import { VocabQuizSection } from "@/components/module/VocabQuizSection";
 import { Worksheet } from "@/components/worksheet/Worksheet";
 import type { StudyModule } from "@/lib/content-types";
 import { mergeChapterFootnotes } from "@/lib/mergeFootnotes";
@@ -24,6 +25,8 @@ export function ModuleWorkspace({ module }: { module: StudyModule }) {
     () => mergeChapterFootnotes(module.codex.footnotes, module.supplementalFootnotes),
     [module.codex.footnotes, module.supplementalFootnotes],
   );
+
+  const hasVocabQuiz = Boolean(module.vocabQuizBank && module.vocabQuizBank.length > 0);
 
   const tabs = useMemo(() => {
     const list: Array<{ id: TabId; label: string }> = [{ id: "codex", label: "Reading" }];
@@ -52,6 +55,13 @@ export function ModuleWorkspace({ module }: { module: StudyModule }) {
       setTab("codex");
     }
   }, [tabs, tab]);
+
+  const scrollToVocabQuiz = () => {
+    document.getElementById("chapter-vocab-quiz")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
 
   const chapterQuiz =
     module.bdsBank && module.bdsBank.length > 0 ? (
@@ -113,7 +123,22 @@ export function ModuleWorkspace({ module }: { module: StudyModule }) {
         ) : null}
 
         {tab === "vocabulary" && module.vocabularySection ? (
-          <VocabularyPanel section={module.vocabularySection} footnotes={mergedFootnotes} />
+          <div className="flex flex-col gap-12">
+            <VocabularyPanel
+              section={module.vocabularySection}
+              footnotes={mergedFootnotes}
+              quizQuestionCount={module.vocabQuizBank?.length}
+              onOpenQuiz={hasVocabQuiz ? scrollToVocabQuiz : undefined}
+            />
+            {hasVocabQuiz ? (
+              <VocabQuizSection
+                moduleId={module.id}
+                chapterNumber={module.chapterNumber}
+                questions={module.vocabQuizBank!}
+                primaryTcoDomain={module.primaryTcoDomain}
+              />
+            ) : null}
+          </div>
         ) : null}
 
         {tab === "keyConcepts" && module.keyConceptsSection ? (

@@ -52,12 +52,11 @@ Mark items as you finish them on the Mac. Items under **Already complete** stay 
 
 - [ ] App Store Connect app record created with bundle ID above
 - [ ] Subscription group **BCBA Workbook Pro**
-- [ ] Product ID `monthly_pro` — $9.99/month — 3-day intro free trial
-- [ ] RevenueCat project linked to App Store Connect / shared secret
-- [ ] Install `@revenuecat/purchases-capacitor`
-- [ ] Replace stub in `src/lib/subscription/subscriptionClient.ts`
-- [ ] Wrap app with `<SubscriptionGate>` in `src/app/layout.tsx`
-- [ ] Rebuild + `npx cap sync ios`
+- [ ] ASC products `monthly` ($12.99) + `yearly` ($129.99), 3-day trial each
+- [ ] RevenueCat offering `$rc_monthly` / `$rc_annual` linked to those products
+- [x] Native SwiftUI: SPM **RevenueCat** + **RevenueCatUI** wired in `.xcodeproj`
+- [x] RevenueCat iOS SDK key set to production `appl_…`
+- [ ] Chat removed from v1 (done in repo)
 - [ ] Sandbox purchase + restore tested (device or StoreKit config)
 
 ## F · Phase 5 — App Store Connect listing

@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { HomeLink } from "@/components/HomeLink";
 import { useEffect } from "react";
 
 export default function MockExamError({ error }: { readonly error: Error & { digest?: string } }) {
@@ -26,14 +26,9 @@ export default function MockExamError({ error }: { readonly error: Error & { dig
         >
           Reload page
         </button>
-        <Link
-          prefetch={false}
-          href="/"
+        <HomeLink
           className="rounded border px-5 py-2 text-[0.85rem] uppercase tracking-[0.18em]"
-          style={{ borderColor: "rgba(224,224,224,0.2)", opacity: 0.9 }}
-        >
-          ← Home
-        </Link>
+        />
       </div>
     </div>
   );

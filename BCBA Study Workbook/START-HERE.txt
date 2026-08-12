@@ -1,9 +1,25 @@
-BCBA Study Workbook (SwiftUI + HTML)
+BCBA Study Workbook — SwiftUI Xcode project
 
-Open these in Xcode SwiftUI app:
-  BCBAStudyWorkbookApp.swift
-  ContentView.swift
-  WebView.swift
-  out/   ← add this whole folder to the Xcode target
+The blue "out" folder is ALREADY wired into the Xcode project.
+You do NOT need to drag it in from Finder.
 
-Main HTML entry: out/index.html
+ON YOUR MAC
+-----------
+1. Put this folder on your Desktop (or open it from the git clone):
+     ~/Desktop/BCBA Study Workbook
+   or inside the repo:
+     …/bcba-study-app/BCBA Study Workbook
+
+2. Double-click:  OPEN-IN-XCODE.command
+   OR double-click:  BCBA Study Workbook.xcodeproj
+
+3. In Xcode:
+   - Confirm you see a BLUE folder named "out" in the left sidebar
+   - Signing & Capabilities → Team → your Apple ID
+   - Bundle ID: com.euphoria.bcbaworkbook
+   - Pick an iPhone simulator → press ▶ Run
+
+If "out" is missing or empty, from the repo root on Mac:
+  npm install && npm run build
+  rm -rf "BCBA Study Workbook/out" && cp -R out "BCBA Study Workbook/out"
+  Then open the .xcodeproj again.

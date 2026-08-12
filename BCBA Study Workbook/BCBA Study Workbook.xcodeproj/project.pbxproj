@@ -1,0 +1,297 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		923BF1CF8CD8E329F164822C /* BCBAStudyWorkbookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923BF1CF8CD8E329F1648221 /* BCBAStudyWorkbookApp.swift */; };
+		294D8D88A4B2D46D9BC25706 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294D8D88A4B2D46D9BC25701 /* ContentView.swift */; };
+		57C279B81809F6E4D1DCD843 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C279B81809F6E4D1DCD841 /* WebView.swift */; };
+		AFEE8AEA1AF457A5B8DCCE45 /* out in Resources */ = {isa = PBXBuildFile; fileRef = AFEE8AEA1AF457A5B8DCCE41 /* out */; };
+		C0A1B2C3D4E5F60718293A01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0A1B2C3D4E5F60718293A11 /* Assets.xcassets */; };
+		B1A2C3D4E5F60718293A4B01 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = B1A2C3D4E5F60718293A4B11 /* RevenueCat */; };
+		B1A2C3D4E5F60718293A4B02 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = B1A2C3D4E5F60718293A4B12 /* RevenueCatUI */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3407382D4AB60BC1191CE48C /* BCBA Study Workbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BCBA Study Workbook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		923BF1CF8CD8E329F1648221 /* BCBAStudyWorkbookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCBAStudyWorkbookApp.swift; sourceTree = "<group>"; };
+		294D8D88A4B2D46D9BC25701 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		57C279B81809F6E4D1DCD841 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		AFEE8AEA1AF457A5B8DCCE41 /* out */ = {isa = PBXFileReference; lastKnownFileType = folder; path = out; sourceTree = "<group>"; };
+		C0A1B2C3D4E5F60718293A11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0DE57433F45D0C60A797533A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1A2C3D4E5F60718293A4B01 /* RevenueCat in Frameworks */,
+				B1A2C3D4E5F60718293A4B02 /* RevenueCatUI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5971A74BFA209C3B0B2261A3 = {
+			isa = PBXGroup;
+			children = (
+				4F52E35A2C761E41C6B817F5 /* BCBA Study Workbook */,
+				48DDF60CB8016C7DDFFCC3CC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		48DDF60CB8016C7DDFFCC3CC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3407382D4AB60BC1191CE48C /* BCBA Study Workbook.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4F52E35A2C761E41C6B817F5 /* BCBA Study Workbook */ = {
+			isa = PBXGroup;
+			children = (
+				923BF1CF8CD8E329F1648221 /* BCBAStudyWorkbookApp.swift */,
+				294D8D88A4B2D46D9BC25701 /* ContentView.swift */,
+				57C279B81809F6E4D1DCD841 /* WebView.swift */,
+				C0A1B2C3D4E5F60718293A11 /* Assets.xcassets */,
+				AFEE8AEA1AF457A5B8DCCE41 /* out */,
+			);
+			name = "BCBA Study Workbook";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A6F7C17068F643FE73F8C465 /* BCBA Study Workbook */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 529C352EE52C810773BD1385 /* Build configuration list for PBXNativeTarget "BCBA Study Workbook" */;
+			buildPhases = (
+				0DC1367D2E0568224FE96C22 /* Sources */,
+				0DE57433F45D0C60A797533A /* Frameworks */,
+				A7DE45F777DE4632E0FD8CDD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BCBA Study Workbook";
+			packageProductDependencies = (
+				B1A2C3D4E5F60718293A4B11 /* RevenueCat */,
+				B1A2C3D4E5F60718293A4B12 /* RevenueCatUI */,
+			);
+			productName = "BCBA Study Workbook";
+			productReference = 3407382D4AB60BC1191CE48C /* BCBA Study Workbook.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		895B3BB1393B185D3FC6C969 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					A6F7C17068F643FE73F8C465 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = 8E7A6ECE086634F83F589868 /* Build configuration list for PBXProject "BCBA Study Workbook" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5971A74BFA209C3B0B2261A3;
+			packageReferences = (
+				B1A2C3D4E5F60718293A4B21 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */,
+			);
+			productRefGroup = 48DDF60CB8016C7DDFFCC3CC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A6F7C17068F643FE73F8C465 /* BCBA Study Workbook */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A7DE45F777DE4632E0FD8CDD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0A1B2C3D4E5F60718293A01 /* Assets.xcassets in Resources */,
+				AFEE8AEA1AF457A5B8DCCE45 /* out in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0DC1367D2E0568224FE96C22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				923BF1CF8CD8E329F164822C /* BCBAStudyWorkbookApp.swift in Sources */,
+				294D8D88A4B2D46D9BC25706 /* ContentView.swift in Sources */,
+				57C279B81809F6E4D1DCD843 /* WebView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C8B18D5C716B9B1B33010160 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3F07A15162FF36A53AD7F387 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		26488B46FD76F6587431359B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "BCBA Study Workbook";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.euphoria.bcbaworkbook;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F79B1948FFA9D768B54A0BA5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "BCBA Study Workbook";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.euphoria.bcbaworkbook;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8E7A6ECE086634F83F589868 /* Build configuration list for PBXProject "BCBA Study Workbook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C8B18D5C716B9B1B33010160 /* Debug */,
+				3F07A15162FF36A53AD7F387 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		529C352EE52C810773BD1385 /* Build configuration list for PBXNativeTarget "BCBA Study Workbook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				26488B46FD76F6587431359B /* Debug */,
+				F79B1948FFA9D768B54A0BA5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B1A2C3D4E5F60718293A4B21 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B1A2C3D4E5F60718293A4B11 /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B1A2C3D4E5F60718293A4B21 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCat;
+		};
+		B1A2C3D4E5F60718293A4B12 /* RevenueCatUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B1A2C3D4E5F60718293A4B21 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCatUI;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 895B3BB1393B185D3FC6C969 /* Project object */;
+}

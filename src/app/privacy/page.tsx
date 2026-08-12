@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { HomeLink } from "@/components/HomeLink";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | BCBA Study Workbook",
@@ -95,7 +96,7 @@ export default function PrivacyPage() {
       </section>
 
       <nav className="flex flex-wrap gap-4 pt-6 text-[0.78rem] uppercase tracking-[0.22em] text-aba-muted">
-        <Link href="/" className="hover:text-aba-fg">← Home</Link>
+        <HomeLink className="hover:text-aba-fg" />
         <Link href="/settings" className="hover:text-aba-fg">Settings</Link>
         <Link href="/subscribe" className="hover:text-aba-fg">Subscription</Link>
       </nav>

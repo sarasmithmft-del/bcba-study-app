@@ -204,6 +204,12 @@ export interface StudyModule {
   /** Multi-item high-discrimination simulation (preferred when present) */
   bdsBank?: BDSQuestion[];
   /**
+   * Graded vocabulary quiz for this chapter’s terms (definition match,
+   * application vignettes, discriminations). Built by `ensureVocabQuiz`
+   * from `vocabularySection.entries` when not authored.
+   */
+  vocabQuizBank?: BDSQuestion[];
+  /**
    * Author-curated SAFMEDS fluency deck for this module. When present,
    * `ensureSafmeds` will build the SAFMEDS activity from this deck instead of
    * falling back to `vocabularySection.entries`. Populated from blueprint

@@ -16,9 +16,9 @@ Use these values when creating the app record. Adjust marketing copy if branding
 | Field | Value |
 |-------|--------|
 | Group name | BCBA Workbook Pro |
-| Product ID | `monthly_pro` |
+| Product IDs | `monthly` · `yearly` |
 | Reference name | Monthly Pro |
-| Price | $9.99 USD / month |
+| Price | $12.99 USD / month · $129.99 USD / year |
 | Introductory offer | Free trial — 3 days |
 | Type | Auto-renewable subscription |
 
@@ -56,9 +56,16 @@ Progress stays on your device. Start with a 3-day free trial, then continue with
 ## Review notes (draft)
 
 ```
-This app is a study workbook. Subscription unlocks full content after a 3-day free trial via StoreKit.
-No account or login is required. Progress is stored on-device only.
-Sandbox tester: <add when created>
+No login or account is required. Sign-in required: OFF.
+
+Subscription unlocks full content after a 3-day free trial via StoreKit / RevenueCat
+(product IDs: monthly, yearly). Progress is stored on-device only.
+
+App Review unlock (no purchase): on the paywall tap “App Review access”
+and enter code: APPREVIEWBCBASARA
+Then the full workbook opens (chapters, quizzes, mocks, labs).
+
+Not affiliated with the BACB.
 ```
 
 ## Screenshots to capture (after Simulator/device build)

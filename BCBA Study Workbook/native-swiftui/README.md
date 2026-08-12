@@ -42,6 +42,10 @@ npm run build
 
 Keep `npm run dev` running, then Run in Simulator — `ContentView` falls back to `http://127.0.0.1:3333/`.
 
+### Bundled HTML loading
+
+The WebView serves `out/` through the custom URL scheme `bcba-workbook://` so Next.js absolute paths (`/_next/...`, `/module/...`) resolve correctly. Do **not** open `index.html` with a plain `file://` load if you want chapters and assets to work.
+
 ## Note vs Capacitor
 
 - **`ios/App/App.xcodeproj`** = Capacitor shell (recommended for App Store).  

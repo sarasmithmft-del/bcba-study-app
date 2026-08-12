@@ -12,6 +12,8 @@ const config: CapacitorConfig = {
   webDir: "out",
   server: {
     androidScheme: "https",
+    // https scheme keeps Next.js absolute routes (e.g. Home → `/`) working in WKWebView
+    iosScheme: "https",
   },
   ios: {
     contentInset: "automatic",

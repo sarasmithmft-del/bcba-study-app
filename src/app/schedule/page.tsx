@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { HomeLink } from "@/components/HomeLink";
 import { useMemo, useState } from "react";
 import { TCO_TARGET_ITEMS_185 } from "@/lib/tcoDomainModules";
 
@@ -163,9 +164,7 @@ export default function SchedulePage() {
       </section>
 
       <footer className="flex flex-wrap gap-4 border-t border-aba-divider pt-6 text-[0.75rem] text-aba-muted">
-        <Link href="/" className="uppercase tracking-[0.18em] hover:text-aba-fg">
-          ← Home
-        </Link>
+        <HomeLink className="uppercase tracking-[0.18em] hover:text-aba-fg" />
         <Link href="/resources/" className="uppercase tracking-[0.18em] hover:text-aba-fg">
           Resources
         </Link>
