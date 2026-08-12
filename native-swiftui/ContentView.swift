@@ -100,7 +100,11 @@ struct RootView: View {
             showReviewEntry = false
         } else {
             reviewCodeMessage = "That code wasn’t recognized. Try again."
-            showReviewEntry = true
+            reviewCodeInput = ""
+            // Re-present after the Unlock dismisses the alert.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                showReviewEntry = true
+            }
         }
     }
 
